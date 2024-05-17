@@ -28,11 +28,17 @@ public class SetupScreenController {
     private TextField TxtFldName;
 
 
-    public SetupScreenController(Player newPlayer) {
-        player = newPlayer;
+    public SetupScreenController(Player player) {
+        this.player = player;
+    }
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+    public SetupScreenController() {
+        // Default constructor for FXLoader's sick and twisted desires
     }
     public void onBtnPlayStartScreen() {
-        player.closeSetupScreen();
+        this.player.closeSetupScreen();
     }
     public void initialize() {
 

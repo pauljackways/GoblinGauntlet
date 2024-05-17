@@ -2,8 +2,14 @@ package seng201.team131.gui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import seng201.team131.Player;
 
 public class TradeOffScreenController {
+
+    private Player player;
+    public TradeOffScreenController(Player newPlayer) {
+        player = newPlayer;
+    }
     @FXML
     private Button BtnDiffEasy;
     @FXML
