@@ -40,7 +40,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField prefHeight="24.0" prefWidth="148.0" style="-fx-background-color: #f22f2f;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <TextField fx:id="TxtFldName" prefHeight="24.0" prefWidth="148.0" style="-fx-background-color: #f22f2f;" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets right="100.0" />
          </GridPane.margin>
@@ -53,12 +53,12 @@
             <Insets left="100.0" />
          </GridPane.margin>
       </Label>
-      <Slider blockIncrement="1.0" max="15.0" min="5.0" showTickLabels="true" showTickMarks="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <Slider fx:id="SldrRounds" blockIncrement="1.0" max="15.0" min="5.0" showTickLabels="true" showTickMarks="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets right="100.0" />
          </GridPane.margin>
       </Slider>
-      <Button mnemonicParsing="false" prefHeight="78.0" prefWidth="194.0" style="-fx-background-color: #f22f2f;" text="Play!" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
+      <Button fx:id="BtnPlayStartScreen" mnemonicParsing="false" prefHeight="78.0" prefWidth="194.0" style="-fx-background-color: #f22f2f;" text="Play!" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="20.0" />
          </GridPane.margin>
@@ -90,11 +90,11 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fitHeight="76.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <ImageView fitHeight="76.0" fitWidth="76.0" layoutX="13.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <ImageView fitHeight="76.0" fitWidth="76.0" layoutX="13.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <ImageView fitHeight="76.0" fitWidth="76.0" layoutX="13.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <ImageView fitHeight="76.0" fitWidth="76.0" layoutX="13.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <ImageView fx:id="Pfp1" fitHeight="76.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <ImageView fx:id="Pfp2" fitHeight="76.0" fitWidth="76.0" layoutX="13.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <ImageView fx:id="Pfp3" fitHeight="76.0" fitWidth="76.0" layoutX="13.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <ImageView fx:id="Pfp4" fitHeight="76.0" fitWidth="76.0" layoutX="13.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <ImageView fx:id="Pfp5" fitHeight="76.0" fitWidth="76.0" layoutX="13.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
    </children>

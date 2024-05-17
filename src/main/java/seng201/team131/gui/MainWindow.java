@@ -21,17 +21,21 @@ public class MainWindow extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader baseLoader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
+        FXMLLoader baseLoader = new FXMLLoader(getClass().getResource("/fxml/fx_wrapper.fxml"));
         Parent root = baseLoader.load();
-
-        SetupScreenController baseController = baseLoader.getController();
-        baseController.init(primaryStage);
-
-        primaryStage.setTitle("SENG201 Example App");
-        Scene scene = new Scene(root, 600, 400);
+        FXWrapper fxWrapper = baseLoader.getController();
+        Scene scene = new Scene(root, 800, 600);
+        primaryStage.setTitle("FX Wrapper");
         primaryStage.setScene(scene);
         primaryStage.show();
+        fxWrapper.init(primaryStage);
     }
+
+    /**
+     * Launches the FXML application, this must be called from another class (in this cass App.java) otherwise JavaFX
+     * errors out and does not run
+     * @param args command line arguments
+     */
 
     /**
      * Launches the FXML application, this must be called from another class (in this cass App.java) otherwise JavaFX

@@ -23,7 +23,7 @@ public class Player {
         this.endScreenLauncher = endScreenLauncher;
         this.mainScreenLauncher = mainScreenLauncher;
         this.clearScreen = clearScreen;
-        defaultTowers.addAll(List.of(new Tower("Mystery tower");
+        this.defaultTowers.addAll(List.of(new Tower("Mystery tower")));
         launchSetupScreen();
     }
     private String name;

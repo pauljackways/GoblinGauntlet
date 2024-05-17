@@ -18,8 +18,16 @@ public class FXWrapper {
 
     public void init(Stage stage) {
         this.stage = stage;
-        new Player(this::launchSetupScreen, this::launchMainScreen, this::clearPane);
-    }
+        new Player(
+                this::launchSetupScreen,
+                this::launchParentScreen,
+                this::launchTowerScreen,
+                this::launchShopScreen,
+                this::launchGameChangersScreen,
+                this::launchMainScreen,
+                this::launchEndScreen,
+                this::clearPane
+        );    }
 
     public void launchSetupScreen(Player player) {
         try {
@@ -32,6 +40,26 @@ public class FXWrapper {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    // Add these placeholder methods to satisfy the Player constructor requirements
+    public void launchParentScreen(Player player) {
+        // Implementation for launching the parent screen
+    }
+
+    public void launchTowerScreen(Player player) {
+        // Implementation for launching the tower screen
+    }
+
+    public void launchShopScreen(Player player) {
+        // Implementation for launching the shop screen
+    }
+
+    public void launchGameChangersScreen(Player player) {
+        // Implementation for launching the game changers screen
+    }
+
+    public void launchEndScreen(Player player) {
+        // Implementation for launching the end screen
     }
 
     public void clearPane() {
