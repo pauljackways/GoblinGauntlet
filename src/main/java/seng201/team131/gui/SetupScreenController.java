@@ -31,6 +31,9 @@ public class SetupScreenController {
     public SetupScreenController(Player newPlayer) {
         player = newPlayer;
     }
+    public void onBtnPlayStartScreen() {
+        player.closeSetupScreen();
+    }
     public void initialize() {
 
     }
