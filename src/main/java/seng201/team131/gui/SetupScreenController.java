@@ -1,16 +1,16 @@
-package seng201.team0.gui;
+package seng201.team131.gui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import seng201.team0.services.CounterService;
+import seng201.team131.services.CounterService;
 
 /**
  * Controller for the main.fxml window
  * @author seng201 teaching team
  */
-public class MainController {
+public class SetupScreenController {
 
     @FXML
     private Label defaultLabel;
