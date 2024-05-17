@@ -36,7 +36,7 @@ public class FXWrapper {
             setupLoader.setControllerFactory(param -> new SetupScreenController(player));
             Parent setupParent  = setupLoader.load();
             pane.getChildren().add(setupParent);
-            stage.setTitle("Rocket Manager Setup");
+            stage.setTitle("Goblin Gauntlet");
         } catch (IOException e) {
             e.printStackTrace();
         }
