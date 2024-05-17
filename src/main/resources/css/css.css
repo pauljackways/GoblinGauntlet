@@ -16,3 +16,6 @@
 .button:pressed {
     -fx-background-color: #0a7d23; /* Even darker green */
 }
+.grid-pane {
+    -fx-background-color: #363131;
+}

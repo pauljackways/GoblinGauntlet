@@ -43,8 +43,16 @@ public class FXWrapper {
     }
     // Add these placeholder methods to satisfy the Player constructor requirements
     public void launchParentScreen(Player player) {
-        // Implementation for launching the parent screen
-    }
+        try {
+            FXMLLoader setupLoader = new FXMLLoader(getClass().getResource("/fxml/parent_screen.fxml"));
+            // provide a custom Controller with parameters
+            setupLoader.setControllerFactory(param -> new ParentScreenController(player));
+            Parent setupParent  = setupLoader.load();
+            pane.getChildren().add(setupParent);
+            stage.setTitle("Town centre");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }    }
 
     public void launchTowerScreen(Player player) {
         // Implementation for launching the tower screen

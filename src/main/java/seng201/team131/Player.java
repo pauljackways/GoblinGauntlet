@@ -41,13 +41,11 @@ public class Player {
         setupScreenLauncher.accept(this);
     }
 
-    public void closeSetupScreen() {}
-
-    // Method to launch the parent screen
-    public void launchParentScreen() {
-        parentScreenLauncher.accept(this);
+    public void closeSetupScreen() {
+        clearScreen.run();
+        launchParentScreen();
     }
-
+    public void launchParentScreen() {parentScreenLauncher.accept(this);}
     public void closeParentScreen() {}
 
     // Method to launch the shop screen
