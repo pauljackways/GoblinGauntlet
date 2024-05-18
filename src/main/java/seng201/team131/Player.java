@@ -35,7 +35,7 @@ public class Player {
         launchBackground();
     }
     public Player() {
-        //TODO Auto-generated constructor stub
+        //Auto-generated constructor stub
     }
     private BackgroundController controller;
     private String name;
