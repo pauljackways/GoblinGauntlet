@@ -12,13 +12,12 @@ import java.io.IOException;
 public class FXWrapper {
     @FXML
     private Pane pane;
-
     private Stage stage;
-
-
     public void init(Stage stage) {
         this.stage = stage;
         new Player(
+                this::launchBackground,
+                this::launchUserPane,
                 this::launchSetupScreen,
                 this::launchParentScreen,
                 this::launchTowerScreen,
@@ -27,74 +26,67 @@ public class FXWrapper {
                 this::launchMainScreen,
                 this::launchEndScreen,
                 this::clearPane
-        );    }
+        );
+    }
 
-    public void launchSetupScreen(Player player) {
+    public void launchBackground(Player player) {
         try {
-            FXMLLoader setupLoader = new FXMLLoader(getClass().getResource("/fxml/setup_screen.fxml"));
-            // provide a custom Controller with parameters
-            setupLoader.setControllerFactory(param -> new SetupScreenController(player));
-            Parent setupParent  = setupLoader.load();
-            pane.getChildren().add(setupParent);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/background.fxml"));
+            loader.setControllerFactory(param -> new BackgroundController(player));
+            Parent background = loader.load();
+            pane.getChildren().add(background);
             stage.setTitle("Goblin Gauntlet");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    // Add these placeholder methods to satisfy the Player constructor requirements
+    ////////////////////placeholders/////////////
+
+    private void launchEndScreen(Player player) {
+    }
+
+    private void launchShopScreen(Player player) {
+    }
+
+    private void launchTowerScreen(Player player) {
+    }
+
+    private void launchUserPane(Player player) {
+    }
+
+    ////////////////////////////////////////
+
+    public void launchSetupScreen(Player player) {
+//        backgroundController.loadColumn(0, "/fxml/setup_screen.fxml", new SetupScreenController(player));
+    }
+
     public void launchParentScreen(Player player) {
-        try {
-            FXMLLoader setupLoader = new FXMLLoader(getClass().getResource("/fxml/parent_screen.fxml"));
-            // provide a custom Controller with parameters
-            setupLoader.setControllerFactory(param -> new ParentScreenController(player));
-            Parent setupParent  = setupLoader.load();
-            pane.getChildren().add(setupParent);
-            stage.setTitle("Town centre");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }    }
-
-        
-
-    public void launchTowerScreen(Player player) {
-        try {
-            FXMLLoader setupLoader = new FXMLLoader(getClass().getResource("/fxml/TowerWorkshop.fxml"));
-            // provide a custom Controller with parameters
-            setupLoader.setControllerFactory(param -> new ParentScreenController(player));
-            Parent setupParent  = setupLoader.load();
-            pane.getChildren().add(setupParent);
-            stage.setTitle("Tower Manager");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }    
+//        backgroundController.loadColumn(1, "/fxml/parent_screen.fxml", new ParentScreenController(player));
     }
 
-    public void launchShopScreen(Player player) {
-        // Implementation for launching the shop screen
-    }
+//    public void launchTowerScreen(Player player) {
+//        backgroundController.loadColumn(2, "/fxml/tower_screen.fxml", new TowerScreenController(player));
+//    }
+//
+//    public void launchShopScreen(Player player) {
+//        backgroundController.loadColumn(1, "/fxml/shop_screen.fxml", new ShopScreenController(player));
+//    }
 
     public void launchGameChangersScreen(Player player) {
-        // Implementation for launching the game changers screen
+//        backgroundController.loadColumn(2, "/fxml/trade_off_screen.fxml", new TradeOffScreenController(player));
     }
 
-    public void launchEndScreen(Player player) {
-        // Implementation for launching the end screen
+//    public void launchEndScreen(Player player) {
+//        backgroundController.loadColumn(0, "/fxml/end_screen.fxml", new EndScreenController(player));
+//    }
+
+    public void launchMainScreen(Player player) {
+//        backgroundController.loadColumn(0, "/fxml/main_screen.fxml", new MainScreenController(player));
     }
 
     public void clearPane() {
-        pane.getChildren().removeAll(pane.getChildren());
+//        backgroundController.clearColumn(0);
+//        backgroundController.clearColumn(1);
+//        backgroundController.clearColumn(2);
     }
-
-    public void launchMainScreen(Player player) {
-        try {
-            FXMLLoader mainScreenLoader = new FXMLLoader(getClass().getResource("/fxml/main_screen.fxml"));
-            mainScreenLoader.setControllerFactory(param -> new SetupScreenController(player));
-            Parent setupParent  = mainScreenLoader.load();
-            pane.getChildren().add(setupParent);
-            stage.setTitle("Rocket Manager Main Screen");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 }

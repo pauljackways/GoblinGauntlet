@@ -23,6 +23,11 @@ public class ParentScreenController {
     public ParentScreenController(Player thePlayer) {
         player = thePlayer;
     }
+    public void setPlayer(Player player) {
+    }
+    public ParentScreenController() {
+        //default - for FXLoader's perverse pleasure
+    }
 
     @FXML
     public void onBtnTowerScreen() {
@@ -38,12 +43,12 @@ public class ParentScreenController {
 
     @FXML
     public void onBtnGameChangersScreen() {
-        // Handle Game Changers Screen button click
+        player.launchGameChangersScreen();
     }
 
     @FXML
     public void onBtnShopScreen() {
-        // Handle Shop Screen button click
+        player.launchShopScreen();
     }
 
     @FXML

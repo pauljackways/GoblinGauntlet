@@ -3,7 +3,7 @@ package seng201.team131.gui;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class TowerWorkshopController {
+public class TowerScreenController {
     @FXML
     private Button BtnMainTower1;
     @FXML
