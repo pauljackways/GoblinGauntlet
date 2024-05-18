@@ -2,8 +2,10 @@ package seng201.team131.gui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import seng201.team131.Player;
 
 public class TowerScreenController {
+    private Player player;
     @FXML
     private Button BtnMainTower1;
     @FXML
@@ -28,11 +30,16 @@ public class TowerScreenController {
     private Button BtnTowerSwap;
     
 
-
+    public void SetupScreenController(Player player) {
+        this.player = player;
+    }
+    public void setPlayer(Player player) {
+    }
+   
+    
+    
     
 
-    public void initialize() {
 
-    }
 
 }
