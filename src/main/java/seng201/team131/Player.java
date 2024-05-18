@@ -45,8 +45,13 @@ public class Player {
         clearScreen.run();
         launchParentScreen();
     }
-    public void launchParentScreen() {parentScreenLauncher.accept(this);}
-    public void closeParentScreen() {}
+    public void launchParentScreen() {
+        parentScreenLauncher.accept(this);
+    }
+    public void closeParentScreen() {
+        clearScreen.run();
+        launchTowerScreen();
+    }
 
     // Method to launch the shop screen
     public void launchShopScreen() {
@@ -57,6 +62,7 @@ public class Player {
 
     // Method to launch the tower screen
     public void launchTowerScreen() {
+        clearScreen.run();
         towerScreenLauncher.accept(this);
     }
 

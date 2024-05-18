@@ -26,13 +26,10 @@ public class TowerWorkshopController {
     private Button BtnReserveTower5;
     @FXML
     private Button BtnTowerSwap;
+
+    
     
 
 
-    
-
-    public void initialize() {
-
-    }
 
 }

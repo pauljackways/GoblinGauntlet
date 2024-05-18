@@ -1,7 +1,11 @@
 package seng201.team131.gui;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 import seng201.team131.Player;
 
 public class ParentScreenController {
@@ -22,7 +26,9 @@ public class ParentScreenController {
 
     @FXML
     public void onBtnTowerScreen() {
-        // Handle Tower Screen button click
+        player.closeParentScreen();
+        //player.launchTowerScreen();
+    
     }
 
     @FXML

@@ -54,8 +54,19 @@ public class FXWrapper {
             e.printStackTrace();
         }    }
 
+        
+
     public void launchTowerScreen(Player player) {
-        // Implementation for launching the tower screen
+        try {
+            FXMLLoader setupLoader = new FXMLLoader(getClass().getResource("/fxml/TowerWorkshop.fxml"));
+            // provide a custom Controller with parameters
+            setupLoader.setControllerFactory(param -> new ParentScreenController(player));
+            Parent setupParent  = setupLoader.load();
+            pane.getChildren().add(setupParent);
+            stage.setTitle("Tower Manager");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }    
     }
 
     public void launchShopScreen(Player player) {
