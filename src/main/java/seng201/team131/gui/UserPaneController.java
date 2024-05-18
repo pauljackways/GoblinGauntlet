@@ -39,7 +39,7 @@ public class UserPaneController extends Controller{
 
     @FXML
     private void onBack() {
-        // Handle the back button action here
+        this.player.launchParentScreen();
         System.out.println("Back button clicked");
         // For example, you could load the previous screen
     }

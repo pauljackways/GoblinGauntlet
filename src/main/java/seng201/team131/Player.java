@@ -130,7 +130,7 @@ public class Player {
         this.towerList.add(tower);
     }
 
-    public List<Tower> getDefaultRockets() {
+    public List<Tower> getDefaultTowers() {
         return defaultTowers;
     }
 }
