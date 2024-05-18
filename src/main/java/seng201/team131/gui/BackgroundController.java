@@ -11,7 +11,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class BackgroundController {
+public class BackgroundController extends Controller {
 
     @FXML
     private Pane PaneLeft;
@@ -77,5 +77,10 @@ public class BackgroundController {
             default:
                 throw new IllegalArgumentException("Invalid column index: " + columnIndex);
         }
+    }
+
+    @Override
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 }

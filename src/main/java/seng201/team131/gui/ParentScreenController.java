@@ -20,10 +20,8 @@ public class ParentScreenController {
     @FXML
     private Button BtnMainScreen;
 
-    
-
-    public ParentScreenController(Player thePlayer) {
-        player = thePlayer;
+    public ParentScreenController(Player player) {
+        this.player = player;
     }
     public void setPlayer(Player player) {
         this.player = player;
@@ -45,7 +43,7 @@ public class ParentScreenController {
 
     @FXML
     public void onBtnGameChangersScreen() {
-        player.launchGameChangersScreen();
+        this.player.launchGameChangersScreen();
     }
 
     @FXML

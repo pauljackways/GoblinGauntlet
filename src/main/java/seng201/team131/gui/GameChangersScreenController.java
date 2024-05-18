@@ -28,8 +28,12 @@ public class GameChangersScreenController {
     private Button BtnPwrUp2;
     @FXML
     private Button BtnPwrUp3;
-    @FXML
-
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+    public GameChangersScreenController() {
+        //go FX yourself
+    }
     
     public void initialize() {
 
