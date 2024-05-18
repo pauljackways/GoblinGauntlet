@@ -23,7 +23,7 @@ public class BackgroundController {
     private Pane PaneRight;
 
     private Player player;
-
+    
     public BackgroundController(Player player) {
         this.player = player;
     }

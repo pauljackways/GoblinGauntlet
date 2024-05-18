@@ -20,10 +20,13 @@ public class ParentScreenController {
     @FXML
     private Button BtnMainScreen;
 
+    
+
     public ParentScreenController(Player thePlayer) {
         player = thePlayer;
     }
     public void setPlayer(Player player) {
+        this.player = player;
     }
     public ParentScreenController() {
         //default - for FXLoader's perverse pleasure
@@ -31,8 +34,7 @@ public class ParentScreenController {
 
     @FXML
     public void onBtnTowerScreen() {
-        player.closeParentScreen();
-        //player.launchTowerScreen();
+        this.player.launchTowerScreen();
     
     }
 
@@ -48,7 +50,7 @@ public class ParentScreenController {
 
     @FXML
     public void onBtnShopScreen() {
-        player.launchShopScreen();
+        this.player.launchShopScreen();
     }
 
     @FXML
