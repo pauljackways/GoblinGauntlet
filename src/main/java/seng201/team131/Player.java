@@ -34,9 +34,6 @@ public class Player {
         this.defaultTowers.addAll(List.of(new Tower("Mystery tower")));
         launchBackground();
     }
-    public Player() {
-        //Auto-generated constructor stub
-    }
     private BackgroundController controller;
     private String name;
     private List<Tower> towerList;

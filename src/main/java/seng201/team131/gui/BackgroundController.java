@@ -24,10 +24,10 @@ public class BackgroundController extends Controller {
 
     private Player player;
     
+    public BackgroundController() {
+    }
     public BackgroundController(Player player) {
         this.player = player;
-    }
-    public BackgroundController() {
     }
     public void initialize() {
         this.player.setBackgroundController(this);
