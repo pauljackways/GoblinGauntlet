@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import seng201.team131.Player;
 
-public class SetupScreenController {
+public class SetupScreenController extends Controller{
     private Player player;
 
     @FXML 

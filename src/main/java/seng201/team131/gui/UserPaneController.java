@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import seng201.team131.Player;
 
-public class UserPaneController {
+public class UserPaneController extends Controller{
     private Player player;
 
     @FXML

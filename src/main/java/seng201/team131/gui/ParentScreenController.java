@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import seng201.team131.Player;
 
-public class ParentScreenController {
+public class ParentScreenController extends Controller {
     private Player player;
 
     @FXML
