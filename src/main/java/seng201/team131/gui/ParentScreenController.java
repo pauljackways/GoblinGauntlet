@@ -33,7 +33,6 @@ public class ParentScreenController {
     @FXML
     public void onBtnTowerScreen() {
         this.player.launchTowerScreen();
-    
     }
 
     @FXML
