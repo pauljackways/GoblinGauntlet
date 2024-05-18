@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class Player {
-
-
     public Player(
             Consumer<Player> backgroundLauncher,
             Consumer<Player> userPaneLauncher,
@@ -31,11 +29,13 @@ public class Player {
         this.mainScreenLauncher = mainScreenLauncher;
         this.clearScreen = clearScreen;
         this.name = "Smith";
-        this.defaultTowers.addAll(List.of(new Tower("Mystery tower")));
+        this.resources = new ResourceType[]{new ResourceType("Gremlin Goo", 1), new ResourceType("Lava", 1), new ResourceType("Ether Crystals", 1)};
+        this.defaultTowers.addAll(List.of(new Tower(this.resources[0], "Small Gremlin Grinder"), new Tower(this.resources[1], "Small Lava well"), new Tower(this.resources[2], "Small Crystal Crucible")));
         launchBackground();
     }
     private BackgroundController controller;
     private String name;
+    private ResourceType[] resources = new ResourceType[3];
     private List<Tower> towerList;
     private final List<Tower> defaultTowers = new ArrayList<>();
     private final Consumer<Player> backgroundLauncher;
@@ -55,6 +55,7 @@ public class Player {
     public void setBackgroundController(BackgroundController controller) {
         this.controller = controller;
     }
+    
     public void launchSetupScreen() {
         if (controller != null) {
             controller.clearColumn(1);
@@ -112,8 +113,6 @@ public class Player {
 
         mainScreenLauncher.accept(this);
     }
-    public void closeMainScreen() {}
-
     public String getName() {
         return name;
     }

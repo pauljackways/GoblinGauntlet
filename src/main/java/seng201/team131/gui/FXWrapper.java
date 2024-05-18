@@ -57,5 +57,6 @@ public class FXWrapper {
     public void launchMainScreen(Player player) {
     }
     public void clearPane() {
+
     }
 }

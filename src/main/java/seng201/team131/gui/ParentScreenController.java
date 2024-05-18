@@ -23,9 +23,6 @@ public class ParentScreenController extends Controller {
     public ParentScreenController(Player player) {
         this.player = player;
     }
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
     public ParentScreenController() {
         //default - for FXLoader's perverse pleasure
     }
@@ -50,8 +47,15 @@ public class ParentScreenController extends Controller {
         this.player.launchShopScreen();
     }
 
+    @Override
+    public void setPlayer(Player player) {
+        this.player = player;
+        initialize();
+    }
     @FXML
     public void initialize() {
-        // Initialize controller
+        if (player != null) {
+
+        }
     }
 }

@@ -25,15 +25,20 @@ public class GameChangersScreenController extends Controller {
     private Button BtnPwrUp2;
     @FXML
     private Button BtnPwrUp3;
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
     public GameChangersScreenController() {
         //go FX yourself
     }
-    
-    public void initialize() {
 
+    @Override
+    public void setPlayer(Player player) {
+        this.player = player;
+        initialize();
+    }
+    @FXML
+    public void initialize() {
+        if (player != null) {
+
+        }
     }
 
 }
