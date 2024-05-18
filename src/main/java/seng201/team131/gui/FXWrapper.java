@@ -40,53 +40,22 @@ public class FXWrapper {
             e.printStackTrace();
         }
     }
-    ////////////////////placeholders/////////////
-
     private void launchEndScreen(Player player) {
     }
-
     private void launchShopScreen(Player player) {
     }
-
     private void launchTowerScreen(Player player) {
     }
-
     private void launchUserPane(Player player) {
     }
-
-    ////////////////////////////////////////
-
     public void launchSetupScreen(Player player) {
-//        backgroundController.loadColumn(0, "/fxml/setup_screen.fxml", new SetupScreenController(player));
     }
-
     public void launchParentScreen(Player player) {
-//        backgroundController.loadColumn(1, "/fxml/parent_screen.fxml", new ParentScreenController(player));
     }
-
-//    public void launchTowerScreen(Player player) {
-//        backgroundController.loadColumn(2, "/fxml/tower_screen.fxml", new TowerScreenController(player));
-//    }
-//
-//    public void launchShopScreen(Player player) {
-//        backgroundController.loadColumn(1, "/fxml/shop_screen.fxml", new ShopScreenController(player));
-//    }
-
     public void launchGameChangersScreen(Player player) {
-//        backgroundController.loadColumn(2, "/fxml/trade_off_screen.fxml", new TradeOffScreenController(player));
     }
-
-//    public void launchEndScreen(Player player) {
-//        backgroundController.loadColumn(0, "/fxml/end_screen.fxml", new EndScreenController(player));
-//    }
-
     public void launchMainScreen(Player player) {
-//        backgroundController.loadColumn(0, "/fxml/main_screen.fxml", new MainScreenController(player));
     }
-
     public void clearPane() {
-//        backgroundController.clearColumn(0);
-//        backgroundController.clearColumn(1);
-//        backgroundController.clearColumn(2);
     }
 }
