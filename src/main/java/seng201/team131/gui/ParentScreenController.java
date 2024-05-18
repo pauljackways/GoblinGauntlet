@@ -20,7 +20,6 @@ public class ParentScreenController {
         player = thePlayer;
     }
     public void setPlayer(Player player) {
-        // Method implementation
     }
     public ParentScreenController() {
         //default - for FXLoader's perverse pleasure

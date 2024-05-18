@@ -38,7 +38,7 @@ public class SetupScreenController {
         // Default constructor for FXLoader's sick and twisted desires
     }
     public void onBtnPlayStartScreen() {
-        this.player.closeSetupScreen();
+        this.player.launchParentScreen();
     }
     public void initialize() {
 

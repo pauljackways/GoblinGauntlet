@@ -1,7 +1,6 @@
 package seng201.team131;
 
-import seng201.team131.gui.BackgroundController;
-import seng201.team131.gui.ParentScreenController;
+import seng201.team131.gui.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +11,7 @@ public class Player {
 
     public Player(
             Consumer<Player> backgroundLauncher,
+            Consumer<Player> userPaneLauncher,
             Consumer<Player> setupScreenLauncher,
             Consumer<Player> parentScreenLauncher,
             Consumer<Player> towerScreenLauncher,
@@ -21,6 +21,7 @@ public class Player {
             Consumer<Player> endScreenLauncher,
             Runnable clearScreen) {
         this.backgroundLauncher = backgroundLauncher;
+        this.userPaneLauncher = userPaneLauncher;
         this.setupScreenLauncher = setupScreenLauncher;
         this.parentScreenLauncher = parentScreenLauncher;
         this.shopScreenLauncher = shopScreenLauncher;
@@ -34,11 +35,11 @@ public class Player {
         launchBackground();
     }
     private BackgroundController controller;
-
     private String name;
     private List<Tower> towerList;
     private final List<Tower> defaultTowers = new ArrayList<>();
     private final Consumer<Player> backgroundLauncher;
+    private final Consumer<Player> userPaneLauncher;
     private final Consumer<Player> setupScreenLauncher;
     private final Consumer<Player> parentScreenLauncher;
     private final Consumer<Player> shopScreenLauncher;
@@ -51,59 +52,66 @@ public class Player {
     public void launchBackground() {
         backgroundLauncher.accept(this);
     }
-    public void launchSetupScreen() {
-        setupScreenLauncher.accept(this);
-    }
-
-    public void closeSetupScreen() {
-        controller.clearColumn(1);
-        launchParentScreen();
-    }
-
     public void setBackgroundController(BackgroundController controller) {
         this.controller = controller;
     }
-
+    public void launchSetupScreen() {
+        if (controller != null) {
+            controller.clearColumn(1);
+            controller.loadColumn(1, "/fxml/setup_screen.fxml", SetupScreenController.class, this);
+        }
+        setupScreenLauncher.accept(this);
+    }
     public void launchParentScreen() {
-        // Make sure the controller is set before invoking methods that depend on it
         if (controller != null) {
             controller.clearColumn(1);
             controller.loadColumn(1, "/fxml/parent_screen.fxml", ParentScreenController.class, this);
         }
-        // Continue with other actions related to launching the parent screen
         parentScreenLauncher.accept(this);
     }
-
     public void launchShopScreen() {
-        clearScreen.run();
+        if (controller != null) {
+            controller.clearColumn(1);
+            controller.loadColumn(1, "/fxml/shop_screen.fxml", ShopScreenController.class, this);
+        }
         shopScreenLauncher.accept(this);
     }
-
-    public void closeShopScreen() {}
-
+    public void launchUserPane() {
+        if (controller != null) {
+            controller.clearColumn(0);
+            controller.loadColumn(0, "/fxml/user_pane.fxml", UserPaneController.class, this);
+        }
+        userPaneLauncher.accept(this);
+    }
     public void launchTowerScreen() {
+        if (controller != null) {
+            controller.clearColumn(1);
+            controller.loadColumn(1, "/fxml/tower_screen.fxml", TowerScreenController.class, this);
+        }
         towerScreenLauncher.accept(this);
     }
-
-    public void closeTowerScreen() {}
-
-    public void launchGameChangersScreen() {
-        clearScreen.run();
-        gameChangersScreenLauncher.accept(this);
-    }
-
-    public void closeGameChangersScreen() {}
-
     public void launchEndScreen() {
+        if (controller != null) {
+            controller.clearColumn(1);
+            controller.loadColumn(1, "/fxml/end_screen.fxml", EndScreenController.class, this);
+        }
         endScreenLauncher.accept(this);
     }
-
-    public void closeEndScreen() {}
-
+    public void launchGameChangersScreen() {
+        if (controller != null) {
+            controller.clearColumn(1);
+            controller.loadColumn(1, "/fxml/game_changers_screen.fxml", GameChangersScreenController.class, this);
+        }
+        gameChangersScreenLauncher.accept(this);
+    }
     public void launchMainScreen() {
+        if (controller != null) {
+            controller.clearColumn(1);
+            controller.loadColumn(1, "/fxml/main_screen.fxml", MainScreenController.class, this);
+        }            controller.loadColumn(1, "/fxml/shop_screen.fxml", MainScreenController.class, this);
+
         mainScreenLauncher.accept(this);
     }
-
     public void closeMainScreen() {}
 
     public String getName() {

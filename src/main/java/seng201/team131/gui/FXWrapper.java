@@ -12,12 +12,12 @@ import java.io.IOException;
 public class FXWrapper {
     @FXML
     private Pane pane;
-
     private Stage stage;
     public void init(Stage stage) {
         this.stage = stage;
         new Player(
                 this::launchBackground,
+                this::launchUserPane,
                 this::launchSetupScreen,
                 this::launchParentScreen,
                 this::launchTowerScreen,

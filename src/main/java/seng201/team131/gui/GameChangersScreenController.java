@@ -4,10 +4,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import seng201.team131.Player;
 
-public class TradeOffScreenController {
+public class GameChangersScreenController {
 
     private Player player;
-    public TradeOffScreenController(Player newPlayer) {
+    public GameChangersScreenController(Player newPlayer) {
         player = newPlayer;
     }
     @FXML

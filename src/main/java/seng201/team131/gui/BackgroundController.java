@@ -31,18 +31,16 @@ public class BackgroundController {
     }
     public void initialize() {
         this.player.setBackgroundController(this);
-        SetupScreenController setupController = new SetupScreenController();
-        loadColumn(1, "/fxml/setup_screen.fxml", setupController.getClass(), this.player);    }
+        player.launchUserPane();
+        player.launchSetupScreen();
+    }
     public void loadColumn(int columnIndex, String fxmlFile, Class<?> controllerClass, Player player) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
             Parent pane = loader.load();
-            // Retrieve the controller instance created by FXMLLoader
             Object controller = loader.getController();
-            // Check if the controller class has a method to accept the player object
             Method setPlayerMethod = controllerClass.getMethod("setPlayer", Player.class);
             if (setPlayerMethod != null) {
-                // Invoke the method to set the player object
                 setPlayerMethod.invoke(controller, player);
             }
 
