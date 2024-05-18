@@ -31,13 +31,14 @@ public class Player {
         this.name = "Smith";
         this.resources = new ResourceType[]{new ResourceType("Gremlin Goo", 1), new ResourceType("Lava", 1), new ResourceType("Ether Crystals", 1)};
         this.defaultTowers.addAll(List.of(new Tower(this.resources[0], "Small Gremlin Grinder"), new Tower(this.resources[1], "Small Lava well"), new Tower(this.resources[2], "Small Crystal Crucible")));
+        this.towerList.addAll(List.of(new Tower(this.resources[0], "Small Gremlin Grinder"), new Tower(this.resources[1], "Small Lava well"), new Tower(this.resources[2], "Small Crystal Crucible")));
         launchBackground();
     }
     private BackgroundController controller;
     private String name;
     private ResourceType[] resources = new ResourceType[3];
-    private List<Tower> towerList;
-    private final List<Tower> defaultTowers = new ArrayList<>();
+    private List<Tower> towerList = new ArrayList<Tower>();
+    private final List<Tower> defaultTowers = new ArrayList<Tower>();
     private final Consumer<Player> backgroundLauncher;
     private final Consumer<Player> userPaneLauncher;
     private final Consumer<Player> setupScreenLauncher;
@@ -49,6 +50,12 @@ public class Player {
     private final Consumer<Player> mainScreenLauncher;
     private final Runnable clearScreen;
 
+    public void sell(Tower tower) {
+
+    }
+    public void buy(Tower tower) {
+
+    }
     public void launchBackground() {
         backgroundLauncher.accept(this);
     }
@@ -109,8 +116,7 @@ public class Player {
         if (controller != null) {
             controller.clearColumn(1);
             controller.loadColumn(1, "/fxml/main_screen.fxml", MainScreenController.class, this);
-        }            controller.loadColumn(1, "/fxml/shop_screen.fxml", MainScreenController.class, this);
-
+        }
         mainScreenLauncher.accept(this);
     }
     public String getName() {

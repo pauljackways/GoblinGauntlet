@@ -31,7 +31,6 @@ public class ParentScreenController extends Controller {
     public void onBtnTowerScreen() {
         this.player.launchTowerScreen();
     }
-
     @FXML
     public void onBtnMainScreen() {
         // Handle Main Screen button click

@@ -36,7 +36,6 @@ public class SetupScreenController extends Controller{
         // Default constructor for FXLoader's sick and twisted desires
     }
     public void onBtnPlayStartScreen() {
-        System.out.println(player);
         this.player.launchParentScreen();
     }
     @Override
