@@ -5,7 +5,7 @@
 <Pane xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="seng201.team131.gui.FXWrapper"
-      prefHeight="600.0" prefWidth="800.0"
+      prefHeight="600.0" prefWidth="1000.0"
       fx:id="pane">
 
 </Pane>

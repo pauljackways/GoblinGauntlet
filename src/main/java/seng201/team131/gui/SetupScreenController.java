@@ -16,6 +16,7 @@ public class SetupScreenController extends Controller{
     private String variableToPass = null;
     private String playerName;
     private int numRounds;
+    private boolean needsInitialization = false;
 
     @FXML 
     private ImageView Pfp1;
@@ -33,6 +34,14 @@ public class SetupScreenController extends Controller{
     private Button BtnPlayStartScreen;
     @FXML
     private TextField TxtFldName;
+
+    public void setPlayer(Player player) {
+        this.player = player;
+        if (needsInitialization) {
+            initialize();
+        }
+    }
+
 
     private Controller backgroundController;
     public SetupScreenController(Player player, Controller controller) {
