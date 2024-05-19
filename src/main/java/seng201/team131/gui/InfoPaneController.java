@@ -47,7 +47,11 @@ public class InfoPaneController extends Controller {
         Platform.runLater(() -> {
             if (player.getSelected() != null) {
                 LblDescription.setText(player.getSelected().getDescription());
-                ImgInfo.setImage(new Image(player.getSelected().getImage()));
+                if (player.getSelected() == null) {
+                    ImgInfo.setImage(null);
+                } else {
+                    ImgInfo.setImage(new Image(player.getSelected().getImage()));
+                }
             } else {
                 LblDescription.setText("");
             }

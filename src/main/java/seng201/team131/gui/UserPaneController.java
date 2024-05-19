@@ -50,6 +50,8 @@ public class UserPaneController extends Controller{
     }
     private void updatePlayerInfo() {
         setLblName(player.getName());
+        setLblLives(player.getLives().toString());
+        setLblTowers(Integer.toString(player.getCombinedTowerList().size()));
         setLblRound(player.getRound().toString() + " of " + player.getRounds().toString());
     }
     @FXML

@@ -23,16 +23,31 @@ public class Tower implements Buyable, Sellable, Selectable {
     }
 
     /// starting towers ///
-    public Tower(EnumResources resource, String name, String image) {
+    public Tower(EnumResources resource, String name, String image, Integer level) {
         this.name = name;
         this.cost = 100f;
-        this.level = 1;
-        this.levelUpCost = 50;
+        this.level = level;
+        this.levelUpCost = 500;
         this.image = image;
         this.health = 1.0f; // Initialize damage to 0
-        this.resources.put(GOO, new Resource(1f, 1, 1));
-        this.resources.put(LAVA, new Resource(1f, 1, 1));
-        this.resources.put(ETHER, new Resource(1f, 1, 1));
+        this.resources.put(EnumResources.ETHER, new Resource(0f, 0, 0));
+        this.resources.put(EnumResources.LAVA, new Resource(0f, 0, 0));
+        this.resources.put(EnumResources.GOO, new Resource(0f, 0, 0));
+        switch (resource) {
+            case ETHER:
+                this.resources.put(resource, new Resource((float) level, level, level));
+                break;
+            case LAVA:
+                this.resources.put(resource, new Resource((float) level, level, level));
+                break;
+            case GOO:
+                this.resources.put(resource, new Resource((float) level, level, level));
+                break;
+            default:
+                this.resources.put(EnumResources.GOO, new Resource(0f, 0, 0));
+                break;
+        }
+
 
 
     }

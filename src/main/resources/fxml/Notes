@@ -22,3 +22,5 @@
 
          }
      }
+
+integration issue with Ben's tower workshop and my infopane, works, but causes error on click non-tower. fix: added try-catch block that catches out of range exception and sets selectable to null. tested and works. Also noticed images weren't resetting null, so put if statement in to set null if image get is null
