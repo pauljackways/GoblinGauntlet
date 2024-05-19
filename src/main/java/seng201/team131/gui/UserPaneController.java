@@ -57,23 +57,23 @@ public class UserPaneController extends Controller{
         ImgUser.setImage(image);
     }
     // Methods to update the labels
-    public void setRound(String round) {
+    public void setLblRoundRound(String round) {
         LblRound.setText(round);
     }
 
-    public void setLives(String lives) {
+    public void setLblLives(String lives) {
         LblLives.setText(lives);
     }
 
-    public void setTowers(String towers) {
+    public void setLblTowers(String towers) {
         LblTowers.setText(towers);
     }
 
-    public void setItems(String items) {
+    public void setLblItems(String items) {
         LblItems.setText(items);
     }
 
-    public void setMoney(String money) {
+    public void setLblMoney(String money) {
         LblMoney.setText(money);
     }
 
