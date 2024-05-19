@@ -31,7 +31,6 @@ public class BackgroundController extends Controller {
     }
     public void initialize() {
         this.player.setBackgroundController(this);
-        player.launchUserPane();
         player.launchSetupScreen();
     }
     public void loadColumn(int columnIndex, String fxmlFile, Class<?> controllerClass, Player player) {

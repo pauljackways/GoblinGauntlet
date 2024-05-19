@@ -45,11 +45,24 @@ public class ShopScreenController extends Controller {
             updateBuyList();
             updateSellList();
 
+            // Add listener to clear selection when ListView loses focus
+            LstBuy.focusedProperty().addListener((observable, oldValue, newValue) -> {
+                if (!newValue) { // ListView lost focus
+                    LstBuy.getSelectionModel().clearSelection();
+                }
+            });
+
             LstBuy.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
                 if (newValue != null) {
                     BtnBuySell.setDisable(false);
                     BtnBuySell.setStyle("-fx-background-color: green;");
                     BtnBuySell.setText("Buy");
+                }
+            });
+
+            LstSell.focusedProperty().addListener((observable, oldValue, newValue) -> {
+                if (!newValue) { // ListView lost focus
+                    LstSell.getSelectionModel().clearSelection();
                 }
             });
 

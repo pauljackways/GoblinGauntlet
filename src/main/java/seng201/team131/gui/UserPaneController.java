@@ -14,6 +14,8 @@ public class UserPaneController extends Controller{
     @FXML
     private Button BtnBack;
     @FXML
+    private Label LblName;
+    @FXML
     private Label LblRound;
     @FXML
     private Label LblLives;
@@ -31,7 +33,8 @@ public class UserPaneController extends Controller{
     @FXML
     public void initialize() {
         if (player != null) {
-//            ImageView.setImage(player.)
+            setUserImage(new Image(player.getPfp()));
+            setLblName(player.getName());
         }
     }
     @FXML
@@ -51,6 +54,10 @@ public class UserPaneController extends Controller{
     public void setLblRoundRound(String round) {
         LblRound.setText(round);
     }
+    public void setLblName(String name) {
+        LblName.setText(name);
+    }
+
 
     public void setLblLives(String lives) {
         LblLives.setText(lives);
