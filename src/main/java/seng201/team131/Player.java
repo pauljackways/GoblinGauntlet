@@ -174,9 +174,12 @@ public class Player {
     }
 
     public void setSelected(Selectable selected) {
-        this.selected = selected != null ? selected : null;
+        this.selected = selected;
     }
     public Selectable getSelected() {
+        if (selected == null) {
+            return null;
+        }
         return selected;
     }
 
