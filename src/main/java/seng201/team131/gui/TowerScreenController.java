@@ -221,7 +221,7 @@ public class TowerScreenController extends Controller {
         imageViewList.add(mainTower5);
         
         for (int i = 0; i < mainTowerList.size(); i++) {
-            Image newImage = new Image(mainTowerList.get(i).getImagePath());
+            Image newImage = new Image(mainTowerList.get(i).getImage());
             imageViewList.get(i).setImage(newImage);
         }
         
@@ -236,7 +236,7 @@ public class TowerScreenController extends Controller {
         
         
         for (int i = 0; i < reserveTowerList.size(); i++) {
-            Image newImage = new Image(reserveTowerList.get(i).getImagePath());
+            Image newImage = new Image(reserveTowerList.get(i).getImage());
             imageViewListReserve.get(i).setImage(newImage);
         }
         

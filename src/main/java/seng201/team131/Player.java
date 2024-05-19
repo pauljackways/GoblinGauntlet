@@ -35,14 +35,15 @@ public class Player {
         this.name = "Smith";
         this.selected = null;
         this.defaultTowers.addAll(List.of(new Tower(GOO,"Small Gremlin Grinder", "images/twrSlime1.jpeg"), new Tower(LAVA,"Small Lava well", "images/twrLava1.jpeg"), new Tower(ETHER,"Small Crystal Crucible", "images/twrEther1.jpeg")));
-        this.towerList.addAll(List.of(new Tower(GOO,"Small Gremlin Grinder", "images/twrSlime1.jpeg"), new Tower(ETHER,"Small Crystal Crucible", "images/twrEther1.jpeg"), new Tower(LAVA,"Small Lava well", "images/twrLava1.jpeg")));
+        this.mainTowerList.addAll(List.of(new Tower(GOO,"Small Gremlin Grinder", "images/twrSlime1.jpeg"), new Tower(ETHER,"Small Crystal Crucible", "images/twrEther1.jpeg"), new Tower(LAVA,"Small Lava well", "images/twrLava1.jpeg")));
         this.round = 0;
         launchBackground();
 
     }
     private BackgroundController controller;
     private String name;
-    private List<Tower> towerList = new ArrayList<>();
+    private List<Tower> mainTowerList = new ArrayList<>();
+    private List<Tower> reserveTowerList = new ArrayList<>();
     private String pfp;
     private Integer rounds;
     private Integer round;

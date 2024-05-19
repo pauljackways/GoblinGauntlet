@@ -8,6 +8,7 @@ import seng201.team131.Player;
 import seng201.team131.Selectable;
 import seng201.team131.Tower;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShopScreenController extends Controller {
@@ -99,13 +100,18 @@ public class ShopScreenController extends Controller {
 
     @FXML
     private void onBtnBuySell() {
+        List<Tower> mainTowerList = player.getmainTowerList();
+        List<Tower> reserveTowerList = player.getReserveTowerList();
+        List<Tower> combineTowerList = new ArrayList<>();
+        combineTowerList.addAll(mainTowerList);
+        combineTowerList.addAll(reserveTowerList);
         int selectedIndex = LstBuy.getSelectionModel().getSelectedIndex();
         if (selectedIndex != -1) {
             if (selectedIndex < player.getDefaultTowers().size()) {
                 player.buy(player.getDefaultTowers().get(selectedIndex));
             } else {
                 int adjustedIndex = selectedIndex - player.getDefaultTowers().size();
-                player.sell(player.getTowerList().get(adjustedIndex));
+                player.sell(combineTowerList.get(adjustedIndex));
             }
         }
     }
@@ -119,8 +125,12 @@ public class ShopScreenController extends Controller {
     }
 
     private void updateSellList() {
+        List<Tower> mainTowerList = player.getmainTowerList();
+        List<Tower> reserveTowerList = player.getReserveTowerList();
+        List<Tower> combineTowerList = new ArrayList<>();
+
         LstSell.getItems().clear();
-        List<Tower> towerList = player.getTowerList();
+        List<Tower> towerList = combineTowerList;
         for (Tower tower : towerList) {
             LstSell.getItems().add("Level " + tower.getLevel() + " " + tower.getName());
         }
