@@ -1,15 +1,13 @@
 package seng201.team131.gui;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
+import javafx.scene.control.Label;
 import seng201.team131.Player;
 
 public class ParentScreenController extends Controller {
     private Player player;
+    private boolean needsInitialization = false;
 
     @FXML
     private Button BtnTowerScreen;
@@ -19,20 +17,28 @@ public class ParentScreenController extends Controller {
     private Button BtnShopScreen;
     @FXML
     private Button BtnMainScreen;
+    
 
     public ParentScreenController(Player player) {
         this.player = player;
     }
+
     public void setPlayer(Player player) {
         this.player = player;
+        if (needsInitialization) {
+            initialize();
+        }
     }
+
     public ParentScreenController() {
-        //default - for FXLoader's perverse pleasure
+        // default - for FXLoader
     }
 
     @FXML
     public void onBtnTowerScreen() {
-        this.player.launchTowerScreen();
+        if (player != null) {
+            this.player.launchTowerScreen();
+        }
     }
 
     @FXML
@@ -42,16 +48,33 @@ public class ParentScreenController extends Controller {
 
     @FXML
     public void onBtnGameChangersScreen() {
-        this.player.launchGameChangersScreen();
+        if (player != null) {
+            this.player.launchGameChangersScreen();
+        }
     }
 
     @FXML
     public void onBtnShopScreen() {
-        this.player.launchShopScreen();
+        if (player != null) {
+            this.player.launchShopScreen();
+        }
     }
 
     @FXML
     public void initialize() {
-        // Initialize controller
+        //Just testing if name, pfp and rounds get set properly
+        /*if (player == null) {
+            needsInitialization = true;
+            System.out.println("Player is null, initialization postponed.");
+            return;
+        }
+
+        System.out.println(player.getName());
+        System.out.println(player.getPfp());
+        System.out.println(player.getRounds());
+        
+        
+        System.out.println("Initialization complete.");
+        needsInitialization = false; */
     }
 }

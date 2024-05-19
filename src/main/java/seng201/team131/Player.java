@@ -37,6 +37,8 @@ public class Player {
     private BackgroundController controller;
     private String name;
     private List<Tower> towerList;
+    private String pfp;
+    private int rounds;
     private final List<Tower> defaultTowers = new ArrayList<>();
     private final Consumer<Player> backgroundLauncher;
     private final Consumer<Player> userPaneLauncher;
@@ -117,9 +119,27 @@ public class Player {
     public String getName() {
         return name;
     }
+    
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPfp() {
+        return pfp;
+    }
+
+    public void setPfp(String pfp) {
+        this.pfp = pfp;
+    }
+
+    // Getter and setter for rounds
+    public int getRounds() {
+        return rounds;
+    }
+
+    public void setRounds(int rounds) {
+        this.rounds = rounds;
     }
 
     public List<Tower> getTowerList() {
@@ -133,4 +153,5 @@ public class Player {
     public List<Tower> getDefaultTowers() {
         return defaultTowers;
     }
+
 }
