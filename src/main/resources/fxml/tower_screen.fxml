@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -42,78 +44,29 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="BtnMainTower1" mnemonicParsing="false" prefHeight="53.0" prefWidth="62.0" style="-fx-background-color: #f22f2f;">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="BtnMainTower3" mnemonicParsing="false" prefHeight="53.0" prefWidth="62.0" style="-fx-background-color: #f22f2f;" GridPane.columnIndex="2">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="BtnMainTower2" mnemonicParsing="false" prefHeight="53.0" prefWidth="62.0" style="-fx-background-color: #f22f2f;" GridPane.columnIndex="1">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="BtnMainTower4" mnemonicParsing="false" prefHeight="53.0" prefWidth="62.0" style="-fx-background-color: #f22f2f;" GridPane.columnIndex="3">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="BtnMainTower5" mnemonicParsing="false" prefHeight="53.0" prefWidth="62.0" style="-fx-background-color: #f22f2f;" GridPane.columnIndex="4">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
+            <ImageView fx:id="mainTower1" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/blank.png" />
+               </image></ImageView>
+            <ImageView fx:id="mainTower2" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+               <image>
+                  <Image url="@../images/blank.png" />
+               </image></ImageView>
+            <ImageView fx:id="mainTower3" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+               <image>
+                  <Image url="@../images/blank.png" />
+               </image></ImageView>
+            <ImageView fx:id="mainTower4" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+               <image>
+                  <Image url="@../images/blank.png" />
+               </image></ImageView>
+            <ImageView fx:id="mainTower5" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
+               <image>
+                  <Image url="@../images/blank.png" />
+               </image></ImageView>
          </children>
       </GridPane>
-      <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <Button fx:id="BtnReserveTower1" mnemonicParsing="false" prefHeight="53.0" prefWidth="62.0" style="-fx-background-color: #f22f2f;">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="BtnReserveTower3" mnemonicParsing="false" prefHeight="53.0" prefWidth="62.0" style="-fx-background-color: #f22f2f;" GridPane.columnIndex="2">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="BtnReserveTower2" mnemonicParsing="false" prefHeight="53.0" prefWidth="62.0" style="-fx-background-color: #f22f2f;" GridPane.columnIndex="1">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="BtnReserveTower4" mnemonicParsing="false" prefHeight="53.0" prefWidth="62.0" style="-fx-background-color: #f22f2f;" GridPane.columnIndex="3">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="BtnReserveTower5" mnemonicParsing="false" prefHeight="53.0" prefWidth="62.0" style="-fx-background-color: #f22f2f;" GridPane.columnIndex="4">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Label prefHeight="20.0" prefWidth="103.0" text="Reserve Towers" GridPane.valignment="TOP">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-         </children>
-      </GridPane>
-      <Button fx:id="BtnTowerSwap" mnemonicParsing="false" prefHeight="53.0" prefWidth="135.0" style="-fx-background-color: #f22f2f;" text="Swap" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+      <Button fx:id="BtnTowerSwap" mnemonicParsing="false" onAction="#OnBtnTowerSwap" prefHeight="53.0" prefWidth="135.0" style="-fx-background-color: #f22f2f;" text="Swap" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
          <font>
             <Font size="18.0" />
          </font>
@@ -128,5 +81,44 @@
             <Font size="14.0" />
          </font>
       </Button>
+      <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <ImageView fx:id="reserveTower1" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/blank.png" />
+               </image></ImageView>
+            <ImageView fx:id="reserveTower2" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+               <image>
+                  <Image url="@../images/blank.png" />
+               </image></ImageView>
+            <ImageView fx:id="reserveTower3" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+               <image>
+                  <Image url="@../images/blank.png" />
+               </image></ImageView>
+            <ImageView fx:id="reserveTower4" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+               <image>
+                  <Image url="@../images/blank.png" />
+               </image></ImageView>
+            <ImageView fx:id="reserveTower5" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
+               <image>
+                  <Image url="@../images/blank.png" />
+               </image></ImageView>
+            <Label prefHeight="20.0" prefWidth="121.0" text="Reserve Towers" GridPane.columnSpan="2147483647" GridPane.valignment="TOP">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
    </children>
 </GridPane>

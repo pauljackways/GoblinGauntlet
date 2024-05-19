@@ -2,6 +2,7 @@ package seng201.team131;
 
 public class Tower implements Buyable, Sellable {
     private String name;
+    private String imagePath;
     private float flowRate;
     private float resourceAmount;
     private float cost;
@@ -24,8 +25,9 @@ public class Tower implements Buyable, Sellable {
     }
 
     /// starting towers ///
-    public Tower(ResourceType resource, String name) {
+    public Tower(ResourceType resource, String name, String imagePath) {
         this.name = name;
+        this.imagePath = imagePath;
         this.flowRate = 1;
         this.resourceAmount = 1;
         this.cost = 100;
@@ -49,13 +51,19 @@ public class Tower implements Buyable, Sellable {
     public void setName(String name) {
         this.name = name;
     }
+    public String getImagePath(){
+        return imagePath;
+    }
+    public void setImagePath(String imagePath){
+        this.imagePath = imagePath;
+    }
     public double getFlowRate() {
         return flowRate;
     }
     public void setFlowRate(float flowRate) {
         this.flowRate = flowRate;
     }
-    public double getResourceAmount() {
+public double getResourceAmount() {
         return resourceAmount;
     }
     public void setResourceAmount(float resourceAmount) {

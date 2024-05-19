@@ -61,19 +61,19 @@ public class SetupScreenController extends Controller{
         if (selectedPfp != null) {
             switch (selectedPfp) {
                 case "Pfp1":
-                    variableToPass = "team-131/scr/main/resources/images/goblin1.jpeg";
+                    variableToPass = "images/goblin1.jpeg";
                     break;
                 case "Pfp2":
-                    variableToPass = "team-131/scr/main/resources/images/goblin2.jpeg";
+                    variableToPass = "images/goblin2.jpeg";
                     break;
                 case "Pfp3":
-                    variableToPass = "team-131/scr/main/resources/images/goblin3.jpeg";
+                    variableToPass = "images/goblin3.jpeg";
                     break;
                 case "Pfp4":
-                    variableToPass = "team-131/scr/main/resources/images/goblin4.jpeg";
+                    variableToPass = "images/goblin4.jpeg";
                     break;
                 case "Pfp5":
-                    variableToPass = "team-131/scr/main/resources/images/goblin5.jpeg";
+                    variableToPass = "images/goblin5.jpeg";
                     break;
             }
         }

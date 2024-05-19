@@ -30,14 +30,18 @@ public class Player {
         this.clearScreen = clearScreen;
         this.name = "Smith";
         this.resources = new ResourceType[]{new ResourceType("Gremlin Goo", 1), new ResourceType("Lava", 1), new ResourceType("Ether Crystals", 1)};
-        this.defaultTowers.addAll(List.of(new Tower(this.resources[0], "Small Gremlin Grinder"), new Tower(this.resources[1], "Small Lava well"), new Tower(this.resources[2], "Small Crystal Crucible")));
-        this.towerList.addAll(List.of(new Tower(this.resources[0], "Small Gremlin Grinder"), new Tower(this.resources[1], "Small Lava well"), new Tower(this.resources[2], "Small Crystal Crucible")));
+        this.defaultTowers.addAll(List.of(new Tower(this.resources[0], "Small Gremlin Grinder", "images/goblin1.jpeg"), new Tower(this.resources[1], "Small Lava well", "images/goblin2.jpeg"), new Tower(this.resources[2], "Small Crystal Crucible", "images/goblin3.jpeg")));
+        this.mainTowerList.addAll(List.of(new Tower(this.resources[0], "Small Gremlin Grinder", "images/goblin1.jpeg"), new Tower(this.resources[1], "Small Lava well", "images/goblin2.jpeg"), new Tower(this.resources[2], "Small Crystal Crucible", "images/goblin3.jpeg")));
+        this.reserveTowerList.addAll(List.of(new Tower(this.resources[0], "Small Gremlin Grinder", "images/goblin1.jpeg"), new Tower(this.resources[1], "Small Lava well", "images/goblin2.jpeg"), new Tower(this.resources[2], "Small Crystal Crucible", "images/goblin3.jpeg")));
+
         launchBackground();
+
     }
     private BackgroundController controller;
     private String name;
     private ResourceType[] resources = new ResourceType[3];
-    private List<Tower> towerList = new ArrayList<>();
+    private List<Tower> mainTowerList = new ArrayList<>();
+    private List<Tower> reserveTowerList = new ArrayList<>();
     private String pfp;
     private int rounds;
     private final List<Tower> defaultTowers = new ArrayList<>();
@@ -147,12 +151,16 @@ public class Player {
         this.rounds = rounds;
     }
 
-    public List<Tower> getTowerList() {
-        return towerList;
+    public List<Tower> getmainTowerList() {
+        return mainTowerList;
+    }
+
+    public List<Tower> getReserveTowerList() {
+        return reserveTowerList;
     }
 
     public void addTower(Tower tower) {
-        this.towerList.add(tower);
+        this.mainTowerList.add(tower);
     }
 
     public List<Tower> getDefaultTowers() {

@@ -23,6 +23,13 @@ public class ParentScreenController extends Controller {
         this.player = player;
     }
 
+    public void setPlayer(Player player) {
+        this.player = player;
+        if (needsInitialization) {
+            initialize();
+        }
+    }
+
     public ParentScreenController() {
         // default - for FXLoader
     }
@@ -51,12 +58,12 @@ public class ParentScreenController extends Controller {
             this.player.launchShopScreen();
         }
     }
-
+    /* 
     @Override
     public void setPlayer(Player player) {
         this.player = player;
-        initialize();
-    }
+        initialize();*/
+    
     @FXML
     public void initialize() {
         //Just testing if name, pfp and rounds get set properly
