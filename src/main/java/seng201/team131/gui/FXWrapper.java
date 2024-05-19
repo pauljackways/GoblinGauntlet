@@ -20,6 +20,7 @@ public class FXWrapper {
                 this::launchUserPane,
                 this::launchSetupScreen,
                 this::launchParentScreen,
+                this::launchInfoPane,
                 this::launchTowerScreen,
                 this::launchShopScreen,
                 this::launchGameChangersScreen,
@@ -51,6 +52,8 @@ public class FXWrapper {
     public void launchSetupScreen(Player player) {
     }
     public void launchParentScreen(Player player) {
+    }
+    private void launchInfoPane(Player player) {
     }
     public void launchGameChangersScreen(Player player) {
     }

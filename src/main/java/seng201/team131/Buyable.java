@@ -1,5 +1,7 @@
 package seng201.team131;
 
 public interface Buyable {
-    double getCost();
+    String getName();
+    String getDescription();
+    Float getCost();
 }

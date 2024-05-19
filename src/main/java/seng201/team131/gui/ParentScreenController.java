@@ -66,19 +66,9 @@ public class ParentScreenController extends Controller {
     
     @FXML
     public void initialize() {
-        //Just testing if name, pfp and rounds get set properly
-        /*if (player == null) {
-            needsInitialization = true;
-            System.out.println("Player is null, initialization postponed.");
-            return;
+        if (player != null) {
+            player.setSelected(null);
+            player.launchUserPane();
         }
-
-        System.out.println(player.getName());
-        System.out.println(player.getPfp());
-        System.out.println(player.getRounds());
-        
-        
-        System.out.println("Initialization complete.");
-        needsInitialization = false; */
     }
 }

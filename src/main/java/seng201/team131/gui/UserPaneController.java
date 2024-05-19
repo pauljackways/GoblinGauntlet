@@ -6,6 +6,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import seng201.team131.Player;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class UserPaneController extends Controller{
     private Player player;
@@ -13,6 +16,8 @@ public class UserPaneController extends Controller{
     private ImageView ImgUser;
     @FXML
     private Button BtnBack;
+    @FXML
+    private Label LblName;
     @FXML
     private Label LblRound;
     @FXML
@@ -23,16 +28,29 @@ public class UserPaneController extends Controller{
     private Label LblItems;
     @FXML
     private Label LblMoney;
+    private ScheduledExecutorService executorService;
     @Override
     public void setPlayer(Player player) {
         this.player = player;
         initialize();
     }
+    private void startPeriodicUpdate() {
+        executorService = Executors.newSingleThreadScheduledExecutor();
+
+        // Schedule the task to run every 1 second with an initial delay of 0 seconds
+        executorService.scheduleAtFixedRate(this::updatePlayerInfo, 0, 1, TimeUnit.SECONDS);
+    }
     @FXML
     public void initialize() {
         if (player != null) {
-//            ImageView.setImage(player.)
+            setUserImage(new Image(player.getPfp()));
+            startPeriodicUpdate();
+            updatePlayerInfo();
         }
+    }
+    private void updatePlayerInfo() {
+        setLblName(player.getName());
+        setLblRound(player.getRound().toString() + " of " + player.getRounds().toString());
     }
     @FXML
     private void onBack() {
@@ -48,9 +66,13 @@ public class UserPaneController extends Controller{
         ImgUser.setImage(image);
     }
     // Methods to update the labels
-    public void setLblRoundRound(String round) {
+    public void setLblRound(String round) {
         LblRound.setText(round);
     }
+    public void setLblName(String name) {
+        LblName.setText(name);
+    }
+
 
     public void setLblLives(String lives) {
         LblLives.setText(lives);

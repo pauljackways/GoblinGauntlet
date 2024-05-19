@@ -6,12 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
+import static seng201.team131.EnumResources.*;
+
 public class Player {
     public Player(
             Consumer<Player> backgroundLauncher,
             Consumer<Player> userPaneLauncher,
             Consumer<Player> setupScreenLauncher,
             Consumer<Player> parentScreenLauncher,
+            Consumer<Player> infoPaneLauncher,
             Consumer<Player> towerScreenLauncher,
             Consumer<Player> shopScreenLauncher,
             Consumer<Player> gameChangersScreenLauncher,
@@ -22,6 +25,7 @@ public class Player {
         this.userPaneLauncher = userPaneLauncher;
         this.setupScreenLauncher = setupScreenLauncher;
         this.parentScreenLauncher = parentScreenLauncher;
+        this.infoPaneLauncher = infoPaneLauncher;
         this.shopScreenLauncher = shopScreenLauncher;
         this.towerScreenLauncher = towerScreenLauncher;
         this.gameChangersScreenLauncher = gameChangersScreenLauncher;
@@ -29,26 +33,26 @@ public class Player {
         this.mainScreenLauncher = mainScreenLauncher;
         this.clearScreen = clearScreen;
         this.name = "Smith";
-        this.resources = new ResourceType[]{new ResourceType("Gremlin Goo", 1), new ResourceType("Lava", 1), new ResourceType("Ether Crystals", 1)};
-        this.defaultTowers.addAll(List.of(new Tower(this.resources[0], "Small Gremlin Grinder", "images/goblin1.jpeg"), new Tower(this.resources[1], "Small Lava well", "images/goblin2.jpeg"), new Tower(this.resources[2], "Small Crystal Crucible", "images/goblin3.jpeg")));
-        this.mainTowerList.addAll(List.of(new Tower(this.resources[0], "Small Gremlin Grinder", "images/goblin1.jpeg"), new Tower(this.resources[1], "Small Lava well", "images/goblin2.jpeg"), new Tower(this.resources[2], "Small Crystal Crucible", "images/goblin3.jpeg")));
-        this.reserveTowerList.addAll(List.of(new Tower(this.resources[0], "Small Gremlin Grinder", "images/goblin1.jpeg"), new Tower(this.resources[1], "Small Lava well", "images/goblin2.jpeg"), new Tower(this.resources[2], "Small Crystal Crucible", "images/goblin3.jpeg")));
-
+        this.selected = null;
+        this.defaultTowers.addAll(List.of(new Tower(GOO,"Small Gremlin Grinder", "images/twrSlime1.jpeg"), new Tower(LAVA,"Small Lava well", "images/twrLava1.jpeg"), new Tower(ETHER,"Small Crystal Crucible", "images/twrEther1.jpeg")));
+        this.towerList.addAll(List.of(new Tower(GOO,"Small Gremlin Grinder", "images/twrSlime1.jpeg"), new Tower(ETHER,"Small Crystal Crucible", "images/twrEther1.jpeg"), new Tower(LAVA,"Small Lava well", "images/twrLava1.jpeg")));
+        this.round = 0;
         launchBackground();
 
     }
     private BackgroundController controller;
     private String name;
-    private ResourceType[] resources = new ResourceType[3];
-    private List<Tower> mainTowerList = new ArrayList<>();
-    private List<Tower> reserveTowerList = new ArrayList<>();
+    private List<Tower> towerList = new ArrayList<>();
     private String pfp;
-    private int rounds;
+    private Integer rounds;
+    private Integer round;
+    private Selectable selected;
     private final List<Tower> defaultTowers = new ArrayList<>();
     private final Consumer<Player> backgroundLauncher;
     private final Consumer<Player> userPaneLauncher;
     private final Consumer<Player> setupScreenLauncher;
     private final Consumer<Player> parentScreenLauncher;
+    private final Consumer<Player> infoPaneLauncher;
     private final Consumer<Player> shopScreenLauncher;
     private final Consumer<Player> towerScreenLauncher;
     private final Consumer<Player> gameChangersScreenLauncher;
@@ -125,6 +129,13 @@ public class Player {
         }
         mainScreenLauncher.accept(this);
     }
+    public void launchInfoPane() {
+        if (controller != null) {
+            controller.clearColumn(2);
+            controller.loadColumn(2, "/fxml/info_pane.fxml", InfoPaneController.class, this);
+        }
+        infoPaneLauncher.accept(this);
+    }
     public String getName() {
         return name;
     }
@@ -141,13 +152,25 @@ public class Player {
     public void setPfp(String pfp) {
         this.pfp = pfp;
     }
+    public Integer getRound() {
+        return round;
+    }
 
-    // Getter and setter for rounds
-    public int getRounds() {
+    public void setSelected(Selectable selected) {
+        this.selected = selected;
+    }
+    public Selectable getSelected() {
+        return selected;
+    }
+
+    public void setRound(Integer round) {
+        this.round = round;
+    }
+    public Integer getRounds() {
         return rounds;
     }
 
-    public void setRounds(int rounds) {
+    public void setRounds(Integer rounds) {
         this.rounds = rounds;
     }
 
@@ -167,4 +190,6 @@ public class Player {
         return defaultTowers;
     }
 
+    public void clearInfoPane() {
+    }
 }
