@@ -1,0 +1,24 @@
+        for (int i = 0; i < rocketButtons.size(); i++) {
+            int finalI = i; // variables used within lambdas must be final
+            rocketButtons.get(i).setOnAction(event -> {
+                updateStats(rocketManager.getDefaultRockets().get(finalI));
+                selectedRocketIndex = finalI;
+                rocketButtons.forEach(button -> {
+                    if (button == rocketButtons.get(finalI)) {
+                        button.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
+                    } else {
+                        button.setStyle("");
+                    }
+                });
+            });
+        }
+
+
+ changed ints to floats so that gamechangers can effect (eg: 20% reduction in flow rate) also changed doubles to floats to speed up the program (now that everything is floats)
+
+ the function that passes player from backgroundscreencontroller to the other controllers (loadcolumn) needs to wait for setplayer to run. have added
+     public void initialize() {
+         if (player != null) {
+
+         }
+     }

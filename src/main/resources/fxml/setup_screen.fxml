@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -54,7 +55,7 @@
             <Insets left="100.0" />
          </GridPane.margin>
       </Label>
-      <Slider fx:id="SldrRounds" blockIncrement="1.0" majorTickUnit="5.0" max="15.0" min="5.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" snapToTicks="true" stylesheets="@../css/css.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <Slider fx:id="SldrRounds" blockIncrement="1.0" majorTickUnit="1.0" max="15.0" min="5.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" stylesheets="@../css/css.css" value="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets right="100.0" />
          </GridPane.margin>
@@ -94,11 +95,29 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fx:id="Pfp1" fitHeight="76.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <ImageView fx:id="Pfp2" fitHeight="76.0" fitWidth="76.0" layoutX="13.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <ImageView fx:id="Pfp3" fitHeight="76.0" fitWidth="76.0" layoutX="13.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <ImageView fx:id="Pfp4" fitHeight="76.0" fitWidth="76.0" layoutX="13.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <ImageView fx:id="Pfp5" fitHeight="76.0" fitWidth="76.0" layoutX="13.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <ImageView fx:id="Pfp1" fitHeight="76.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@../images/goblin1.jpeg" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor></ImageView>
+            <ImageView fx:id="Pfp2" fitHeight="76.0" fitWidth="76.0" layoutX="13.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@../images/goblin2.jpeg" />
+               </image></ImageView>
+            <ImageView fx:id="Pfp3" fitHeight="76.0" fitWidth="76.0" layoutX="13.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@../images/goblin3.jpeg" />
+               </image></ImageView>
+            <ImageView fx:id="Pfp4" fitHeight="76.0" fitWidth="76.0" layoutX="13.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@../images/goblin4.jpeg" />
+               </image></ImageView>
+            <ImageView fx:id="Pfp5" fitHeight="76.0" fitWidth="76.0" layoutX="13.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@../images/goblin5.jpeg" />
+               </image></ImageView>
          </children>
       </GridPane>
    </children>
