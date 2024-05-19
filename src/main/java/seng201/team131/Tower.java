@@ -71,11 +71,17 @@ public class Tower implements Buyable, Sellable, Selectable {
     public String getDescription() {
         String description = getName() + "\nLevel: " + getLevel() + "\nDispenses:\n\n";
         for (int i = 0; i<3; i++) {
-            description += EnumResources.values()[i].getResourceName() + ": \n" + this.getResource(EnumResources.values()[i]).getValue() + "\n" + this.getResource(EnumResources.values()[i]).getReload() + " second reload";
-            if (i!=2) {
-                description+= ",\n\n";
+            if (this.getResource(EnumResources.values()[i]).getValue() != 0) {
+                description += EnumResources.values()[i].getResourceName() + ": \n" + this.getResource(EnumResources.values()[i]).getValue() +
+                        "\n" + this.getResource(EnumResources.values()[i]).getReload() + " second reload";
+                if (i != 2) {
+                    description += ",\n\n";
+                } else {
+                    description += "\n\n";
+                }
             }
         }
+        description+= "Cost: \n$" + getCost();
         return description;
 
     }
