@@ -35,13 +35,18 @@ public class Player {
         this.name = "Smith";
         this.selected = null;
         this.defaultTowers.addAll(List.of(new Tower(GOO,"Small Gremlin Grinder", "images/twrSlime1.jpeg"), new Tower(LAVA,"Small Lava well", "images/twrLava1.jpeg"), new Tower(ETHER,"Small Crystal Crucible", "images/twrEther1.jpeg")));
-        this.towerList.addAll(List.of(new Tower(GOO,"Small Gremlin Grinder", "images/twrSlime1.jpeg"), new Tower(ETHER,"Small Crystal Crucible", "images/twrEther1.jpeg"), new Tower(LAVA,"Small Lava well", "images/twrLava1.jpeg")));
+        this.mainTowerList.addAll(List.of(new Tower(GOO,"Small Gremlin Grinder", "images/twrSlime1.jpeg"), new Tower(ETHER,"Small Crystal Crucible", "images/twrEther1.jpeg"), new Tower(LAVA,"Small Lava well", "images/twrLava1.jpeg")));
+        this.reserveTowerList.addAll(List.of(new Tower(GOO,"Small Gremlin Grinder", "images/twrSlime1.jpeg"), new Tower(ETHER,"Small Crystal Crucible", "images/twrEther1.jpeg"), new Tower(LAVA,"Small Lava well", "images/twrLava1.jpeg")));
+        this.setCombinedTowerList();
         this.round = 0;
         launchBackground();
+
     }
     private BackgroundController controller;
     private String name;
-    private List<Tower> towerList = new ArrayList<>();
+    private List<Tower> mainTowerList = new ArrayList<>();
+    private List<Tower> reserveTowerList = new ArrayList<>();
+    private List<Tower> combinedTowerList = new ArrayList<>();
     private String pfp;
     private Integer rounds;
     private Integer round;
@@ -71,7 +76,14 @@ public class Player {
     public void setBackgroundController(BackgroundController controller) {
         this.controller = controller;
     }
-    
+    public void setCombinedTowerList() {
+        this.combinedTowerList = new ArrayList<>();
+        this.combinedTowerList.addAll(this.mainTowerList);
+        this.combinedTowerList.addAll(this.reserveTowerList);
+    }
+    public List<Tower> getCombinedTowerList() {
+        return this.combinedTowerList;
+    }
     public void launchSetupScreen() {
         if (controller != null) {
             controller.clearColumn(1);
@@ -173,13 +185,17 @@ public class Player {
         this.rounds = rounds;
     }
 
-    public List<Tower> getTowerList() {
-        return towerList;
+    public List<Tower> getmainTowerList() {
+        return mainTowerList;
     }
 
-    public void addTower(Tower tower) {
-        this.towerList.add(tower);
+    public List<Tower> getReserveTowerList() {
+        return reserveTowerList;
     }
+
+//    public void addTower(Tower tower) {
+//        this.mainTowerList.add(tower);
+//    }
 
     public List<Tower> getDefaultTowers() {
         return defaultTowers;

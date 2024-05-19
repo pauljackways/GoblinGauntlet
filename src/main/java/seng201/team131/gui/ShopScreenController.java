@@ -5,9 +5,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import seng201.team131.Player;
-import seng201.team131.Selectable;
 import seng201.team131.Tower;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShopScreenController extends Controller {
@@ -23,7 +23,6 @@ public class ShopScreenController extends Controller {
 
     @FXML
     private Button BtnBuySell;
-
     private Player player;
 
     public ShopScreenController() {
@@ -80,8 +79,8 @@ public class ShopScreenController extends Controller {
                 if (newValue != null) {
                     int selectedIndex = LstSell.getSelectionModel().getSelectedIndex();
                     if (selectedIndex != -1) {
-                        if (selectedIndex < player.getDefaultTowers().size()) {
-                            Tower selectedTower = player.getDefaultTowers().get(selectedIndex);
+                        if (selectedIndex < player.getCombinedTowerList().size()) {
+                            Tower selectedTower = player.getCombinedTowerList().get(selectedIndex);
                             player.setSelected(selectedTower);
                         } else {
                             player.setSelected(null);
@@ -102,26 +101,24 @@ public class ShopScreenController extends Controller {
         int selectedIndex = LstBuy.getSelectionModel().getSelectedIndex();
         if (selectedIndex != -1) {
             if (selectedIndex < player.getDefaultTowers().size()) {
-                player.buy(player.getDefaultTowers().get(selectedIndex));
+                player.buy(player.getCombinedTowerList().get(selectedIndex));
             } else {
                 int adjustedIndex = selectedIndex - player.getDefaultTowers().size();
-                player.sell(player.getTowerList().get(adjustedIndex));
+                player.sell(player.getCombinedTowerList().get(adjustedIndex));
             }
         }
     }
 
     private void updateBuyList() {
         LstBuy.getItems().clear();
-        List<Tower> defaultTowers = player.getDefaultTowers();
-        for (Tower tower : defaultTowers) {
+        for (Tower tower : player.getDefaultTowers()) {
             LstBuy.getItems().add("Level " + tower.getLevel() + " " + tower.getName());
         }
     }
 
     private void updateSellList() {
         LstSell.getItems().clear();
-        List<Tower> towerList = player.getTowerList();
-        for (Tower tower : towerList) {
+        for (Tower tower : player.getCombinedTowerList()) {
             LstSell.getItems().add("Level " + tower.getLevel() + " " + tower.getName());
         }
     }

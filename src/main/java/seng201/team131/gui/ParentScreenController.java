@@ -2,7 +2,7 @@ package seng201.team131.gui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+//import javafx.scene.control.Label;
 import seng201.team131.Player;
 
 public class ParentScreenController extends Controller {
@@ -21,6 +21,12 @@ public class ParentScreenController extends Controller {
 
     public ParentScreenController(Player player) {
         this.player = player;
+    }
+
+    @Override
+    public void setPlayer(Player player) {
+        this.player = player;
+        initialize();
     }
 
     public ParentScreenController() {
@@ -50,12 +56,6 @@ public class ParentScreenController extends Controller {
         if (player != null) {
             this.player.launchShopScreen();
         }
-    }
-
-    @Override
-    public void setPlayer(Player player) {
-        this.player = player;
-        initialize();
     }
     @FXML
     public void initialize() {
