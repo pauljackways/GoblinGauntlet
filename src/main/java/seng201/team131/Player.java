@@ -36,7 +36,8 @@ public class Player {
     }
     private BackgroundController controller;
     private String name;
-    private List<Tower> towerList;
+    private ResourceType[] resources = new ResourceType[3];
+    private List<Tower> towerList = new ArrayList<>();
     private String pfp;
     private int rounds;
     private final List<Tower> defaultTowers = new ArrayList<>();

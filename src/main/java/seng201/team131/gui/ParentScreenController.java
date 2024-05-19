@@ -23,13 +23,6 @@ public class ParentScreenController extends Controller {
         this.player = player;
     }
 
-    public void setPlayer(Player player) {
-        this.player = player;
-        if (needsInitialization) {
-            initialize();
-        }
-    }
-
     public ParentScreenController() {
         // default - for FXLoader
     }

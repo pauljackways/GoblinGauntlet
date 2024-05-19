@@ -9,28 +9,20 @@ import seng201.team131.Player;
 
 public class UserPaneController extends Controller{
     private Player player;
-
     @FXML
     private ImageView ImgUser;
-
     @FXML
     private Button BtnBack;
-
     @FXML
     private Label LblRound;
-
     @FXML
     private Label LblLives;
-
     @FXML
     private Label LblTowers;
-
     @FXML
     private Label LblItems;
-
     @FXML
     private Label LblMoney;
-
     @Override
     public void setPlayer(Player player) {
         this.player = player;
@@ -39,10 +31,9 @@ public class UserPaneController extends Controller{
     @FXML
     public void initialize() {
         if (player != null) {
-
+//            ImageView.setImage(player.)
         }
     }
-
     @FXML
     private void onBack() {
         this.player.launchParentScreen();
