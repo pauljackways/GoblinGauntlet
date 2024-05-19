@@ -36,17 +36,20 @@ public class ParentScreenController extends Controller {
     @FXML
     public void onBtnTowerScreen() {
         if (player != null) {
+            player.setfParent(false);
             this.player.launchTowerScreen();
         }
     }
     @FXML
     public void onBtnMainScreen() {
+        player.setfParent(false);
         // Handle Main Screen button click
     }
 
     @FXML
     public void onBtnGameChangersScreen() {
         if (player != null) {
+            player.setfParent(false);
             this.player.launchGameChangersScreen();
         }
     }
@@ -54,12 +57,14 @@ public class ParentScreenController extends Controller {
     @FXML
     public void onBtnShopScreen() {
         if (player != null) {
+            player.setfParent(false);
             this.player.launchShopScreen();
         }
     }
     @FXML
     public void initialize() {
         if (player != null) {
+            player.setfParent(true);
             player.setSelected(null);
             player.launchUserPane();
         }

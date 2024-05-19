@@ -35,6 +35,7 @@ public class Player {
         this.lives = 3;
         this.name = "Smith";
         this.selected = null;
+        this.fParent = false;
         this.defaultTowers.addAll(List.of(new Tower(GOO,"Small Gremlin Grinder", "images/twrSlime1.jpeg", 1), new Tower(LAVA,"Small Lava well", "images/twrLava1.jpeg", 1), new Tower(ETHER,"Small Crystal Crucible", "images/twrEther1.jpeg", 1),
                 new Tower(GOO,"Modest Gremlin Macerator", "images/twrSlime2.jpeg", 3), new Tower(LAVA,"Modest Magma Spire", "images/twrLava2.jpeg", 3), new Tower(ETHER,"Modest Crystal Cryochamber", "images/twrEther2.jpeg", 3),
                 new Tower(GOO,"Giant Gore Goliath", "images/twrSlime3.jpeg", 5), new Tower(LAVA,"Giant Vesuvian Volcanizer", "images/twrLava3.jpeg", 5), new Tower(ETHER,"Giant Crystal Cascade", "images/twrEther3.jpeg", 5)));
@@ -46,6 +47,7 @@ public class Player {
     }
     private BackgroundController controller;
     private String name;
+    private boolean fParent = false;
     private List<Tower> mainTowerList = new ArrayList<>();
     private List<Tower> reserveTowerList = new ArrayList<>();
     private List<Tower> combinedTowerList = new ArrayList<>();
@@ -75,6 +77,12 @@ public class Player {
     }
     public Integer getLives() {
         return this.lives;
+    }
+    public boolean getfParent() {
+        return this.fParent;
+    }
+    public void setfParent(boolean flag) {
+        this.fParent = flag;
     }
     public void launchBackground() {
         backgroundLauncher.accept(this);

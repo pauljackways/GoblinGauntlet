@@ -34,7 +34,7 @@ public class InfoPaneController extends Controller {
     }
     private void startPeriodicUpdate() {
         executorService2 = Executors.newSingleThreadScheduledExecutor();
-        executorService2.scheduleAtFixedRate(this::updateInfo, 0, 1, TimeUnit.SECONDS);
+        executorService2.scheduleAtFixedRate(this::updateInfo, 0, 100, TimeUnit.MILLISECONDS);
     }
     @FXML
     public void initialize() {
