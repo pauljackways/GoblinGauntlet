@@ -40,7 +40,6 @@ public class ParentScreenController extends Controller {
             this.player.launchTowerScreen();
         }
     }
-
     @FXML
     public void onBtnMainScreen() {
         // Handle Main Screen button click
@@ -60,6 +59,11 @@ public class ParentScreenController extends Controller {
         }
     }
 
+    @Override
+    public void setPlayer(Player player) {
+        this.player = player;
+        initialize();
+    }
     @FXML
     public void initialize() {
         //Just testing if name, pfp and rounds get set properly

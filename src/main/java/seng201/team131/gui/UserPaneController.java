@@ -31,10 +31,16 @@ public class UserPaneController extends Controller{
     @FXML
     private Label LblMoney;
 
+    @Override
+    public void setPlayer(Player player) {
+        this.player = player;
+        initialize();
+    }
     @FXML
-    private void initialize() {
-        // This method is called by the FXMLLoader when initialization is complete
-        // Initialize any necessary data or configurations here
+    public void initialize() {
+        if (player != null) {
+
+        }
     }
 
     @FXML
@@ -50,28 +56,25 @@ public class UserPaneController extends Controller{
     public void setUserImage(Image image) {
         ImgUser.setImage(image);
     }
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
     // Methods to update the labels
-    public void setRound(String round) {
+    public void setLblRoundRound(String round) {
         LblRound.setText(round);
     }
 
-    public void setLives(String lives) {
+    public void setLblLives(String lives) {
         LblLives.setText(lives);
     }
 
-    public void setTowers(String towers) {
+    public void setLblTowers(String towers) {
         LblTowers.setText(towers);
     }
 
-    public void setItems(String items) {
+    public void setLblItems(String items) {
         LblItems.setText(items);
     }
 
-    public void setMoney(String money) {
+    public void setLblMoney(String money) {
         LblMoney.setText(money);
     }
+
 }

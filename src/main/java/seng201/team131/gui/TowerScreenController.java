@@ -33,7 +33,16 @@ public class TowerScreenController extends Controller {
     public void SetupScreenController(Player player) {
         this.player = player;
     }
+    @Override
     public void setPlayer(Player player) {
+        this.player = player;
+        initialize();
+    }
+    @FXML
+    public void initialize() {
+        if (player != null) {
+
+        }
     }
    
     

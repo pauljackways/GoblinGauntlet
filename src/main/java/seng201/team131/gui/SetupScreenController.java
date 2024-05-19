@@ -34,12 +34,10 @@ public class SetupScreenController extends Controller{
     @FXML
     private TextField TxtFldName;
 
-
-    public SetupScreenController(Player player) {
+    private Controller backgroundController;
+    public SetupScreenController(Player player, Controller controller) {
         this.player = player;
-    }
-    public void setPlayer(Player player) {
-        this.player = player;
+        this.backgroundController = controller;
     }
     public SetupScreenController() {
         // Default constructor for FXLoader's sick and twisted desires

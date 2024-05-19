@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class Player {
-
-
     public Player(
             Consumer<Player> backgroundLauncher,
             Consumer<Player> userPaneLauncher,
@@ -31,7 +29,9 @@ public class Player {
         this.mainScreenLauncher = mainScreenLauncher;
         this.clearScreen = clearScreen;
         this.name = "Smith";
-        this.defaultTowers.addAll(List.of(new Tower("Mystery tower")));
+        this.resources = new ResourceType[]{new ResourceType("Gremlin Goo", 1), new ResourceType("Lava", 1), new ResourceType("Ether Crystals", 1)};
+        this.defaultTowers.addAll(List.of(new Tower(this.resources[0], "Small Gremlin Grinder"), new Tower(this.resources[1], "Small Lava well"), new Tower(this.resources[2], "Small Crystal Crucible")));
+        this.towerList.addAll(List.of(new Tower(this.resources[0], "Small Gremlin Grinder"), new Tower(this.resources[1], "Small Lava well"), new Tower(this.resources[2], "Small Crystal Crucible")));
         launchBackground();
     }
     private BackgroundController controller;
@@ -51,12 +51,19 @@ public class Player {
     private final Consumer<Player> mainScreenLauncher;
     private final Runnable clearScreen;
 
+    public void sell(Tower tower) {
+
+    }
+    public void buy(Tower tower) {
+
+    }
     public void launchBackground() {
         backgroundLauncher.accept(this);
     }
     public void setBackgroundController(BackgroundController controller) {
         this.controller = controller;
     }
+    
     public void launchSetupScreen() {
         if (controller != null) {
             controller.clearColumn(1);
@@ -110,12 +117,9 @@ public class Player {
         if (controller != null) {
             controller.clearColumn(1);
             controller.loadColumn(1, "/fxml/main_screen.fxml", MainScreenController.class, this);
-        }            controller.loadColumn(1, "/fxml/shop_screen.fxml", MainScreenController.class, this);
-
+        }
         mainScreenLauncher.accept(this);
     }
-    public void closeMainScreen() {}
-
     public String getName() {
         return name;
     }
