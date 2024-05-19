@@ -53,7 +53,7 @@ public class SetupScreenController extends Controller{
     }
     public void onBtnPlayStartScreen() {
         playerName = TxtFldName.getText();
-        numRounds = (int) SldrRounds.getValue();
+        numRounds = (Integer) (int) SldrRounds.getValue();
         if (playerName.isEmpty()) {
             playerName = "You forgot to type you name idiot!!!";
         }

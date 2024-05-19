@@ -60,6 +60,7 @@ public class ParentScreenController extends Controller {
     @FXML
     public void initialize() {
         if (player != null) {
+            player.setSelected(null);
             player.launchUserPane();
         }
     }

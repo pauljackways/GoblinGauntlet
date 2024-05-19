@@ -1,44 +1,78 @@
 package seng201.team131;
 
-public class Tower implements Buyable, Sellable {
+import java.util.EnumMap;
+import java.util.Map;
+import static seng201.team131.EnumResources.*;
+
+public class Tower implements Buyable, Sellable, Selectable {
     private String name;
-    private float flowRate;
-    private float resourceAmount;
-    private float cost;
+    private Float cost;
     private float health; // Factor
     private int level;
-    private ResourceType resource;
-    private float reloadSpeed;
+    private String image;
     private float levelUpCost;
+    private Map<EnumResources, Resource> resources = new EnumMap<>(EnumResources.class);
 
-    public Tower(ResourceType resource, String name, float flowRate, float resourceAmount, float cost, int level, float reloadSpeed, float levelUpCost) {
+    public Tower(String name, float cost, int level, float levelUpCost, String image) {
         this.name = name;
-        this.resource = resource;
-        this.flowRate = flowRate;
-        this.resourceAmount = resourceAmount;
         this.cost = cost;
+        this.image = image;
         this.level = level;
-        this.reloadSpeed = reloadSpeed;
         this.levelUpCost = levelUpCost;
         this.health = 1.0f; // Initialize health to 0
     }
 
     /// starting towers ///
-    public Tower(ResourceType resource, String name) {
+    public Tower(EnumResources resource, String name, String image) {
         this.name = name;
-        this.flowRate = 1;
-        this.resourceAmount = 1;
-        this.cost = 100;
+        this.cost = 100f;
         this.level = 1;
-        this.reloadSpeed = 10;
         this.levelUpCost = 50;
+        this.image = image;
         this.health = 1.0f; // Initialize damage to 0
+        this.resources.put(GOO, new Resource(1f, 1, 1));
+        this.resources.put(LAVA, new Resource(1f, 1, 1));
+        this.resources.put(ETHER, new Resource(1f, 1, 1));
+
+
     }
-    public double getCost() {
+    public void addResource(EnumResources resourceType, Resource resource) {
+        resources.put(resourceType, resource);
+    }
+
+    public Resource getResource(EnumResources resourceType) {
+        return resources.get(resourceType);
+    }
+
+    public void setResourceReload(EnumResources resourceType, int reloadTime) {
+        Resource resource = resources.get(resourceType);
+        if (resource != null) {
+            resource.setReload(reloadTime);
+        }
+    }
+    public void updateResource(EnumResources resourceType, Resource newResource) {
+        resources.put(resourceType, newResource);
+    }
+    public String getDescription() {
+        String description = getName() + "\nLevel: " + getLevel() + "\nDispenses:\n\n";
+        for (int i = 0; i<3; i++) {
+            description += EnumResources.values()[i].getResourceName() + ": \n" + this.getResource(EnumResources.values()[i]).getValue() + "\n" + this.getResource(EnumResources.values()[i]).getReload() + " second reload";
+            if (i!=2) {
+                description+= ",\n\n";
+            }
+        }
+        return description;
+
+    }
+    public Float getCost() {
         return cost;
     }
-    public ResourceType getResource() {
-        return this.resource;
+    public void setImage(String image) {
+        this.image = image;
+    }
+    @Override
+    public String getImage() {
+        return this.image;
     }
     public double getPrice() {
         return this.cost / 2;
@@ -49,19 +83,7 @@ public class Tower implements Buyable, Sellable {
     public void setName(String name) {
         this.name = name;
     }
-    public double getFlowRate() {
-        return flowRate;
-    }
-    public void setFlowRate(float flowRate) {
-        this.flowRate = flowRate;
-    }
-    public double getResourceAmount() {
-        return resourceAmount;
-    }
-    public void setResourceAmount(float resourceAmount) {
-        this.resourceAmount = resourceAmount;
-    }
-    public void setCost(int cost) {
+    public void setCost(Float cost) {
         this.cost = cost;
     }
 
@@ -69,7 +91,7 @@ public class Tower implements Buyable, Sellable {
         return health;
     }
 
-    public void setDamage(float health) {
+    public void setHealth(float health) {
         this.health = health;
     }
 
@@ -79,14 +101,6 @@ public class Tower implements Buyable, Sellable {
 
     public void setLevel(int level) {
         this.level = level;
-    }
-
-    public double getReloadSpeed() {
-        return reloadSpeed;
-    }
-
-    public void setReloadSpeed(float reloadSpeed) {
-        this.reloadSpeed = reloadSpeed;
     }
 
     public double getLevelUpCost() {

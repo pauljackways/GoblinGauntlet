@@ -1,16 +1,17 @@
 package seng201.team131;
 
-public class Item {
+public class Item implements Buyable, Selectable {
     private String name;
     private int count;
-    private ResourceType resourceType;
-    private int fillLevel;
+    private String image;
+    private Float cost;
+    private String description;
 
-    public Item(String name, int count, ResourceType resourceType, int fillLevel) {
+    public Item(String name, String description, float cost) {
         this.name = name;
-        this.count = count;
-        this.resourceType = resourceType;
-        this.fillLevel = fillLevel;
+        this.count = 0;
+        this.description = description;
+        this.cost = cost;
     }
 
     // Getters
@@ -22,14 +23,6 @@ public class Item {
         return count;
     }
 
-    public ResourceType getResourceType() {
-        return resourceType;
-    }
-
-    public int getFillLevel() {
-        return fillLevel;
-    }
-
     // Setters
     public void setName(String name) {
         this.name = name;
@@ -38,12 +31,21 @@ public class Item {
     public void setCount(int count) {
         this.count = count;
     }
-
-    public void setResourceType(ResourceType resourceType) {
-        this.resourceType = resourceType;
+    public void setImage(String image) {
+        this.image = image;
+    }
+    @Override
+    public String getImage() {
+        return this.image;
     }
 
-    public void setFillLevel(int fillLevel) {
-        this.fillLevel = fillLevel;
+    @Override
+    public Float getCost() {
+        return cost;
+    }
+
+    @Override
+    public String getDescription() {
+        return "Name: " + getName() + "\nDescription: " + description + "\nCost:" + getCost().toString();
     }
 }
