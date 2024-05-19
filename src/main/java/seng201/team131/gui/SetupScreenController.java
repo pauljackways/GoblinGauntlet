@@ -55,7 +55,7 @@ public class SetupScreenController extends Controller{
         playerName = TxtFldName.getText();
         numRounds = (Integer) (int) SldrRounds.getValue();
         if (playerName.isEmpty()) {
-            playerName = "";
+            playerName = "Forgor the Nameless";
         }
     
         if (selectedPfp != null) {

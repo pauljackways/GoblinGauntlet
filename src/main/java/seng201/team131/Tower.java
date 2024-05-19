@@ -35,13 +35,13 @@ public class Tower implements Buyable, Sellable, Selectable {
         this.resources.put(EnumResources.GOO, new Resource(0f, 0, 0));
         switch (resource) {
             case ETHER:
-                this.resources.put(resource, new Resource((float) level, level, level));
+                this.resources.put(resource, new Resource((float) level, 1, level));
                 break;
             case LAVA:
-                this.resources.put(resource, new Resource((float) level, level, level));
+                this.resources.put(resource, new Resource((float) level, 1, level));
                 break;
             case GOO:
-                this.resources.put(resource, new Resource((float) level, level, level));
+                this.resources.put(resource, new Resource((float) level, 1, level));
                 break;
             default:
                 this.resources.put(EnumResources.GOO, new Resource(0f, 0, 0));
@@ -69,11 +69,11 @@ public class Tower implements Buyable, Sellable, Selectable {
         resources.put(resourceType, newResource);
     }
     public String getDescription() {
-        String description = getName() + "\nLevel: " + getLevel() + "\nDispenses:\n\n";
+        String description = "\nLevel: " + getLevel() + "\n\n";
         for (int i = 0; i<3; i++) {
             if (this.getResource(EnumResources.values()[i]).getValue() != 0) {
                 description += EnumResources.values()[i].getResourceName() + ": \n" + this.getResource(EnumResources.values()[i]).getValue() +
-                        "\n" + this.getResource(EnumResources.values()[i]).getReload() + " second reload";
+                        " Tonnes\n" + this.getResource(EnumResources.values()[i]).getReload() + " second reload";
                 if (i != 2) {
                     description += ",\n\n";
                 } else {

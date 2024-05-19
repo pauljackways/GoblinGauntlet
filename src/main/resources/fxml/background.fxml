@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 
-<HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team131.gui.BackgroundController">
-    <children>
-        <Pane fx:id="PaneLeft" HBox.hgrow="ALWAYS" />
-        <Pane fx:id="PaneMain" HBox.hgrow="ALWAYS" />
-        <Pane fx:id="PaneRight" HBox.hgrow="ALWAYS" />
-    </children>
+<HBox alignment="CENTER" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team131.gui.BackgroundController">
+   <children>
+      <VBox fx:id="PaneLeft" alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" />
+      <VBox fx:id="PaneMain" alignment="CENTER" HBox.hgrow="ALWAYS" />
+      <VBox fx:id="PaneRight" alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS" />
+   </children>
 </HBox>
