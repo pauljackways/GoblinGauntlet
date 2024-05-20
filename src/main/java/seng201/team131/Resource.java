@@ -7,7 +7,7 @@ public class Resource {
     private int carts; // number of carts it can fill per reload
 
     public Resource(double value, int reload, int carts) {
-//        this.type = type;
+        //this.type = type;
         this.value = value;
         this.reload = reload;
         this.carts = carts;

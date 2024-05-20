@@ -43,7 +43,7 @@ public class ParentScreenController extends Controller {
     @FXML
     public void onBtnMainScreen() {
         player.setfParent(false);
-        // Handle Main Screen button click
+        
     }
 
     @FXML
