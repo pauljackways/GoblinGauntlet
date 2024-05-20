@@ -1,10 +1,12 @@
 package seng201.team131.gui;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import seng201.team131.Player;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -38,7 +40,7 @@ public class UserPaneController extends Controller{
         executorService = Executors.newSingleThreadScheduledExecutor();
 
         // Schedule the task to run every 1 second with an initial delay of 0 seconds
-        executorService.scheduleAtFixedRate(this::updatePlayerInfo, 0, 100, TimeUnit.MILLISECONDS);
+        executorService.scheduleAtFixedRate(this::updatePlayerInfo, 0, 500, TimeUnit.MILLISECONDS);
     }
     @FXML
     public void initialize() {
@@ -49,15 +51,21 @@ public class UserPaneController extends Controller{
         }
     }
     private void updatePlayerInfo() {
-        setLblName(player.getName());
-        setLblLives(player.getLives().toString());
-        setLblTowers(Integer.toString(player.getCombinedTowerList().size()));
-        setLblRound(player.getRound().toString() + " of " + player.getRounds().toString());
-        if (player.getfParent()) {
-            BtnBack.setVisible(false);
-        } else {
-            BtnBack.setVisible(true);
-        }
+        Platform.runLater(() -> {
+            setLblName(player.getName());
+            setLblMoney(player.getMoney().toString());
+            if (player.getMoney() < 0) {
+                LblMoney.setTextFill(Color.RED);
+            }
+            setLblLives(player.getLives().toString());
+            setLblTowers(Integer.toString(player.getReserveTowerList().size() + player.getMainTowerList().size()));
+            setLblRound(player.getRound().toString() + " of " + player.getRounds().toString());
+            if (player.getfParent()) {
+                BtnBack.setVisible(false);
+            } else {
+                BtnBack.setVisible(true);
+            }
+        });
     }
     @FXML
     private void onBack() {
@@ -92,9 +100,8 @@ public class UserPaneController extends Controller{
     public void setLblItems(String items) {
         LblItems.setText(items);
     }
-
     public void setLblMoney(String money) {
-        LblMoney.setText(money);
+        LblMoney.setText("$" + money);
     }
 
 }
