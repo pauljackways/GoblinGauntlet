@@ -12,17 +12,19 @@ public class Gamechangers implements Selectable {
             case EASY -> {
                 this.description = "Order orcs to build you another\nlevel on one of your towers.\n\nFill more carts at greater volumes";
                 this.image = "images/upgrade.jpeg";
+
                 break;
             }
         }
+        this.name = type.getGamechangerName();
     }
     public String getName() {
         return this.name;
     }
     public String getImage() {
-
+        return "";
     }
     public String getDescription() {
-
+        return "";
     }
 }
