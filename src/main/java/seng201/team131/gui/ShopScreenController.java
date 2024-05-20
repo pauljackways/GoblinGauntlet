@@ -119,6 +119,7 @@ public class ShopScreenController extends Controller {
     private void updateBuyList() {
         LstBuy.getItems().clear();
         buyableList.addAll(player.getDefaultTowers());
+        buyableList.addAll(player.getDefaultItems());
         for (Buyable item : buyableList) {
             LstBuy.getItems().add("Level " + item.getLevel() + " " + item.getName());
         }

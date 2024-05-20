@@ -2,6 +2,8 @@ package seng201.team131;
 
 import java.util.EnumMap;
 import java.util.Map;
+
+import static seng201.team131.EnumItems.*;
 import static seng201.team131.EnumResources.*;
 
 public class Tower implements Buyable, Sellable, Selectable {
@@ -84,6 +86,42 @@ public class Tower implements Buyable, Sellable, Selectable {
         description+= "Cost: \n$" + getCost();
         return description;
 
+    }
+    public void repair() {
+        if (this.health >= 0.8) {
+            health = 1.0f;
+        } else {
+            this.health += 0.2;
+        }
+    }
+    public void upgrade() {
+        this.level++;
+        switch(this.level) {
+            case 3: {
+            }
+            case 5: {
+            }
+            String fileName = getImage().substring(getImage().lastIndexOf("/") + 1);
+            String extension = fileName.substring(fileName.lastIndexOf("."));
+            int numberIndex = fileName.length() - 6;
+            int number = Character.getNumericValue(fileName.charAt(numberIndex));
+            number++;
+            String newFileName = fileName.substring(0, numberIndex) + number + extension;
+            String newImagePath = getImage().substring(0, getImage().lastIndexOf("/") + 1) + newFileName;
+            setImage(newImagePath);
+        }
+    }
+    public void useItem(Item item) {
+        switch(item.getType(item)) {
+            case REPAIR -> {
+                this.repair();
+                break;
+            }
+            case UPGRADE -> {
+                this.upgrade();
+                break;
+            }
+        }
     }
     public Float getCost() {
         return cost;

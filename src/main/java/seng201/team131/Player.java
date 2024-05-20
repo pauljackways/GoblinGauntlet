@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
+import static seng201.team131.EnumItems.*;
 import static seng201.team131.EnumResources.*;
 
 public class Player {
@@ -36,6 +37,7 @@ public class Player {
         this.name = "Smith";
         this.selected = null;
         this.fParent = false;
+        this.defaultItems.addAll(List.of(new Item(UPGRADE), new Item(REPAIR)));
         this.defaultTowers.addAll(List.of(new Tower(GOO,"Small Gremlin Grinder", "images/twrSlime1.jpeg", 1), new Tower(LAVA,"Small Lava well", "images/twrLava1.jpeg", 1), new Tower(ETHER,"Small Crystal Crucible", "images/twrEther1.jpeg", 1),
                 new Tower(GOO,"Modest Gremlin Macerator", "images/twrSlime2.jpeg", 3), new Tower(LAVA,"Modest Magma Spire", "images/twrLava2.jpeg", 3), new Tower(ETHER,"Modest Crystal Cryochamber", "images/twrEther2.jpeg", 3),
                 new Tower(GOO,"Giant Gore Goliath", "images/twrSlime3.jpeg", 5), new Tower(LAVA,"Giant Vesuvian Volcanizer", "images/twrLava3.jpeg", 5), new Tower(ETHER,"Giant Crystal Cascade", "images/twrEther3.jpeg", 5)));
@@ -43,8 +45,8 @@ public class Player {
         this.round = 0;
         this.money = 500f;
         launchBackground();
-
     }
+    private List<Item> defaultItems = new ArrayList<>();
     private BackgroundController controller;
     private String name;
     private boolean fParent = false;
@@ -100,7 +102,6 @@ public class Player {
         }else{
             return false;
         }
-//
         money -= item.getCost();
         return true;
     }
@@ -240,6 +241,9 @@ public class Player {
 
     public List<Tower> getDefaultTowers() {
         return defaultTowers;
+    }
+    public List<Item> getDefaultItems() {
+        return defaultItems;
     }
 
     public void clearInfoPane() {
