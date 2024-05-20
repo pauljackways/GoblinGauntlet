@@ -6,57 +6,58 @@ import seng201.team131.Player;
 import seng201.team131.Round;
 public class GameChangersScreenController extends Controller {
     private Player player;
-    public GameChangersScreenController(Player newPlayer) {
-        player = newPlayer;
+    @FXML
+    private ImageView ImgHard;
+    @FXML
+    public void onBtnBuyPwrUp() {
+
     }
     @FXML
-    private ImageView ImgSabo;
+    private Button BtnBuyPwrUp;
     @FXML
     public void onImgSabo() {
 
-    };
+    }
     @FXML
     private ImageView ImgMoney;
     @FXML
     public void onImgMoney() {
 
-    };
+    }
     @FXML
     private ImageView ImgDist;
     @FXML
     public void onImgDist() {
 
-    };
+    }
     @FXML
     private ImageView ImgFast;
     @FXML
     public void onImgFast() {
 
-    };
-    @FXML
-    private ImageView ImgHard;
+    }
     @FXML
     public void onImgHard() {
 
-    };
+    }
     @FXML
     private ImageView ImgMed;
     @FXML
     public void onImgMed() {
 
-    };
+    }
     @FXML
     private ImageView ImgEasy;
     @FXML
     public void onImgEasy() {
 
-    };
+    }
     @FXML
-    private Button ImgSlow;
+    private ImageView ImgSlow;
     @FXML
     public void onImgSlow() {
 
-    };
+    }
 
     public GameChangersScreenController() {
         //go FX yourself
