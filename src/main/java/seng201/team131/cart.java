@@ -47,4 +47,11 @@ public class cart {
     public void setFillLevel(Integer fillLevel) {
         this.fillLevel = fillLevel;
     }
+    
+    public String getAllAttributes() {
+        return "Capacity: " + capacity + "\n" +
+               "Resource Type: " + resourceType + "\n" +
+               "Speed: " + speed + "\n" +
+               "Fill Level: " + fillLevel;
+    }
 }

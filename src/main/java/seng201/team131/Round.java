@@ -1,7 +1,10 @@
 package seng201.team131;
 
+//import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
 import static seng201.team131.EnumResources.*;
 
 public class Round {
@@ -11,11 +14,19 @@ public class Round {
     private List<cart> carts;
     private Integer cartCapacity;
     private Integer speed;
+    private Integer favourResource;
+    
+
+    private Double chanceETHER;
+    private Double chanceLava;
+    private Double chanceGoo;
+
 
 
     public Round() {
-        // Initialize the list
         carts = new ArrayList<>();
+        favourResource = 2;
+        
     }
 
 
@@ -46,21 +57,51 @@ public class Round {
         for (int i = 0; i < this.cartCount; i++) {
             cart newCart = new cart();
             carts.add(newCart);
+            newCart.setCapacity(cartCapacity); 
+            newCart.setSpeed(speed); 
+            newCart.setFillLevel(0);
+            newCart.setResourceType(GOO);
+            Random random = new Random();
+            double randomValue = random.nextDouble();
 
-            newCart.setCapacity(cartCapacity); // Example value
-            newCart.setResourceType(GOO); // Example resource type
-            newCart.setSpeed(speed); // Example speed
-            newCart.setFillLevel(0); 
+            if(favourResource == 0){
+                chanceETHER = 0.6;
+                chanceLava = 0.2;
+                chanceGoo = 0.2;
+            }
+            if(favourResource == 1){
+                chanceETHER = 0.2;
+                chanceLava = 0.6;
+                chanceGoo = 0.2;
+            }
+            if(favourResource == 2){
+                chanceETHER = 0.2;
+                chanceLava = 0.2;
+                chanceGoo = 0.6;
+            }
+
+
+            if (randomValue < chanceETHER) {
+                newCart.setResourceType(ETHER);
+            } else if (randomValue < chanceETHER + chanceLava) {
+                newCart.setResourceType(LAVA);
+            } else {
+                newCart.setResourceType(GOO);
+            }
+
+            
+            //System.out.println(randomValue);
+            System.out.println(newCart.getResourceType());
         }
         
     }
 
-    public static void main(String[] args) {
-        Round round = new Round();
-        round.applyDifficulty(Difficulty.EASY);
-        round.applyDifficulty(Difficulty.MEDIUM);
-        round.applyDifficulty(Difficulty.HARD);
-    }
+    // public static void main(String[] args) {
+    //     Round round = new Round();
+    //     round.applyDifficulty(Difficulty.EASY);
+    //     round.applyDifficulty(Difficulty.MEDIUM);
+    //     round.applyDifficulty(Difficulty.HARD);
+    // }
 }
 
 
