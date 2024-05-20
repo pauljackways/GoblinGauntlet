@@ -1,7 +1,8 @@
 package seng201.team131;
 
-public interface Sellable {
+public interface Sellable extends Selectable {
     String getName();
+    int getLevel();
     String getDescription();
-    double getPrice();
+    Float getPrice();
 }

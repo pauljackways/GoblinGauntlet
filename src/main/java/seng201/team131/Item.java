@@ -7,17 +7,26 @@ public class Item implements Buyable, Selectable {
     private Float cost;
     private String description;
 
+    private int level;
     public Item(String name, String description, float cost) {
         this.name = name;
         this.count = 0;
         this.description = description;
         this.cost = cost;
+        this.level = 1;
     }
 
     // Getters
     public String getName() {
         return name;
     }
+    public int getLevel() {
+        return level;
+    }
+    public void levelUp() {
+        level++;
+    }
+
 
     public int getCount() {
         return count;

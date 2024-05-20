@@ -40,8 +40,8 @@ public class Player {
                 new Tower(GOO,"Modest Gremlin Macerator", "images/twrSlime2.jpeg", 3), new Tower(LAVA,"Modest Magma Spire", "images/twrLava2.jpeg", 3), new Tower(ETHER,"Modest Crystal Cryochamber", "images/twrEther2.jpeg", 3),
                 new Tower(GOO,"Giant Gore Goliath", "images/twrSlime3.jpeg", 5), new Tower(LAVA,"Giant Vesuvian Volcanizer", "images/twrLava3.jpeg", 5), new Tower(ETHER,"Giant Crystal Cascade", "images/twrEther3.jpeg", 5)));
         this.mainTowerList.addAll(List.of(new Tower(GOO,"Small Gremlin Grinder", "images/twrSlime1.jpeg", 1), new Tower(LAVA,"Small Lava well", "images/twrLava1.jpeg", 1), new Tower(ETHER,"Small Crystal Crucible", "images/twrEther2.jpeg", 1)));
-        this.setCombinedTowerList();
         this.round = 0;
+        this.money = 500f;
         launchBackground();
 
     }
@@ -50,9 +50,10 @@ public class Player {
     private boolean fParent = false;
     private List<Tower> mainTowerList = new ArrayList<>();
     private List<Tower> reserveTowerList = new ArrayList<>();
-    private List<Tower> combinedTowerList = new ArrayList<>();
     private String pfp;
+    private String error;
     private Integer lives;
+    private Float money;
     private Integer rounds;
     private Integer round;
     private Selectable selected;
@@ -69,17 +70,48 @@ public class Player {
     private final Consumer<Player> mainScreenLauncher;
     private final Runnable clearScreen;
 
-    public void sell(Tower tower) {
-
+    public void sell(Sellable item) {
+        if (item instanceof Tower) {
+            if (mainTowerList.contains(item)) {
+                mainTowerList.remove(item);
+            }
+            else if (reserveTowerList.contains(item)) {
+                reserveTowerList.remove(item);
+            }
+        }
+//        else if (item instanceof SomeOtherType) {
+//            // Handle other types similarly
+//        }
+        money += item.getPrice();
     }
-    public void buy(Tower tower) {
+    public boolean buy(Buyable item) {
+        if (item instanceof Tower) {
+            if (mainTowerList.size() < 5) {
+                mainTowerList.add((Tower) item);
+            } else if (reserveTowerList.size() < 5) {
+                reserveTowerList.add((Tower) item);
+            } else {
+                return false;
+            }
 
+//        } else if (item instanceof SomeOtherType) {
+////            // Handle other types similarly
+////        }
+        }else{
+            return false;
+        }
+//
+        money -= item.getCost();
+        return true;
     }
     public Integer getLives() {
         return this.lives;
     }
     public boolean getfParent() {
         return this.fParent;
+    }
+    public Float getMoney() {
+        return this.money;
     }
     public void setfParent(boolean flag) {
         this.fParent = flag;
@@ -89,14 +121,6 @@ public class Player {
     }
     public void setBackgroundController(BackgroundController controller) {
         this.controller = controller;
-    }
-    public void setCombinedTowerList() {
-        this.combinedTowerList = new ArrayList<>();
-        this.combinedTowerList.addAll(this.mainTowerList);
-        this.combinedTowerList.addAll(this.reserveTowerList);
-    }
-    public List<Tower> getCombinedTowerList() {
-        return this.combinedTowerList;
     }
     public void launchSetupScreen() {
         if (controller != null) {
