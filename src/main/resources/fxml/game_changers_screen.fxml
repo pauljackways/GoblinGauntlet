@@ -20,11 +20,11 @@
     <RowConstraints />
       <RowConstraints vgrow="NEVER" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints vgrow="NEVER" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints />
     <RowConstraints vgrow="NEVER" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints />
   </rowConstraints>
    <children>
@@ -41,7 +41,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label text="Positive fate enchancements (purchase any)" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+      <Label text="Positive fate enchancements (purchase any)" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="5">
          <font>
             <Font size="18.0" />
          </font>
@@ -49,7 +49,7 @@
             <Insets top="15.0" />
          </opaqueInsets>
       </Label>
-      <Label text="Enchantment of doom (Must choose one)" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+      <Label text="Enchantment of doom (Must choose one)" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3">
          <font>
             <Font size="18.0" />
          </font>
@@ -66,11 +66,11 @@
          <image>
             <Image url="@../images/baby.jpeg" />
          </image></ImageView>
-      <ImageView fx:id="ImgSlow" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onImgSlow" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+      <ImageView fx:id="ImgSlow" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onImgSlow" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
          <image>
             <Image url="@../images/slow.jpeg" />
          </image></ImageView>
-      <ImageView fx:id="ImgFast" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onImgFast" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+      <ImageView fx:id="ImgFast" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onImgFast" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
          <image>
             <Image url="@../images/speed.jpeg" />
          </image></ImageView>
@@ -78,19 +78,19 @@
          <image>
             <Image url="@../images/medium.jpeg" />
          </image></ImageView>
-      <ImageView fx:id="ImgSabo" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onImgSabo" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+      <ImageView fx:id="ImgSabo" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onImgSabo" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
          <image>
             <Image url="@../images/sabotage.jpeg" />
          </image></ImageView>
-      <ImageView fx:id="ImgMoney" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onImgMoney" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+      <ImageView fx:id="ImgMoney" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onImgMoney" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
          <image>
             <Image url="@../images/rich.jpeg" />
          </image></ImageView>
-      <ImageView fx:id="ImgDist" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onImgDist" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4">
+      <ImageView fx:id="ImgDist" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onImgDist" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="6">
          <image>
             <Image url="@../images/distribution.jpeg" />
          </image></ImageView>
-      <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="7">
+      <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4">
          <image>
             <Image url="@../images/OIG4..jpeg" />
          </image></ImageView>
@@ -98,7 +98,7 @@
          <image>
             <Image url="@../images/big.jpeg" />
          </image></ImageView>
-      <Button fx:id="BtnBuyPwrUp" mnemonicParsing="false" onAction="#onBtnBuyPwrUp" text="Purchase enchantment" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+      <Button fx:id="BtnBuyPwrUp" mnemonicParsing="false" onAction="#onBtnBuyPwrUp" text="Purchase enchantment" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
