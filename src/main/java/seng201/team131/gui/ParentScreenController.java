@@ -39,8 +39,9 @@ public class ParentScreenController extends Controller {
     }
     @FXML
     public void onBtnMainScreen() {
-        player.setfParent(false);
-        
+        if (player != null) {
+            this.player.launchMainScreen();
+        }
     }
 
     @FXML
