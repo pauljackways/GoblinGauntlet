@@ -53,6 +53,7 @@ public class UserPaneController extends Controller{
     private void updatePlayerInfo() {
         Platform.runLater(() -> {
             setLblName(player.getName());
+            //setLblItems(player.getItemsList());
             setLblMoney(player.getMoney().toString());
             if (player.getMoney() < 0) {
                 LblMoney.setTextFill(Color.RED);
