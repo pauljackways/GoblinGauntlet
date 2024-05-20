@@ -1,13 +1,13 @@
 package seng201.team131;
 
-public class cart {
+public class Cart {
     private Integer capacity;
     private EnumResources resourceType;
     private Integer speed;
     private Integer fillLevel;
 
     // Constructor
-    public cart() {
+    public Cart() {
         // Initialize default values
         this.capacity = 0;
         this.resourceType = null;

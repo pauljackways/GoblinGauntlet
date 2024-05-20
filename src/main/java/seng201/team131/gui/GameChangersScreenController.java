@@ -1,7 +1,7 @@
 package seng201.team131.gui;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import seng201.team131.Difficulty;
+import javafx.scene.image.ImageView;
 import seng201.team131.Player;
 import seng201.team131.Round;
 public class GameChangersScreenController extends Controller {
@@ -10,23 +10,54 @@ public class GameChangersScreenController extends Controller {
         player = newPlayer;
     }
     @FXML
-    private Button BtnDiffEasy;
+    private ImageView ImgSabo;
     @FXML
-    private Button BtnDiffMed;
+    public void onImgSabo() {
+
+    };
     @FXML
-    private Button BtnDiffHard;
+    private ImageView ImgMoney;
     @FXML
-    private Button BtnTradeOff1;
+    public void onImgMoney() {
+
+    };
     @FXML
-    private Button BtnTradeOff2;
+    private ImageView ImgDist;
     @FXML
-    private Button BtnTradeOff3;
+    public void onImgDist() {
+
+    };
     @FXML
-    private Button BtnPwrUp1;
+    private ImageView ImgFast;
     @FXML
-    private Button BtnPwrUp2;
+    public void onImgFast() {
+
+    };
     @FXML
-    private Button BtnPwrUp3;
+    private ImageView ImgHard;
+    @FXML
+    public void onImgHard() {
+
+    };
+    @FXML
+    private ImageView ImgMed;
+    @FXML
+    public void onImgMed() {
+
+    };
+    @FXML
+    private ImageView ImgEasy;
+    @FXML
+    public void onImgEasy() {
+
+    };
+    @FXML
+    private Button ImgSlow;
+    @FXML
+    public void onImgSlow() {
+
+    };
+
     public GameChangersScreenController() {
         //go FX yourself
     }

@@ -12,7 +12,7 @@ public class Round {
     private Integer cartSpeed;
     private Integer cartCount;
     private Float moneyThisRound;
-    private List<cart> carts;
+    private List<Cart> carts;
     private Integer cartCapacity;
     private Integer speed;
     private Integer favourResource;
@@ -66,7 +66,7 @@ public class Round {
         }
 
         for (int i = 0; i < this.cartCount; i++) {
-            cart newCart = new cart();
+            Cart newCart = new Cart();
             carts.add(newCart);
             newCart.setCapacity(cartCapacity);
             newCart.setSpeed(speed);
@@ -108,8 +108,8 @@ public class Round {
             System.out.println(newCart.getAllAttributes());
         }
     }
-
-    public List<cart> getCarts() {
+    
+    public List<Cart> getCarts() {
         return carts;
     }
 
