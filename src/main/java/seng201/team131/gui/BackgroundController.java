@@ -3,7 +3,7 @@ package seng201.team131.gui;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-//import javafx.scene.control.Button;
+
 import javafx.scene.layout.Pane;
 import seng201.team131.Player;
 import java.lang.reflect.InvocationTargetException;
@@ -34,6 +34,7 @@ public class BackgroundController extends Controller {
         player.launchSetupScreen();
     }
     public void loadColumn(int columnIndex, String fxmlFile, Class<?> controllerClass, Player player) {
+        //ChatGPT - Figure this out!!!!!!!!!!!
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
             Parent pane = loader.load();
