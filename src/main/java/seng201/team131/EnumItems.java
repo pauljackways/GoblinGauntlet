@@ -1,8 +1,8 @@
 package seng201.team131;
 
 public enum EnumItems {
-    REPAIR("Fixerer Thingy"),
-    UPGRADE("Leveler Upperer");
+    REPAIR("Gremlins, daily hire"),
+    UPGRADE("building supplies (free orc labour)");
     private final String itemName;
     EnumItems(String itemName) {
         this.itemName = itemName;

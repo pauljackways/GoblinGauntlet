@@ -21,13 +21,13 @@ public class Item implements Buyable, Selectable {
         switch(type) {
             case REPAIR -> {
                 this.cost = 1000f;
-                this.description = "Hire some gremlins to\n repair one of your towers.\n Repairs 20% back to working order.";
+                this.description = "Hire some gremlins to\n repair one of your towers.\n\nRepairs 20% back to working order.";
                 this.image = "images/repair.jpeg";
                 break;
             }
             case UPGRADE ->  {
                 this.cost = 500f;
-                this.description = "Adds another level to the top of the tower";
+                this.description = "Order orcs to build you another\nlevel on one of your towers.\n\nFill more carts at greater volumes";
                 this.image = "images/upgrade.jpeg";
                 break;
             }
@@ -77,6 +77,6 @@ public class Item implements Buyable, Selectable {
 
     @Override
     public String getDescription() {
-        return "Name: " + getName() + "\nDescription: " + description + "\nCost:" + getCost().toString();
+        return "\n" + description + "\n\nCost: $" + getCost().toString();
     }
 }
