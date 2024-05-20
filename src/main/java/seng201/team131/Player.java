@@ -47,6 +47,8 @@ public class Player {
         launchBackground();
     }
     private List<Item> defaultItems = new ArrayList<>();
+    private List<Item> itemList = new ArrayList<>();
+
     private BackgroundController controller;
     private String name;
     private boolean fParent = false;
@@ -81,9 +83,6 @@ public class Player {
                 reserveTowerList.remove(item);
             }
         }
-//        else if (item instanceof SomeOtherType) {
-//            // Handle other types similarly
-//        }
         money += item.getPrice();
     }
     public boolean buy(Buyable item) {
@@ -95,10 +94,8 @@ public class Player {
             } else {
                 return false;
             }
-
-//        } else if (item instanceof SomeOtherType) {
-////            // Handle other types similarly
-////        }
+        } else if (item instanceof Item) {
+            itemList.add((Item) item);
         }else{
             return false;
         }
@@ -227,6 +224,9 @@ public class Player {
         this.rounds = rounds;
     }
 
+    public List<Item> getItemList() {
+        return itemList;
+    }
     public List<Tower> getMainTowerList() {
         return mainTowerList;
     }
