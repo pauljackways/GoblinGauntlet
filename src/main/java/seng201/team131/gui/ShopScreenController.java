@@ -128,6 +128,9 @@ public class ShopScreenController extends Controller {
         List<Tower> mainTowerList = player.getmainTowerList();
         List<Tower> reserveTowerList = player.getReserveTowerList();
         List<Tower> combineTowerList = new ArrayList<>();
+        combineTowerList.addAll(mainTowerList);
+        combineTowerList.addAll(reserveTowerList);
+
 
         LstSell.getItems().clear();
         List<Tower> towerList = combineTowerList;
