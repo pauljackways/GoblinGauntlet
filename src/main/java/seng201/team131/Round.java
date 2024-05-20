@@ -3,87 +3,97 @@ package seng201.team131;
 //import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import seng201.team131.Player;
 import java.util.Random;
 
 import static seng201.team131.EnumResources.*;
 
 public class Round {
-    private Integer distance;
+    private Integer cartSpeed;
     private Integer cartCount;
     private Float moneyThisRound;
     private List<cart> carts;
     private Integer cartCapacity;
     private Integer speed;
     private Integer favourResource;
-    
-
+    private Integer currentRound;
+    private Integer round;
     private Double chanceETHER;
     private Double chanceLava;
-    @SuppressWarnings("unused")
     private Double chanceGoo;
+    private EnumDifficulty difficulty;
+    // private Player player; 
 
+    private Random random; 
 
-
-    public Round() {
+    public Round(Integer round) {
+        //this.round = round; // Store the player instance
         carts = new ArrayList<>();
-        favourResource = 2;
-        
+        favourResource = 2; // is to be changed based on the prompt given to the user
+        random = new Random(); // Initialize the random variable
     }
+    public Round() {
 
+    }
+  
+    public void applyDifficulty() {
 
-    public void applyDifficulty(Difficulty difficulty) {
+        //int roundNumber = player.getRound();
         switch (difficulty) {
             case EASY:
-                this.distance = 5;
+                this.cartSpeed = 5;
                 this.cartCount = 5;
                 cartCapacity = 5;
                 speed = 5;
-                distance = 5;
+                cartSpeed = 5;
                 break;
 
             case MEDIUM:
-                this.distance = 10;
+                this.cartSpeed = 10;
                 this.cartCount = 10;
                 cartCapacity = 10;
                 speed = 10;
-                distance = 10;
+                cartSpeed = 10;
                 break;
 
             case HARD:
-                this.distance = 15;
+                this.cartSpeed = 15;
                 this.cartCount = 15;
                 cartCapacity = 15;
                 speed = 15;
-                distance = 15;
+                cartSpeed = 15;
                 break;
         }
 
         for (int i = 0; i < this.cartCount; i++) {
             cart newCart = new cart();
             carts.add(newCart);
-            newCart.setCapacity(cartCapacity); 
-            newCart.setSpeed(speed); 
+            newCart.setCapacity(cartCapacity);
+            newCart.setSpeed(speed);
             newCart.setFillLevel(0);
             newCart.setResourceType(GOO);
-            Random random = new Random();
             double randomValue = random.nextDouble();
 
-            if(favourResource == 0){
+            if (favourResource == 0) {
                 chanceETHER = 0.6;
                 chanceLava = 0.2;
                 chanceGoo = 0.2;
             }
-            if(favourResource == 1){
+            if (favourResource == 1) {
                 chanceETHER = 0.2;
                 chanceLava = 0.6;
                 chanceGoo = 0.2;
             }
-            if(favourResource == 2){
+            if (favourResource == 2) {
                 chanceETHER = 0.2;
                 chanceLava = 0.2;
                 chanceGoo = 0.6;
             }
-
+            if (favourResource == 3) {
+                chanceETHER = 0.3333;
+                chanceLava = 0.3333;
+                chanceGoo = 0.3333;
+            }
 
             if (randomValue < chanceETHER) {
                 newCart.setResourceType(ETHER);
@@ -93,26 +103,24 @@ public class Round {
                 newCart.setResourceType(GOO);
             }
 
-            
-            //System.out.println(randomValue);
-            //System.out.println(newCart.getResourceType());
+            // System.out.println(randomValue);
+            // System.out.println(newCart.getResourceType());
             System.out.println(newCart.getAllAttributes());
-            
         }
     }
-    
+
     public List<cart> getCarts() {
         return carts;
     }
-        
-    
-     public static void main(String[] args) {
-         Round round = new Round();
-         round.applyDifficulty(Difficulty.EASY);
-         round.applyDifficulty(Difficulty.MEDIUM);
-         round.applyDifficulty(Difficulty.HARD);
-     }
+
+    public EnumDifficulty getDifficulty(){
+        return difficulty;
+    }
+
+    public void setDifficulty(EnumDifficulty difficulty){
+        this.difficulty = difficulty;
+    }
 }
 
-
-
+// round.applyDifficulty(Difficulty.EASY);
+// This is the call to get cars of a said difficulty, you then have to call getCarts.

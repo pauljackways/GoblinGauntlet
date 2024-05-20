@@ -1,6 +1,6 @@
 package seng201.team131;
 
-public enum Difficulty {
+public enum EnumDifficulty {
     EASY, MEDIUM, HARD
 }
 

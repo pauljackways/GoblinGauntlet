@@ -9,6 +9,7 @@ import java.util.function.Consumer;
 import static seng201.team131.EnumItems.*;
 import static seng201.team131.EnumResources.*;
 
+
 public class Player {
     public Player(
             Consumer<Player> backgroundLauncher,
@@ -26,6 +27,8 @@ public class Player {
         this.userPaneLauncher = userPaneLauncher;
         this.setupScreenLauncher = setupScreenLauncher;
         this.parentScreenLauncher = parentScreenLauncher;
+        this.round = 0;
+        this.currentRound = new Round(this.getRound());
         this.infoPaneLauncher = infoPaneLauncher;
         this.shopScreenLauncher = shopScreenLauncher;
         this.towerScreenLauncher = towerScreenLauncher;
@@ -42,8 +45,10 @@ public class Player {
                 new Tower(GOO,"Modest Gremlin Macerator", "images/twrSlime2.jpeg", 3), new Tower(LAVA,"Modest Magma Spire", "images/twrLava2.jpeg", 3), new Tower(ETHER,"Modest Crystal Cryochamber", "images/twrEther2.jpeg", 3),
                 new Tower(GOO,"Giant Gore Goliath", "images/twrSlime3.jpeg", 5), new Tower(LAVA,"Giant Vesuvian Volcanizer", "images/twrLava3.jpeg", 5), new Tower(ETHER,"Giant Crystal Cascade", "images/twrEther3.jpeg", 5)));
         this.mainTowerList.addAll(List.of(new Tower(GOO,"Small Gremlin Grinder", "images/twrSlime1.jpeg", 1), new Tower(LAVA,"Small Lava well", "images/twrLava1.jpeg", 1), new Tower(ETHER,"Small Crystal Crucible", "images/twrEther2.jpeg", 1)));
-        this.round = 0;
         this.money = 500f;
+
+        //this.currentRound = new Round(this);
+        
         launchBackground();
     }
     private List<Item> defaultItems = new ArrayList<>();
@@ -71,6 +76,7 @@ public class Player {
     private final Consumer<Player> endScreenLauncher;
     private final Consumer<Player> mainScreenLauncher;
     private final Runnable clearScreen;
+    private Round currentRound;
 
     public void sell(Sellable item) {
         if (item instanceof Tower) {
@@ -219,6 +225,7 @@ public class Player {
     public void setRound(Integer round) {
         this.round = round;
     }
+    
     public Integer getRounds() {
         return rounds;
     }
@@ -233,6 +240,14 @@ public class Player {
 
     public List<Tower> getReserveTowerList() {
         return reserveTowerList;
+    }
+
+    public void setCurrentRounds() {
+        this.currentRound = currentRound;
+    }
+
+    public Round getCurrentRounds(){
+        return currentRound;
     }
 
 //    public void addTower(Tower tower) {
