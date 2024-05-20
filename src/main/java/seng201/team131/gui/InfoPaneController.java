@@ -34,7 +34,7 @@ public class InfoPaneController extends Controller {
     }
     private void startPeriodicUpdate() {
         executorService2 = Executors.newSingleThreadScheduledExecutor();
-        executorService2.scheduleAtFixedRate(this::updateInfo, 0, 1, TimeUnit.SECONDS);
+        executorService2.scheduleAtFixedRate(this::updateInfo, 0, 100, TimeUnit.MILLISECONDS);
     }
     @FXML
     public void initialize() {
@@ -46,9 +46,12 @@ public class InfoPaneController extends Controller {
     private void updateInfo() {
         Platform.runLater(() -> {
             if (player.getSelected() != null) {
+                LblName.setText(player.getSelected().getName());
                 LblDescription.setText(player.getSelected().getDescription());
                 ImgInfo.setImage(new Image(player.getSelected().getImage()));
             } else {
+                LblName.setText(null);
+                ImgInfo.setImage(null);
                 LblDescription.setText("");
             }
         });

@@ -38,7 +38,7 @@ public class UserPaneController extends Controller{
         executorService = Executors.newSingleThreadScheduledExecutor();
 
         // Schedule the task to run every 1 second with an initial delay of 0 seconds
-        executorService.scheduleAtFixedRate(this::updatePlayerInfo, 0, 1, TimeUnit.SECONDS);
+        executorService.scheduleAtFixedRate(this::updatePlayerInfo, 0, 100, TimeUnit.MILLISECONDS);
     }
     @FXML
     public void initialize() {
@@ -50,7 +50,14 @@ public class UserPaneController extends Controller{
     }
     private void updatePlayerInfo() {
         setLblName(player.getName());
+        setLblLives(player.getLives().toString());
+        setLblTowers(Integer.toString(player.getCombinedTowerList().size()));
         setLblRound(player.getRound().toString() + " of " + player.getRounds().toString());
+        if (player.getfParent()) {
+            BtnBack.setVisible(false);
+        } else {
+            BtnBack.setVisible(true);
+        }
     }
     @FXML
     private void onBack() {

@@ -32,19 +32,27 @@ public class Player {
         this.endScreenLauncher = endScreenLauncher;
         this.mainScreenLauncher = mainScreenLauncher;
         this.clearScreen = clearScreen;
+        this.lives = 3;
         this.name = "Smith";
         this.selected = null;
-        this.defaultTowers.addAll(List.of(new Tower(GOO,"Small Gremlin Grinder", "images/twrSlime1.jpeg"), new Tower(LAVA,"Small Lava well", "images/twrLava1.jpeg"), new Tower(ETHER,"Small Crystal Crucible", "images/twrEther1.jpeg")));
-        this.mainTowerList.addAll(List.of(new Tower(GOO,"Small Gremlin Grinder", "images/twrSlime1.jpeg"), new Tower(ETHER,"Small Crystal Crucible", "images/twrEther1.jpeg"), new Tower(LAVA,"Small Lava well", "images/twrLava1.jpeg")));
+        this.fParent = false;
+        this.defaultTowers.addAll(List.of(new Tower(GOO,"Small Gremlin Grinder", "images/twrSlime1.jpeg", 1), new Tower(LAVA,"Small Lava well", "images/twrLava1.jpeg", 1), new Tower(ETHER,"Small Crystal Crucible", "images/twrEther1.jpeg", 1),
+                new Tower(GOO,"Modest Gremlin Macerator", "images/twrSlime2.jpeg", 3), new Tower(LAVA,"Modest Magma Spire", "images/twrLava2.jpeg", 3), new Tower(ETHER,"Modest Crystal Cryochamber", "images/twrEther2.jpeg", 3),
+                new Tower(GOO,"Giant Gore Goliath", "images/twrSlime3.jpeg", 5), new Tower(LAVA,"Giant Vesuvian Volcanizer", "images/twrLava3.jpeg", 5), new Tower(ETHER,"Giant Crystal Cascade", "images/twrEther3.jpeg", 5)));
+        this.mainTowerList.addAll(List.of(new Tower(GOO,"Small Gremlin Grinder", "images/twrSlime1.jpeg", 1), new Tower(LAVA,"Small Lava well", "images/twrLava1.jpeg", 1), new Tower(ETHER,"Small Crystal Crucible", "images/twrEther2.jpeg", 1)));
+        this.setCombinedTowerList();
         this.round = 0;
         launchBackground();
 
     }
     private BackgroundController controller;
     private String name;
+    private boolean fParent = false;
     private List<Tower> mainTowerList = new ArrayList<>();
     private List<Tower> reserveTowerList = new ArrayList<>();
+    private List<Tower> combinedTowerList = new ArrayList<>();
     private String pfp;
+    private Integer lives;
     private Integer rounds;
     private Integer round;
     private Selectable selected;
@@ -67,13 +75,29 @@ public class Player {
     public void buy(Tower tower) {
 
     }
+    public Integer getLives() {
+        return this.lives;
+    }
+    public boolean getfParent() {
+        return this.fParent;
+    }
+    public void setfParent(boolean flag) {
+        this.fParent = flag;
+    }
     public void launchBackground() {
         backgroundLauncher.accept(this);
     }
     public void setBackgroundController(BackgroundController controller) {
         this.controller = controller;
     }
-    
+    public void setCombinedTowerList() {
+        this.combinedTowerList = new ArrayList<>();
+        this.combinedTowerList.addAll(this.mainTowerList);
+        this.combinedTowerList.addAll(this.reserveTowerList);
+    }
+    public List<Tower> getCombinedTowerList() {
+        return this.combinedTowerList;
+    }
     public void launchSetupScreen() {
         if (controller != null) {
             controller.clearColumn(1);
@@ -161,6 +185,9 @@ public class Player {
         this.selected = selected;
     }
     public Selectable getSelected() {
+        if (selected == null) {
+            return null;
+        }
         return selected;
     }
 
@@ -175,7 +202,7 @@ public class Player {
         this.rounds = rounds;
     }
 
-    public List<Tower> getmainTowerList() {
+    public List<Tower> getMainTowerList() {
         return mainTowerList;
     }
 
@@ -183,9 +210,9 @@ public class Player {
         return reserveTowerList;
     }
 
-    public void addTower(Tower tower) {
-        this.mainTowerList.add(tower);
-    }
+//    public void addTower(Tower tower) {
+//        this.mainTowerList.add(tower);
+//    }
 
     public List<Tower> getDefaultTowers() {
         return defaultTowers;

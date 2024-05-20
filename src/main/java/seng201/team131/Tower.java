@@ -23,16 +23,31 @@ public class Tower implements Buyable, Sellable, Selectable {
     }
 
     /// starting towers ///
-    public Tower(EnumResources resource, String name, String image) {
+    public Tower(EnumResources resource, String name, String image, Integer level) {
         this.name = name;
         this.cost = 100f;
-        this.level = 1;
-        this.levelUpCost = 50;
+        this.level = level;
+        this.levelUpCost = 500;
         this.image = image;
         this.health = 1.0f; // Initialize damage to 0
-        this.resources.put(GOO, new Resource(1f, 1, 1));
-        this.resources.put(LAVA, new Resource(1f, 1, 1));
-        this.resources.put(ETHER, new Resource(1f, 1, 1));
+        this.resources.put(EnumResources.ETHER, new Resource(0f, 0, 0));
+        this.resources.put(EnumResources.LAVA, new Resource(0f, 0, 0));
+        this.resources.put(EnumResources.GOO, new Resource(0f, 0, 0));
+        switch (resource) {
+            case ETHER:
+                this.resources.put(resource, new Resource((float) level, 1, level));
+                break;
+            case LAVA:
+                this.resources.put(resource, new Resource((float) level, 1, level));
+                break;
+            case GOO:
+                this.resources.put(resource, new Resource((float) level, 1, level));
+                break;
+            default:
+                this.resources.put(EnumResources.GOO, new Resource(0f, 0, 0));
+                break;
+        }
+
 
 
     }
@@ -54,13 +69,19 @@ public class Tower implements Buyable, Sellable, Selectable {
         resources.put(resourceType, newResource);
     }
     public String getDescription() {
-        String description = getName() + "\nLevel: " + getLevel() + "\nDispenses:\n\n";
+        String description = "\nLevel: " + getLevel() + "\n\n";
         for (int i = 0; i<3; i++) {
-            description += EnumResources.values()[i].getResourceName() + ": \n" + this.getResource(EnumResources.values()[i]).getValue() + "\n" + this.getResource(EnumResources.values()[i]).getReload() + " second reload";
-            if (i!=2) {
-                description+= ",\n\n";
+            if (this.getResource(EnumResources.values()[i]).getValue() != 0) {
+                description += EnumResources.values()[i].getResourceName() + ": \n" + this.getResource(EnumResources.values()[i]).getValue() +
+                        " Tonnes\n" + this.getResource(EnumResources.values()[i]).getReload() + " second reload";
+                if (i != 2) {
+                    description += ",\n\n";
+                } else {
+                    description += "\n\n";
+                }
             }
         }
+        description+= "Cost: \n$" + getCost();
         return description;
 
     }
