@@ -16,9 +16,6 @@ public class GameChangersScreenController extends Controller {
     private Integer powerUpSelected = null;
     private Integer favourResource;
 
-    
-
-    
     @FXML
     private ImageView ImgEasy;
     @FXML
@@ -102,43 +99,60 @@ public class GameChangersScreenController extends Controller {
     @FXML
     public void onImgSlow() {
         ImgSlow.setOpacity(0.5);
+        ImgMoney.setOpacity(1);
+        ImgDist.setOpacity(1);
         powerUpSelected = 0;
         player.setPwrUps(SLOW);
     }
 
     @FXML
     public void onImgMoney() {
+        ImgSlow.setOpacity(1);
         ImgMoney.setOpacity(0.5);
+        ImgDist.setOpacity(1);
         powerUpSelected = 1;
         player.setPwrUps(MONEY);
     }
 
     @FXML
     public void onImgDist() {
+        ImgSlow.setOpacity(1);
+        ImgMoney.setOpacity(1);
         ImgDist.setOpacity(0.5);
         powerUpSelected = 2;
         player.setPwrUps(DISTRIBUTION);
     }
     @FXML
     public void onBtnBuyPwrUp() {
-        if(powerUpSelected == 0){
+        if(powerUpSelected == null){
+            
+        }
+        else if(powerUpSelected == 0){
             ImgSlow.setOpacity(0.5);
             ImgSlow.setDisable(true);
-            
-            
-        }
-        else if(powerUpSelected == 0){
-            ImgMoney.setOpacity(0.5);
             ImgMoney.setDisable(true);
+            ImgDist.setDisable(true);
+            
             
         }
-        else if(powerUpSelected == 0){
-            ImgDist.setOpacity(0.5);
+        else if(powerUpSelected == 1){
+            ImgMoney.setOpacity(0.5);
+            ImgSlow.setDisable(true);
+            ImgMoney.setDisable(true);
             ImgDist.setDisable(true);
+            
         }
-        else{
-            //Do Nothing
+        else if(powerUpSelected == 2){
+            ImgDist.setOpacity(0.5);
+            ImgSlow.setDisable(true);
+            ImgMoney.setDisable(true);
+            ImgDist.setDisable(true);
+
+            Random random = new Random();
+            int randomResouce = random.nextInt(3);
+            player.setFavorResource(randomResouce);
         }
+        
     }
     
 
@@ -182,6 +196,9 @@ public class GameChangersScreenController extends Controller {
                 if(indexPwrup == 6){ImgSlow.setOpacity(0.5);}
                 if(indexPwrup == 7){ImgMoney.setOpacity(0.5);}
                 if(indexPwrup == 8){ImgDist.setOpacity(0.5);}
+                ImgSlow.setDisable(true);
+                ImgMoney.setDisable(true);
+                ImgDist.setDisable(true);
             }
         }
         

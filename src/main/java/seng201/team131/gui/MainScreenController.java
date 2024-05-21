@@ -108,4 +108,7 @@ public class MainScreenController extends Controller {
             executorService.scheduleAtFixedRate(this::newCart, 0, thisRound.getSpeed(), TimeUnit.MILLISECONDS);
         }
     }
+    public void gameTick() {
+
+    }
 }
