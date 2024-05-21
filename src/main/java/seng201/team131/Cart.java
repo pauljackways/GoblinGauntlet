@@ -61,6 +61,10 @@ public class Cart implements Runnable {
         return resourceType;
     }
 
+    public Integer getFavourResource(){
+        return favourResource;
+    }
+
     public Float getFillLevel() {
         return fillLevel;
     }

@@ -7,8 +7,11 @@ import static seng201.team131.EnumGamechangers.*;
 
 import java.util.Random;
 
+import seng201.team131.EnumGamechangers;
+import seng201.team131.Gamechangers;
 import seng201.team131.Player;
 import seng201.team131.Round;
+import seng201.team131.Selectable;
 
 
 public class GameChangersScreenController extends Controller {
@@ -54,6 +57,7 @@ public class GameChangersScreenController extends Controller {
         ImgMed.setOpacity(0.5);
         ImgHard.setOpacity(0.5);
         player.setDifficulty(EASY);
+        player.setSelected((Selectable) new Gamechangers(EASY, player.getFavourResource()));
     }
 
     @FXML
@@ -62,6 +66,7 @@ public class GameChangersScreenController extends Controller {
         ImgMed.setOpacity(1);
         ImgHard.setOpacity(0.5);
         player.setDifficulty(MEDIUM);
+        player.setSelected((Selectable) new Gamechangers(MEDIUM, player.getFavourResource()));
     }
 
     @FXML
@@ -70,6 +75,7 @@ public class GameChangersScreenController extends Controller {
         ImgMed.setOpacity(0.5);
         ImgHard.setOpacity(1);
         player.setDifficulty(HARD);
+        player.setSelected((Selectable) new Gamechangers(HARD, player.getFavourResource()));
     }
 
     @FXML
@@ -78,6 +84,7 @@ public class GameChangersScreenController extends Controller {
         ImgSabo.setOpacity(0.5);
         ImgTheft.setOpacity(0.5);
         player.setTradeOffs(FAST);
+        player.setSelected((Selectable) new Gamechangers(FAST, player.getFavourResource()));
     }
 
     @FXML
@@ -86,6 +93,7 @@ public class GameChangersScreenController extends Controller {
         ImgSabo.setOpacity(1);
         ImgTheft.setOpacity(0.5);
         player.setTradeOffs(SABOTAGE);
+        player.setSelected((Selectable) new Gamechangers(SABOTAGE, player.getFavourResource()));
     }
 
     @FXML
@@ -94,6 +102,7 @@ public class GameChangersScreenController extends Controller {
         ImgSabo.setOpacity(0.5);
         ImgTheft.setOpacity(1);
         player.setTradeOffs(THEFT);
+        player.setSelected((Selectable) new Gamechangers(THEFT, player.getFavourResource()));
     }
 
     @FXML
@@ -103,6 +112,7 @@ public class GameChangersScreenController extends Controller {
         ImgDist.setOpacity(1);
         powerUpSelected = 0;
         player.setPowerUp(SLOW);
+        player.setSelected((Selectable) new Gamechangers(SLOW, player.getFavourResource()));
     }
 
     @FXML
@@ -112,6 +122,7 @@ public class GameChangersScreenController extends Controller {
         ImgDist.setOpacity(1);
         powerUpSelected = 1;
         player.setPowerUp(MONEY);
+        player.setSelected((Selectable) new Gamechangers(MONEY, player.getFavourResource()));
     }
 
     @FXML
@@ -121,6 +132,7 @@ public class GameChangersScreenController extends Controller {
         ImgDist.setOpacity(0.5);
         powerUpSelected = 2;
         player.setPowerUp(DISTRIBUTION);
+        player.setSelected((Selectable) new Gamechangers(DISTRIBUTION, player.getFavourResource()));
     }
     @FXML
     public void onBtnBuyPwrUp() {
@@ -154,10 +166,20 @@ public class GameChangersScreenController extends Controller {
         }
         
     }
+    
+
+
+
+
+    
+
+        
+    
+
     public void initialize(){
         if (player != null) {
-            Random random = new Random();
-            int favourResource = random.nextInt(3);
+            player.launchInfoPane();
+
 
             ImgEasy.setOpacity(0.5);
             ImgMed.setOpacity(0.5);

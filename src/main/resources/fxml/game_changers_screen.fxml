@@ -41,7 +41,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label text="Positive fate enchancements (purchase any)" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+      <Label text="Positive fate enchancements (purchase ones)" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="5">
          <font>
             <Font size="18.0" />
          </font>

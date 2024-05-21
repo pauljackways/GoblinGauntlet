@@ -4,6 +4,7 @@ import seng201.team131.gui.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.function.Consumer;
 
 import static seng201.team131.EnumItems.*;
@@ -81,7 +82,9 @@ public class Player {
     private final Consumer<Player> mainScreenLauncher;
     private final Runnable clearScreen;
     private Round currentRound;
-    private Integer favorResource;
+    
+    Random random = new Random();
+    int favorResource = random.nextInt(3);
 
     public void sell(Sellable item) {
         if (item instanceof Tower) {
@@ -177,6 +180,7 @@ public class Player {
             controller.loadColumn(1, "/fxml/game_changers_screen.fxml", GameChangersScreenController.class, this);
         }
         gameChangersScreenLauncher.accept(this);
+        
     }
     public void launchMainScreen() {
         if (controller != null) {
@@ -284,6 +288,7 @@ public class Player {
     }
 
     public Integer getFavourResource() {
+        
         return favorResource;
     }
 

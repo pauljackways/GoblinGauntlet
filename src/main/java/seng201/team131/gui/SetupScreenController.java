@@ -1,6 +1,7 @@
 package seng201.team131.gui;
 
 import java.util.Arrays;
+import java.util.Random;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,6 +9,8 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import seng201.team131.EnumGamechangers;
+import seng201.team131.Gamechangers;
 import seng201.team131.Player;
 
 public class SetupScreenController extends Controller{
@@ -52,6 +55,7 @@ public class SetupScreenController extends Controller{
         // Default constructor for FXLoader's sick and twisted desires
     }
     public void onBtnPlayStartScreen() {
+        Gamechangers gamechangers = new Gamechangers(EnumGamechangers.EASY, player.getFavourResource());
         playerName = TxtFldName.getText();
         numRounds = (Integer) (int) SldrRounds.getValue();
         if (playerName.isEmpty()) {
@@ -82,6 +86,10 @@ public class SetupScreenController extends Controller{
         player.setPfp(variableToPass);
         player.setName(playerName);
         this.player.launchParentScreen();
+
+        Random random = new Random();
+        int randomResouce = random.nextInt(3);
+        player.setFavorResource(randomResouce);
     }
     
 

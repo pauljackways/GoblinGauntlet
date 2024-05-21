@@ -1,15 +1,15 @@
 package seng201.team131;
 
 public enum EnumGamechangers {
-    EASY("noob"),
-    MEDIUM("cool :)"),
+    EASY("Easy"),
+    MEDIUM("Medium"),
     HARD("level 100 boss"),
-    FAST(""),
-    SABOTAGE(""),
-    THEFT(""),
-    SLOW(""),
-    MONEY(""),
-    DISTRIBUTION("");
+    FAST("Cart Speed Up"),
+    SABOTAGE("Name Here"),
+    THEFT("He is stealing your \nresources!!!"),
+    SLOW("Slow Down Carts"),
+    MONEY("More Money!!!"),
+    DISTRIBUTION("Random Resource Nerf");
     
 
     private final String gamechangerName;
