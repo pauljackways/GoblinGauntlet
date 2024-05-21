@@ -85,7 +85,7 @@ public class MainScreenController extends Controller {
             thisRound = new Round(player.getRound());
             thisRound.setTowers(player.getMainTowerList());
             thisRound.applyDifficulty(player.getDifficulty());
-            thisRound.applyTradeoff(player.getTradeoff());
+            thisRound.applyTradeoff(player.getTradeOff());
             thisRound.applyPowerUp(player.getPowerUp());
         }
     }

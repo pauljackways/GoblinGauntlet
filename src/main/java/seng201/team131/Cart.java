@@ -1,9 +1,11 @@
 package seng201.team131;
 
+import javafx.beans.property.FloatProperty;
+
 public class Cart {
     private Integer capacity;
     private EnumResources resourceType;
-    private Integer speed;
+    private Float speed;
     private Integer fillLevel;
 
     // Constructor
@@ -11,7 +13,7 @@ public class Cart {
         // Initialize default values
         this.capacity = 0;
         this.resourceType = null;
-        this.speed = 0;
+        this.speed = (float) 0;
         this.fillLevel = 0;
     }
 
@@ -32,11 +34,11 @@ public class Cart {
         this.resourceType = resourceType;
     }
 
-    public Integer getSpeed() {
+    public Float getSpeed() {
         return speed;
     }
 
-    public void setSpeed(Integer speed) {
+    public void setSpeed(Float speed) {
         this.speed = speed;
     }
 
@@ -53,5 +55,10 @@ public class Cart {
                "Resource Type: " + resourceType + "\n" +
                "Speed: " + speed + "\n" +
                "Fill Level: " + fillLevel;
+    }
+
+    public void setSpeed(double d) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setSpeed'");
     }
 }

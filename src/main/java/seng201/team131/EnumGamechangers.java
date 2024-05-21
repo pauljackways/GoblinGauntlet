@@ -10,11 +10,11 @@ public enum EnumGamechangers {
     SLOW(""),
     MONEY(""),
     DISTRIBUTION(""),
-    THEFT("");
+    
 
     private final String gamechangerName;
-    EnumGamechangers(String itemName) {
-        this.gamechangerName = itemName;
+        EnumGamechangers(String itemName) {
+            this.gamechangerName = itemName;
     }
     public String getGamechangerName() {
         return gamechangerName;
