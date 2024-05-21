@@ -1,55 +1,75 @@
 package seng201.team131;
+import java.util.Random;
+import static seng201.team131.EnumResources.*;
+
 
 public class Cart implements Runnable {
     private Integer capacity;
     private EnumResources resourceType;
-    private Float speed;
+    private Integer favourResource;
     private Integer distanceTravelled = 0;
-    private Integer fillLevel;
+    private Float fillLevel;
+    private Random random = new Random();
+    private Float chanceEther;
+    private Float chanceLava;
 
-    // Constructor
-    public Cart() {
-        // Initialize default values
-        this.capacity = 0;
-        this.resourceType = null;
-        this.speed = 1.0f;
-        this.fillLevel = 0;
-    }
 
-    // Getters and setters
-    public Integer getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(Integer capacity) {
-        this.capacity = capacity;
+    public Cart (Integer favourResource, Float capacity) {
+        switch (favourResource) {
+            case 0: {
+                chanceEther = 0.6f;
+                chanceLava = 0.2f;
+                break;
+            }
+            case 1: {
+                chanceEther = 0.2f;
+                chanceLava = 0.6f;
+                break;
+            }
+            case 2: {
+                chanceEther = 0.2f;
+                chanceLava = 0.2f;
+                break;
+            }
+            case 3: {
+                chanceEther = 0.33333f;
+                chanceLava = 0.33333f;
+            }
+            default: {
+                chanceEther = 0.33333f;
+                chanceLava = 0.33333f;
+            }
+        }
+        float randomValue = random.nextFloat();
+        if (randomValue < chanceEther) {
+            this.resourceType = ETHER;
+        } else if (randomValue < chanceEther + chanceLava) {
+            this.resourceType = LAVA;
+        } else {
+            this.resourceType = GOO;
+        }
     }
 
     public EnumResources getResourceType() {
         return resourceType;
     }
 
-    public void setResourceType(EnumResources resourceType) {
-        this.resourceType = resourceType;
-    }
-
-    public Integer getFillLevel() {
+    public Float getFillLevel() {
         return fillLevel;
     }
 
-    public void setFillLevel(Integer fillLevel) {
+    public void setFillLevel(Float fillLevel) {
         this.fillLevel = fillLevel;
     }
     
     public String getAllAttributes() {
         return "Capacity: " + capacity + "\n" +
                "Resource Type: " + resourceType + "\n" +
-               "Speed: " + speed + "\n" +
                "Fill Level: " + fillLevel;
     }
 
     @Override
     public void run() {
-        //distanceTravelled += speed;
+        distanceTravelled += 10;
     }
 }

@@ -1,11 +1,6 @@
 package seng201.team131;
 
-import java.util.EnumMap;
 import java.util.List;
-import java.util.Map;
-
-import static seng201.team131.EnumItems.*;
-import static seng201.team131.EnumResources.*;
 
 public class Tower implements Buyable, Sellable, Selectable, Runnable{
     private String name;
@@ -14,7 +9,7 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
     private int level;
     private String image;
     private double value; // amount dispensed per resource per reload
-    private Float reload; // reload time in seconds to reload
+    private Integer reload; // reload time in Milliseconds to reload
     private int carts; // number of carts it can fill per resource per reload
     private float levelUpCost;
     private List<EnumResources> resources;
@@ -35,17 +30,18 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
         this.level = level;
         this.levelUpCost = 500;
         this.image = image;
-        this.health = 1.0f; // Initialize damage to 0
+        this.reload = 1000;
+        this.health = 1.0f; // Initialize health to 1.0
         this.resources = resources;
     }
     public List<EnumResources> getResources() {
         return resources;
     }
 
-    public void setReload(Float reload) {
+    public void setReload(Integer reload) {
         this.reload = reload;
     }
-    public Float getReload() {
+    public long getReload() {
         return this.reload;
     }
     public String getDescription() {

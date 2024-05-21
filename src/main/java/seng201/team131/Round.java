@@ -3,10 +3,8 @@ package seng201.team131;
 //import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-import seng201.team131.Player;
 import java.util.Random;
 
-import static seng201.team131.EnumGamechangers.*;
 import static seng201.team131.EnumResources.*;
 
 public class Round {
@@ -15,13 +13,10 @@ public class Round {
     private Float moneyThisRound;
     private List<Cart> carts;
     private Integer cartCapacity;
-    private Integer speed;
+    private Integer speed; // milliseconds to travel 10m
     private Integer favourResource;
     private Integer currentRound;
     private Integer round;
-    private Double chanceETHER;
-    private Double chanceLava;
-    private Double chanceGoo;
     private Double moneyPerCart;
     private Integer distance;
     private Boolean SABOTAGE;
@@ -47,20 +42,20 @@ public class Round {
             case EASY:
                 this.cartCount = 5;
                 cartCapacity = 5;
-                speed = 5;
+                speed = 1200;
 
                 break;
 
             case MEDIUM:
                 this.cartCount = 10;
                 cartCapacity = 10;
-                speed = 10;
+                speed = 1000;
                 break;
 
             case HARD:
                 this.cartCount = 15;
                 cartCapacity = 15;
-                speed = 15;
+                speed = 800;
                 break;
             default:
                 break;
@@ -83,7 +78,7 @@ public class Round {
         switch (tradeOff) {
             case FAST:
                 for (int i = 0; i < this.cartCount; i++) {
-//                    carts.get(i).setSpeed(carts.get(i).getSpeed()*1.2);
+                    speed *= 800;
                 }
                 moneyPerCart = moneyPerCart * 1.2;
                 break;
@@ -103,7 +98,7 @@ public class Round {
         switch (pwrUp) {
             case SLOW:
                 for (int i = 0; i < this.cartCount; i++) {
-//                    carts.get(i).setSpeed(carts.get(i).getSpeed()*0.8);
+                    this.speed += 1200;
                 }
                 break;
 
@@ -141,14 +136,14 @@ public class Round {
                 } else {
                     //newCart.setResourceType(GOO);
                 }
-
-                //System.out.println(newCart.getAllAttributes());
                 break;
             default:
                 break;
         }
     }
-
+    public Integer getSpeed() {
+        return speed;
+    }
     public void setTowers(List<Tower> towerList) {
         this.towerList = towerList;
     }
