@@ -22,9 +22,6 @@ public class Round {
     private Double chanceETHER;
     private Double chanceLava;
     private Double chanceGoo;
-    private EnumGamechangers difficulty;
-    private EnumGamechangers tradeOff;
-    private EnumGamechangers powerUp;
     private Double moneyPerCart;
     private Integer distance;
     private Boolean SABOTAGE;
@@ -70,10 +67,9 @@ public class Round {
         }
 
         for (int i = 0; i < this.cartCount; i++) {
-            Cart newCart = new Cart(speed);
+            Cart newCart = new Cart();
             carts.add(newCart);
             newCart.setCapacity(cartCapacity);
-            newCart.setSpeed(speed);
             newCart.setFillLevel(0);
             Random random = new Random();
             int randomResouce = random.nextInt(3);
@@ -87,7 +83,7 @@ public class Round {
         switch (tradeOff) {
             case FAST:
                 for (int i = 0; i < this.cartCount; i++) {
-                    carts.get(i).setSpeed(carts.get(i).getSpeed()*1.2);
+//                    carts.get(i).setSpeed(carts.get(i).getSpeed()*1.2);
                 }
                 moneyPerCart = moneyPerCart * 1.2;
                 break;
@@ -103,11 +99,11 @@ public class Round {
         }
     }
 
-    public void applyPwrUp(EnumGamechangers pwrUp) {
+    public void applyPowerUp(EnumGamechangers pwrUp) {
         switch (pwrUp) {
             case SLOW:
                 for (int i = 0; i < this.cartCount; i++) {
-                    carts.get(i).setSpeed(carts.get(i).getSpeed()*0.8);
+//                    carts.get(i).setSpeed(carts.get(i).getSpeed()*0.8);
                 }
                 break;
 
@@ -153,9 +149,6 @@ public class Round {
         }
     }
 
-
-
-
     public void setTowers(List<Tower> towerList) {
         this.towerList = towerList;
     }
@@ -167,27 +160,6 @@ public class Round {
         return carts;
     }
 
-    public EnumGamechangers getDifficulty(){
-        return difficulty;
-    }
-
-    public void setDifficulty(EnumGamechangers difficulty){
-        this.difficulty = difficulty;
-    }
-    public EnumGamechangers getTradeOff(){
-        return tradeOff;
-    }
-
-    public void setTradeOff(EnumGamechangers tradeOff){
-        this.tradeOff = tradeOff;
-    }
-    public EnumGamechangers getPowerUp(){
-        return powerUp;
-    }
-
-    public void setPowerUp(EnumGamechangers powerUp){
-        this.powerUp = powerUp;
-    }
 }
 
 // round.applyDifficulty(Difficulty.EASY);

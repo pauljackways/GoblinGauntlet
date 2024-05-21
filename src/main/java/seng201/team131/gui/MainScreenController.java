@@ -20,7 +20,9 @@ public class MainScreenController extends Controller {
     private Player player;
     private ScheduledExecutorService towerExecutorService;
     private ScheduledExecutorService cartExecutorService;
-    private ExecutorService executorService = Executors.newFixedThreadPool(numberOfCarts);
+    private ExecutorService executorService = Executors.newFixedThreadPool(3);
+    //private ExecutorService executorService = Executors.newFixedThreadPool(thisRound.getCarts().size());
+
     public MainScreenController() {
         //Free Xylophone Music Lessons
     }
@@ -82,7 +84,7 @@ public class MainScreenController extends Controller {
     }
     private void startPeriodicUpdate() {
         executorService = Executors.newSingleThreadScheduledExecutor();
-        executorService.scheduleAtFixedRate(this::gameTick, 0, 500, TimeUnit.MILLISECONDS);
+        //executorService.scheduleAtFixedRate(this::gameTick, 0, 500, TimeUnit.MILLISECONDS);
     }
     @FXML
     public void initialize() {
@@ -100,11 +102,11 @@ public class MainScreenController extends Controller {
             thisRound.applyPowerUp(player.getPowerUp());
             cartExecutorService = Executors.newScheduledThreadPool(thisRound.getCarts().size());
             for (Cart cart : thisRound.getCarts()) {
-                cartExecutorService.scheduleAtFixedRate(cart, 0, cart.getSpeed(), TimeUnit.SECONDS);
+                //cartExecutorService.scheduleAtFixedRate(cart, 0, thisRound.getSpeed(), TimeUnit.SECONDS);
             }
             towerExecutorService = Executors.newScheduledThreadPool(thisRound.getTowers().size());
             for (Tower tower : thisRound.getTowers()) {
-                cartExecutorService.scheduleAtFixedRate(tower, 0, tower., TimeUnit.SECONDS);
+                //cartExecutorService.scheduleAtFixedRate(tower, 0, tower., TimeUnit.SECONDS);
             }
 
             gameTick();

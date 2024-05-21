@@ -29,14 +29,14 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
     }
 
     /// starting towers ///
-    public Tower(List<EnumResources> resource, String name, String image, Integer level) {
+    public Tower(List<EnumResources> resources, String name, String image, Integer level) {
         this.name = name;
         this.cost = 100f * level;
         this.level = level;
         this.levelUpCost = 500;
         this.image = image;
         this.health = 1.0f; // Initialize damage to 0
-        this.resources.addAll(resources);
+        this.resources = resources;
     }
     public List<EnumResources> getResources() {
         return resources;
@@ -45,11 +45,14 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
     public void setReload(Float reload) {
         this.reload = reload;
     }
+    public Float getReload() {
+        return this.reload;
+    }
     public String getDescription() {
         String description = "\nLevel: " + getLevel() + "\n\n";
         for (int i = 0; i<this.getResources().size(); i++) {
-            description += EnumResources.values()[i].getResourceName() + ": \n" + this.getResource(EnumResources.values()[i]).getValue() +
-                    " Tonnes\n" + this.getResource(EnumResources.values()[i]).getReload() + " second reload";
+            description += EnumResources.values()[i].getResourceName() + ": \n" + this.getResources().get(i).getFlowFactor() +
+                    " Tonnes\n" + this.getReload() + " second reload";
             if (i != 2) {
                 description += ",\n\n";
             } else {

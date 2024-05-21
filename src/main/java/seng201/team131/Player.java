@@ -41,10 +41,10 @@ public class Player {
         this.selected = null;
         this.fParent = false;
         this.defaultItems.addAll(List.of(new Item(UPGRADE), new Item(REPAIR)));
-        this.defaultTowers.addAll(List.of(new Tower(GOO,"Small Gremlin Grinder", "images/twrSlime1.jpeg", 1), new Tower(LAVA,"Small Lava well", "images/twrLava1.jpeg", 1), new Tower(ETHER,"Small Crystal Crucible", "images/twrEther1.jpeg", 1),
-                new Tower(GOO,"Modest Gremlin Macerator", "images/twrSlime2.jpeg", 3), new Tower(LAVA,"Modest Magma Spire", "images/twrLava2.jpeg", 3), new Tower(ETHER,"Modest Crystal Cryochamber", "images/twrEther2.jpeg", 3),
-                new Tower(GOO,"Giant Gore Goliath", "images/twrSlime3.jpeg", 5), new Tower(LAVA,"Giant Vesuvian Volcanizer", "images/twrLava3.jpeg", 5), new Tower(ETHER,"Giant Crystal Cascade", "images/twrEther3.jpeg", 5)));
-        this.mainTowerList.addAll(List.of(new Tower(GOO,"Small Gremlin Grinder", "images/twrSlime1.jpeg", 1), new Tower(LAVA,"Small Lava well", "images/twrLava1.jpeg", 1), new Tower(ETHER,"Small Crystal Crucible", "images/twrEther2.jpeg", 1)));
+        this.defaultTowers.addAll(List.of(new Tower(List.of(GOO),"Small Gremlin Grinder", "images/twrSlime1.jpeg", 1), new Tower(List.of(LAVA),"Small Lava well", "images/twrLava1.jpeg", 1), new Tower(List.of(ETHER),"Small Crystal Crucible", "images/twrEther1.jpeg", 1),
+                new Tower(List.of(GOO),"Modest Gremlin Macerator", "images/twrSlime2.jpeg", 3), new Tower(List.of(LAVA),"Modest Magma Spire", "images/twrLava2.jpeg", 3), new Tower(List.of(ETHER),"Modest Crystal Cryochamber", "images/twrEther2.jpeg", 3),
+                new Tower(List.of(GOO),"Giant Gore Goliath", "images/twrSlime3.jpeg", 5), new Tower(List.of(LAVA),"Giant Vesuvian Volcanizer", "images/twrLava3.jpeg", 5), new Tower(List.of(ETHER),"Giant Crystal Cascade", "images/twrEther3.jpeg", 5)));
+        this.mainTowerList.addAll(List.of(new Tower(List.of(GOO),"Small Gremlin Grinder", "images/twrSlime1.jpeg", 1), new Tower(List.of(LAVA),"Small Lava well", "images/twrLava1.jpeg", 1), new Tower(List.of(ETHER),"Small Crystal Crucible", "images/twrEther2.jpeg", 1)));
         this.money = 500f;
 
         //this.currentRound = new Round(this);
@@ -60,7 +60,9 @@ public class Player {
     private List<Tower> mainTowerList = new ArrayList<>();
     private List<Tower> reserveTowerList = new ArrayList<>();
     private String pfp;
-    private String error;
+    private EnumGamechangers difficulty;
+    private EnumGamechangers tradeOff;
+    private EnumGamechangers powerUp;
     private Integer lives;
     private Float money;
     private Integer rounds;
@@ -79,9 +81,6 @@ public class Player {
     private final Consumer<Player> mainScreenLauncher;
     private final Runnable clearScreen;
     private Round currentRound;
-    private EnumGamechangers difficulty;
-    private EnumGamechangers tradeOff;
-    private EnumGamechangers pwrUp;
 
     public void sell(Sellable item) {
         if (item instanceof Tower) {
@@ -253,9 +252,28 @@ public class Player {
         return currentRound;
     }
 
-//    public void addTower(Tower tower) {
-//        this.mainTowerList.add(tower);
-//    }
+
+    public EnumGamechangers getDifficulty(){
+        return difficulty;
+    }
+
+    public void setDifficulty(EnumGamechangers difficulty){
+        this.difficulty = difficulty;
+    }
+    public EnumGamechangers getTradeOff(){
+        return tradeOff;
+    }
+
+    public void setTradeOff(EnumGamechangers tradeOff){
+        this.tradeOff = tradeOff;
+    }
+    public EnumGamechangers getPowerUp(){
+        return powerUp;
+    }
+
+    public void setPowerUp(EnumGamechangers powerUp){
+        this.powerUp = powerUp;
+    }
 
     public List<Tower> getDefaultTowers() {
         return defaultTowers;
@@ -264,13 +282,6 @@ public class Player {
         return defaultItems;
     }
 
-    public void setDifficulty(EnumGamechangers Difficulty){
-        this.difficulty = Difficulty;
-    }
-
-    public EnumGamechangers getDifficulty(){
-        return difficulty;
-    }
 
     public void setTradeOffs(EnumGamechangers tradeOff){
         this.tradeOff = tradeOff;
@@ -281,11 +292,11 @@ public class Player {
     }
 
     public void setPwrUps(EnumGamechangers pwrUp){
-        this.pwrUp = pwrUp;
+        this.powerUp = pwrUp;
     }
 
     public EnumGamechangers getPwrUps(){
-        return pwrUp;
+        return powerUp;
     }
 
     public void clearInfoPane() {
