@@ -1,6 +1,10 @@
 package seng201.team131;
 
 public class Cart implements Runnable {
+
+    public Cart(Integer speed) {
+        //TODO Auto-generated constructor stub
+    }
 import javafx.beans.property.FloatProperty;
 
 public class Cart {
