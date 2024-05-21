@@ -1,18 +1,21 @@
 package seng201.team131;
 
 public class Cart implements Runnable {
+import javafx.beans.property.FloatProperty;
+
+public class Cart {
     private Integer capacity;
     private EnumResources resourceType;
+    private Float speed;
     private Integer distanceTravelled = 0;
-    private Integer speed;
     private Integer fillLevel;
 
     // Constructor
-    public Cart(Integer speed) {
+    public Cart() {
         // Initialize default values
         this.capacity = 0;
         this.resourceType = null;
-        this.speed = speed;
+        this.speed = 1.0f;
         this.fillLevel = 0;
     }
 
@@ -33,11 +36,11 @@ public class Cart implements Runnable {
         this.resourceType = resourceType;
     }
 
-    public Integer getSpeed() {
+    public Float getSpeed() {
         return speed;
     }
 
-    public void setSpeed(Integer speed) {
+    public void setSpeed(Float speed) {
         this.speed = speed;
     }
 

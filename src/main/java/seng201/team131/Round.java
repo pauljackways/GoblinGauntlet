@@ -6,6 +6,7 @@ import java.util.List;
 import seng201.team131.Player;
 import java.util.Random;
 
+import static seng201.team131.EnumGamechangers.*;
 import static seng201.team131.EnumResources.*;
 
 public class Round {
@@ -24,14 +25,19 @@ public class Round {
     private EnumGamechangers difficulty;
     private EnumGamechangers tradeOff;
     private EnumGamechangers powerUp;
+    private Double moneyPerCart;
+    private Integer distance;
+    private Boolean SABOTAGE;
+
+
 
     private Random random; 
 
     public Round(Integer round) {
-        //this.round = round; // Store the player instance
         carts = new ArrayList<>();
-        favourResource = 2; // is to be changed based on the prompt given to the user
-        random = new Random(); // Initialize the random variable
+        favourResource = 2;
+        random = new Random();
+
     }
     public Round() {
 
@@ -45,6 +51,7 @@ public class Round {
                 this.cartCount = 5;
                 cartCapacity = 5;
                 speed = 5;
+
                 break;
 
             case MEDIUM:
@@ -58,6 +65,8 @@ public class Round {
                 cartCapacity = 15;
                 speed = 15;
                 break;
+            default:
+                break;
         }
 
         for (int i = 0; i < this.cartCount; i++) {
@@ -66,40 +75,86 @@ public class Round {
             newCart.setCapacity(cartCapacity);
             newCart.setSpeed(speed);
             newCart.setFillLevel(0);
-            double randomValue = random.nextDouble();
-
-            if (favourResource == 0) {
-                chanceETHER = 0.6;
-                chanceLava = 0.2;
-                chanceGoo = 0.2;
-            }
-            if (favourResource == 1) {
-                chanceETHER = 0.2;
-                chanceLava = 0.6;
-                chanceGoo = 0.2;
-            }
-            if (favourResource == 2) {
-                chanceETHER = 0.2;
-                chanceLava = 0.2;
-                chanceGoo = 0.6;
-            }
-            if (favourResource == 3) {
-                chanceETHER = 0.3333;
-                chanceLava = 0.3333;
-                chanceGoo = 0.3333;
-            }
-
-            if (randomValue < chanceETHER) {
-                newCart.setResourceType(ETHER);
-            } else if (randomValue < chanceETHER + chanceLava) {
-                newCart.setResourceType(LAVA);
-            } else {
-                newCart.setResourceType(GOO);
-            }
-
-            System.out.println(newCart.getAllAttributes());
+            Random random = new Random();
+            int randomResouce = random.nextInt(3);
+            if(randomResouce == 0){newCart.setResourceType(LAVA);}
+            if(randomResouce == 1){newCart.setResourceType(ETHER);}
+            if(randomResouce == 2){newCart.setResourceType(GOO);}
         }
     }
+
+    public void applyTradeOff(EnumGamechangers tradeOff) {
+        switch (tradeOff) {
+            case FAST:
+                for (int i = 0; i < this.cartCount; i++) {
+                    carts.get(i).setSpeed(carts.get(i).getSpeed()*1.2);
+                }
+                moneyPerCart = moneyPerCart * 1.2;
+                break;
+
+            case SABOTAGE:
+                int randomTower = random.nextInt(towerList.size());
+                towerList.remove(randomTower);
+
+            case THEFT:
+                //ADD flow rate change
+            default:
+                break;
+        }
+    }
+
+    public void applyPwrUp(EnumGamechangers pwrUp) {
+        switch (pwrUp) {
+            case SLOW:
+                for (int i = 0; i < this.cartCount; i++) {
+                    carts.get(i).setSpeed(carts.get(i).getSpeed()*0.8);
+                }
+                break;
+
+
+            case MONEY:
+                for (int i = 0; i < this.cartCount; i++) {
+                    moneyPerCart = moneyPerCart * 1.2;
+                }
+                break;
+
+            case DISTRIBUTION:
+                double randomValue = random.nextDouble();
+
+                if (favourResource == 0) {
+                    chanceETHER = 0.6;
+                    chanceLava = 0.2;
+                    chanceGoo = 0.2;
+                }
+                if (favourResource == 1) {
+                    chanceETHER = 0.2;
+                    chanceLava = 0.6;
+                    chanceGoo = 0.2;
+                }
+                if (favourResource == 2) {
+                    chanceETHER = 0.2;
+                    chanceLava = 0.2;
+                    chanceGoo = 0.6;
+                }
+
+
+                if (randomValue < chanceETHER) {
+                    //newCart.setResourceType(ETHER);
+                } else if (randomValue < chanceETHER + chanceLava) {
+                    //newCart.setResourceType(LAVA);
+                } else {
+                    //newCart.setResourceType(GOO);
+                }
+
+                //System.out.println(newCart.getAllAttributes());
+                break;
+            default:
+                break;
+        }
+    }
+
+
+
 
     public void setTowers(List<Tower> towerList) {
         this.towerList = towerList;

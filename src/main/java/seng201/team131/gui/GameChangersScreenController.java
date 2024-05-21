@@ -4,6 +4,9 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 
 import static seng201.team131.EnumGamechangers.*;
+
+import java.util.Random;
+
 import seng201.team131.Player;
 import seng201.team131.Round;
 
@@ -11,6 +14,7 @@ import seng201.team131.Round;
 public class GameChangersScreenController extends Controller {
     private Player player;
     private Integer powerUpSelected = null;
+    private Integer favourResource;
 
     
 
@@ -147,6 +151,9 @@ public class GameChangersScreenController extends Controller {
     
 
     public void initialize(){
+        Random random = new Random();
+        int favourResource = random.nextInt(3);
+
         ImgEasy.setOpacity(0.5);
         ImgMed.setOpacity(0.5);
         ImgHard.setOpacity(0.5);
