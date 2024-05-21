@@ -40,15 +40,10 @@ public class ParentScreenController extends Controller {
     @FXML
     public void onBtnMainScreen() {
         if (player != null) {
-            if(player.getDifficulty() == null){
+            if(player.getDifficulty() == null || player.getTradeOff() == null) {
                 player.setfParent(false);
                 this.player.launchGameChangersScreen();
-            }
-            else if(player.getTradeOff() == null){
-                player.setfParent(false);
-                this.player.launchGameChangersScreen();
-            }
-            else{this.player.launchMainScreen();}
+            }else{this.player.launchMainScreen();}
         }
     }
 

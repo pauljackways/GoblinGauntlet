@@ -102,7 +102,7 @@ public class GameChangersScreenController extends Controller {
         ImgMoney.setOpacity(1);
         ImgDist.setOpacity(1);
         powerUpSelected = 0;
-        player.setPwrUps(SLOW);
+        player.setPowerUp(SLOW);
     }
 
     @FXML
@@ -111,7 +111,7 @@ public class GameChangersScreenController extends Controller {
         ImgMoney.setOpacity(0.5);
         ImgDist.setOpacity(1);
         powerUpSelected = 1;
-        player.setPwrUps(MONEY);
+        player.setPowerUp(MONEY);
     }
 
     @FXML
@@ -120,7 +120,7 @@ public class GameChangersScreenController extends Controller {
         ImgMoney.setOpacity(1);
         ImgDist.setOpacity(0.5);
         powerUpSelected = 2;
-        player.setPwrUps(DISTRIBUTION);
+        player.setPowerUp(DISTRIBUTION);
     }
     @FXML
     public void onBtnBuyPwrUp() {
@@ -165,40 +165,62 @@ public class GameChangersScreenController extends Controller {
     
 
     public void initialize(){
-        Random random = new Random();
-        int favourResource = random.nextInt(3);
-
-        ImgEasy.setOpacity(0.5);
-        ImgMed.setOpacity(0.5);
-        ImgHard.setOpacity(0.5);
-        ImgFast.setOpacity(0.5);
-        ImgSabo.setOpacity(0.5);
-        ImgTheft.setOpacity(0.5);
-        ImgSlow.setOpacity(1);
-        ImgMoney.setOpacity(1);
-        ImgDist.setOpacity(1);
-
         if (player != null) {
-            if(player.getDifficulty() != null){
+            Random random = new Random();
+            int favourResource = random.nextInt(3);
+
+            ImgEasy.setOpacity(0.5);
+            ImgMed.setOpacity(0.5);
+            ImgHard.setOpacity(0.5);
+            ImgFast.setOpacity(0.5);
+            ImgSabo.setOpacity(0.5);
+            ImgTheft.setOpacity(0.5);
+            ImgSlow.setOpacity(1);
+            ImgMoney.setOpacity(1);
+            ImgDist.setOpacity(1);
+            try {
                 int indexDiff = player.getDifficulty().ordinal();
-                if(indexDiff == 0){ImgEasy.setOpacity(1);}
-                if(indexDiff == 1){ImgMed.setOpacity(1);}
-                if(indexDiff == 2){ImgHard.setOpacity(1);}
+                if (indexDiff == 0) {
+                    ImgEasy.setOpacity(1);
+                }
+                if (indexDiff == 1) {
+                    ImgMed.setOpacity(1);
+                }
+                if (indexDiff == 2) {
+                    ImgHard.setOpacity(1);
+                }
+            } catch (NullPointerException e) {
             }
-            if(player.getTradeOffs() != null){
-                int indexChanger = player.getTradeOffs().ordinal();
-                if(indexChanger == 3){ImgFast.setOpacity(1);}
-                if(indexChanger == 4){ImgSabo.setOpacity(1);}
-                if(indexChanger == 5){ImgTheft.setOpacity(1);}
+
+            try {
+                int indexChanger = player.getTradeOff().ordinal();
+                if (indexChanger == 3) {
+                    ImgFast.setOpacity(1);
+                }
+                if (indexChanger == 4) {
+                    ImgSabo.setOpacity(1);
+                }
+                if (indexChanger == 5) {
+                    ImgTheft.setOpacity(1);
+                }
+            } catch (NullPointerException e) {
             }
-            if(player.getPwrUps() != null){
-                int indexPwrup = player.getPwrUps().ordinal();
-                if(indexPwrup == 6){ImgSlow.setOpacity(0.5);}
-                if(indexPwrup == 7){ImgMoney.setOpacity(0.5);}
-                if(indexPwrup == 8){ImgDist.setOpacity(0.5);}
+
+            try {
+                int indexPwrup = player.getPowerUp().ordinal();
+                if (indexPwrup == 6) {
+                    ImgSlow.setOpacity(0.5);
+                }
+                if (indexPwrup == 7) {
+                    ImgMoney.setOpacity(0.5);
+                }
+                if (indexPwrup == 8) {
+                    ImgDist.setOpacity(0.5);
+                }
                 ImgSlow.setDisable(true);
                 ImgMoney.setDisable(true);
                 ImgDist.setDisable(true);
+            } catch (NullPointerException e) {
             }
         }
         

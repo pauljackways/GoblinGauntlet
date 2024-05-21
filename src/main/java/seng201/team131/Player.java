@@ -299,14 +299,6 @@ public class Player {
         return tradeOff;
     }
 
-    public void setPwrUps(EnumGamechangers pwrUp){
-        this.powerUp = pwrUp;
-    }
-
-    public EnumGamechangers getPwrUps(){
-        return powerUp;
-    }
-
     public void clearInfoPane() {
     }
 }

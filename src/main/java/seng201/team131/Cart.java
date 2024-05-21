@@ -62,7 +62,7 @@ public class Cart implements Runnable {
         this.fillLevel = fillLevel;
     }
     
-    public String getAllAttributes() {
+    public String getDescription() {
         return "Capacity: " + capacity + "\n" +
                "Resource Type: " + resourceType + "\n" +
                "Fill Level: " + fillLevel;

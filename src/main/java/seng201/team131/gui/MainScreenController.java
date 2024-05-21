@@ -1,11 +1,16 @@
 package seng201.team131.gui;
 
+import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ListCell;
 import javafx.scene.image.Image;
 import seng201.team131.*;
 import javafx.scene.control.ListView;
@@ -14,6 +19,7 @@ import seng201.team131.Round;
 import seng201.team131.Selectable;
 import seng201.team131.Tower;
 
+import javafx.util.Callback;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,16 +27,18 @@ public class MainScreenController extends Controller {
     private Player player;
     private ScheduledExecutorService towerExecutorService;
     private ScheduledExecutorService cartExecutorService;
+    private Integer currentCart = 0;
     private ScheduledExecutorService executorService;
     public MainScreenController() {
         //Free Xylophone Music Lessons
     }
-    private Queue<Cart> cartQueue;
+    private Queue<Cart> cartQueue = new LinkedList<>();
+    private ObservableList<Cart> observableList;
     private List<ImageView> ImgViewList = new ArrayList<>();
     private List<Tower> towerList = new ArrayList<>();
 
     @FXML
-    private ListView<?> LstMain;
+    private ListView<Cart> LstMain = new ListView<>();
 
     @FXML
     private ImageView ImgTwr1;
@@ -82,7 +90,14 @@ public class MainScreenController extends Controller {
         this.player = player;
         initialize();
     }
-    public void newCart() {
+    public void manageCarts() {
+        currentCart++;
+        if (currentCart <= thisRound.getCartCount()) {
+            cartQueue.offer(new Cart(player.getFavourResource(), thisRound.getCartCapacity()));
+        }
+        observableList.setAll(cartQueue);
+    }
+    public void manageTowers() {
         cartQueue.offer(new Cart(player.getFavourResource(), thisRound.getCartCapacity()));
     }
     @FXML
@@ -103,9 +118,27 @@ public class MainScreenController extends Controller {
             towerExecutorService = Executors.newScheduledThreadPool(thisRound.getTowers().size());
             cartExecutorService = Executors.newScheduledThreadPool(thisRound.getCartCount());
             for (Tower tower : thisRound.getTowers()) {
-                towerExecutorService.scheduleAtFixedRate(tower, 0, tower.getReload(), TimeUnit.MILLISECONDS);
+                towerExecutorService.scheduleAtFixedRate(this::manageTowers, 0, tower.getReload(), TimeUnit.MILLISECONDS);
             }
-            executorService.scheduleAtFixedRate(this::newCart, 0, thisRound.getSpeed(), TimeUnit.MILLISECONDS);
+            executorService.scheduleAtFixedRate(this::manageCarts, 0, thisRound.getSpeed(), TimeUnit.MILLISECONDS);
+            observableList = FXCollections.observableArrayList(cartQueue);
+            LstMain.setItems(observableList);
+            LstMain.setCellFactory(new Callback<>() {
+                @Override
+                public ListCell<Cart> call(ListView<Cart> param) {
+                    return new ListCell<>() {
+                        @Override
+                        protected void updateItem(Cart cart, boolean empty) {
+                            super.updateItem(cart, empty);
+                            if (cart != null && !empty) {
+                                setText(cart.getDescription());
+                            } else {
+                                setText(null);
+                            }
+                        }
+                    };
+                }
+            });
         }
     }
     public void gameTick() {

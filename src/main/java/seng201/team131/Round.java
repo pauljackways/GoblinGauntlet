@@ -9,12 +9,12 @@ public class Round {
     private Integer roundNumber;
     private Float cartCapacity;
     private Integer speed; // milliseconds to travel 10m
-    private Double moneyPerCart;
+    private Float moneyPerFillLevel = 10.0f;
     private Random random; 
 
     public Round(Integer roundNumber) {
         random = new Random();
-
+        this.roundNumber = roundNumber;
     }
   
     public void applyDifficulty(EnumGamechangers difficulty) {
@@ -47,9 +47,8 @@ public class Round {
                 for (int i = 0; i < this.cartCount; i++) {
                     speed *= 800;
                 }
-                moneyPerCart = moneyPerCart * 1.2;
+                moneyPerFillLevel = moneyPerFillLevel * 1.2f;
                 break;
-
             case SABOTAGE:
                 int randomTower = random.nextInt(towerList.size());
                 towerList.remove(randomTower);
@@ -61,8 +60,8 @@ public class Round {
         }
     }
 
-    public void applyPowerUp(EnumGamechangers pwrUp) {
-        switch (pwrUp) {
+    public void applyPowerUp(EnumGamechangers powerUp) {
+        switch (powerUp) {
             case SLOW:
                 for (int i = 0; i < this.cartCount; i++) {
                     this.speed += 1200;
@@ -72,7 +71,7 @@ public class Round {
 
             case MONEY:
                 for (int i = 0; i < this.cartCount; i++) {
-                    moneyPerCart = moneyPerCart * 1.2;
+                    moneyPerFillLevel = moneyPerFillLevel * 1.2f;
                 }
                 break;
             default:
