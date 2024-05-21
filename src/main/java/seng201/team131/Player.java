@@ -283,7 +283,7 @@ public class Player {
         return defaultItems;
     }
 
-    public Integer getFavorResource() {
+    public Integer getFavourResource() {
         return favorResource;
     }
 

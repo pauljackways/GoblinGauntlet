@@ -83,7 +83,7 @@ public class MainScreenController extends Controller {
         initialize();
     }
     public void newCart() {
-        cartQueue.offer(new Cart(thisRound.getCartSize()))
+        cartQueue.offer(new Cart(player.getFavourResource(), thisRound.getCartCapacity()));
     }
     @FXML
     public void initialize() {
@@ -101,7 +101,7 @@ public class MainScreenController extends Controller {
             thisRound.applyPowerUp(player.getPowerUp());
             executorService = Executors.newSingleThreadScheduledExecutor();
             towerExecutorService = Executors.newScheduledThreadPool(thisRound.getTowers().size());
-            cartExecutorService = Executors.newScheduledThreadPool(thisRound.getCarts().size());
+            cartExecutorService = Executors.newScheduledThreadPool(thisRound.getCartCount());
             for (Tower tower : thisRound.getTowers()) {
                 towerExecutorService.scheduleAtFixedRate(tower, 0, tower.getReload(), TimeUnit.MILLISECONDS);
             }
