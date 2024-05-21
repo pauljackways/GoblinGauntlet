@@ -5,6 +5,7 @@ import javafx.scene.image.Image;
 import seng201.team131.Player;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
+import seng201.team131.Round;
 import seng201.team131.Selectable;
 import seng201.team131.Tower;
 
@@ -35,6 +36,7 @@ public class MainScreenController extends Controller {
     private ImageView ImgTwr4;
     @FXML
     private ImageView ImgTwr5;
+    private Round thisRound;
     public void onImgTwr1() {
         if (player != null) {
             player.setSelected((Selectable) towerList.get(0));
@@ -83,6 +85,11 @@ public class MainScreenController extends Controller {
             for (int i=0; i<towerList.size(); i++) {
                 ImgViewList.get(i).setImage(new Image(towerList.get(i).getImage()));
             }
+            thisRound = new Round(player.getRound());
+            thisRound.setTowers(player.getMainTowerList());
+            thisRound.applyDifficulty(player.getDifficulty);
+            thisRound.applyTradeoff(player.getTradeoff);
+            thisRound.applyPowerUp(player.getPowerUp);
         }
     }
 }
