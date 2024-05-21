@@ -150,12 +150,7 @@ public class Round {
     public List<Tower> getTowers() {
         return towerList;
     }
-
     public List<Cart> getCarts() {
         return carts;
     }
-
 }
-
-// round.applyDifficulty(Difficulty.EASY);
-// This is the call to get cars of a said difficulty, you then have to call getCarts.
