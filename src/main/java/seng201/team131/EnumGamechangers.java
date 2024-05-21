@@ -9,7 +9,7 @@ public enum EnumGamechangers {
     THEFT(""),
     SLOW(""),
     MONEY(""),
-    DISTRIBUTION(""),
+    DISTRIBUTION("");
     
 
     private final String gamechangerName;
