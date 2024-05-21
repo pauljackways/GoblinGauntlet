@@ -36,7 +36,7 @@
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="BtnTowerScreen" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="80.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBtnTowerScreen" text="Towersmithing Workshop" textAlignment="CENTER">
+            <Button fx:id="BtnTowerScreen" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="80.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBtnTowerScreen" text="Towersmithing Workshop" textAlignment="CENTER" GridPane.rowIndex="1">
                <font>
                   <Font size="18.0" />
                </font>
@@ -44,7 +44,7 @@
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="BtnGameChangersScreen" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="80.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBtnGameChangersScreen" text="Citadel of Sorcerers" textAlignment="CENTER" GridPane.rowIndex="1">
+            <Button fx:id="BtnMainScreen" layoutX="325.0" layoutY="25.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="80.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBtnMainScreen" text="---- Release the carts --&gt;" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="18.0" />
                </font>
@@ -52,7 +52,7 @@
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="BtnMainScreen" layoutX="325.0" layoutY="25.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="80.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBtnMainScreen" text="--- Demise Quarry --&gt;" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button fx:id="BtnGameChangersScreen" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="80.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBtnGameChangersScreen" text="Citadel of Sorcerers" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
