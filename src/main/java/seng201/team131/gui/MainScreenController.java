@@ -28,10 +28,10 @@ public class MainScreenController extends Controller {
     }
     private List<ImageView> ImgViewList = new ArrayList<>();
     private List<Tower> towerList = new ArrayList<>();
+    private Round thisRound;
 
     @FXML
     private ListView<?> LstMain;
-
     @FXML
     private ImageView ImgTwr1;
     @FXML
@@ -42,7 +42,9 @@ public class MainScreenController extends Controller {
     private ImageView ImgTwr4;
     @FXML
     private ImageView ImgTwr5;
-    private Round thisRound;
+
+
+    
     public void onImgTwr1() {
         if (player != null) {
             player.setSelected((Selectable) towerList.get(0));
@@ -99,7 +101,8 @@ public class MainScreenController extends Controller {
             thisRound.setTowers(player.getMainTowerList());
             thisRound.applyDifficulty(player.getDifficulty());
             thisRound.applyTradeOff(player.getTradeOff());
-            thisRound.applyPowerUp(player.getPowerUp());
+            if(player.getPowerUp() != null){thisRound.applyPowerUp(player.getPowerUp());}
+            
             cartExecutorService = Executors.newScheduledThreadPool(thisRound.getCarts().size());
             for (Cart cart : thisRound.getCarts()) {
                 //cartExecutorService.scheduleAtFixedRate(cart, 0, thisRound.getSpeed(), TimeUnit.SECONDS);

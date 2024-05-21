@@ -25,12 +25,13 @@ public class Round {
     private Double moneyPerCart;
     private Integer distance;
     private Boolean SABOTAGE;
-
+    private Player player;
 
 
     private Random random; 
 
     public Round(Integer round) {
+        this.favourResource = player.getFavorResource();
         carts = new ArrayList<>();
         favourResource = 2;
         random = new Random();
@@ -71,7 +72,6 @@ public class Round {
             carts.add(newCart);
             newCart.setCapacity(cartCapacity);
             newCart.setFillLevel(0);
-            Random random = new Random();
             int randomResouce = random.nextInt(3);
             if(randomResouce == 0){newCart.setResourceType(LAVA);}
             if(randomResouce == 1){newCart.setResourceType(ETHER);}
@@ -115,8 +115,6 @@ public class Round {
                 break;
 
             case DISTRIBUTION:
-                double randomValue = random.nextDouble();
-
                 if (favourResource == 0) {
                     chanceETHER = 0.6;
                     chanceLava = 0.2;
@@ -131,6 +129,11 @@ public class Round {
                     chanceETHER = 0.2;
                     chanceLava = 0.2;
                     chanceGoo = 0.6;
+                }
+                if (favourResource == null) {
+                    chanceETHER = 0.3333;
+                    chanceLava = 0.3333;
+                    chanceGoo = 0.3333;
                 }
 
 

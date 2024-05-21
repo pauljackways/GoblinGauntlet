@@ -81,6 +81,7 @@ public class Player {
     private final Consumer<Player> mainScreenLauncher;
     private final Runnable clearScreen;
     private Round currentRound;
+    private Integer favorResource;
 
     public void sell(Sellable item) {
         if (item instanceof Tower) {
@@ -282,6 +283,13 @@ public class Player {
         return defaultItems;
     }
 
+    public Integer getFavorResource() {
+        return favorResource;
+    }
+
+    public void setFavorResource(Integer favorResource) {
+        this.favorResource = favorResource;
+    }
 
     public void setTradeOffs(EnumGamechangers tradeOff){
         this.tradeOff = tradeOff;
