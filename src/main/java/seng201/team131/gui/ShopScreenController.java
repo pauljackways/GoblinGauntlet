@@ -16,9 +16,6 @@ import java.util.List;
 public class ShopScreenController extends Controller {
 
     @FXML
-    private Label labelVillageMarket;
-
-    @FXML
     private ListView<String> LstBuy;
 
     @FXML
