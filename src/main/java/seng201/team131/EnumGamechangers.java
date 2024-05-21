@@ -5,8 +5,9 @@ public enum EnumGamechangers {
     MEDIUM("cool :)"),
     HARD("level 100 boss"),
     FAST(""),
-    SLOW(""),
     SABOTAGE(""),
+    THEFT(""),
+    SLOW(""),
     MONEY(""),
     DISTRIBUTION("");
 

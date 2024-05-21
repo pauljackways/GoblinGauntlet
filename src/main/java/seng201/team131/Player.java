@@ -79,6 +79,9 @@ public class Player {
     private final Consumer<Player> mainScreenLauncher;
     private final Runnable clearScreen;
     private Round currentRound;
+    private EnumGamechangers difficulty;
+    private EnumGamechangers tradeOff;
+    private EnumGamechangers pwrUp;
 
     public void sell(Sellable item) {
         if (item instanceof Tower) {
@@ -259,6 +262,30 @@ public class Player {
     }
     public List<Item> getDefaultItems() {
         return defaultItems;
+    }
+
+    public void setDifficulty(EnumGamechangers Difficulty){
+        this.difficulty = Difficulty;
+    }
+
+    public EnumGamechangers getDifficulty(){
+        return difficulty;
+    }
+
+    public void setTradeOffs(EnumGamechangers tradeOff){
+        this.tradeOff = tradeOff;
+    }
+
+    public EnumGamechangers getTradeOffs(){
+        return tradeOff;
+    }
+
+    public void setPwrUps(EnumGamechangers pwrUp){
+        this.pwrUp = pwrUp;
+    }
+
+    public EnumGamechangers getPwrUps(){
+        return pwrUp;
     }
 
     public void clearInfoPane() {

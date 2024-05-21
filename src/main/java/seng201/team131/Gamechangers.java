@@ -15,6 +15,8 @@ public class Gamechangers implements Selectable {
 
                 break;
             }
+            
+
         }
         this.name = type.getGamechangerName();
     }

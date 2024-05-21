@@ -90,7 +90,7 @@
          <image>
             <Image url="@../images/distribution.jpeg" />
          </image></ImageView>
-      <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4">
+      <ImageView fx:id="ImgTheft" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onImgTheft" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4">
          <image>
             <Image url="@../images/OIG4..jpeg" />
          </image></ImageView>
@@ -98,7 +98,7 @@
          <image>
             <Image url="@../images/big.jpeg" />
          </image></ImageView>
-      <Button fx:id="BtnBuyPwrUp" mnemonicParsing="false" onAction="#onBtnBuyPwrUp" text="Purchase enchantment" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+      <Button fx:id="BtnBuyPwrUp" mnemonicParsing="false" onAction="#onBtnBuyPwrUp" onMouseClicked="#onBtnBuyPwrUp" text="Purchase enchantment" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
