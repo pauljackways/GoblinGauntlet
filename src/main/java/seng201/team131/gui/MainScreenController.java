@@ -17,9 +17,6 @@ public class MainScreenController extends Controller {
     public MainScreenController() {
         //Free Xylophone Music Lessons
     }
-    public MainScreenController(Player thePlayer) {
-        player = thePlayer;
-    }
     private List<ImageView> ImgViewList = new ArrayList<>();
     private List<Tower> towerList = new ArrayList<>();
 
@@ -87,9 +84,9 @@ public class MainScreenController extends Controller {
             }
             thisRound = new Round(player.getRound());
             thisRound.setTowers(player.getMainTowerList());
-            thisRound.applyDifficulty(player.getDifficulty);
-            thisRound.applyTradeoff(player.getTradeoff);
-            thisRound.applyPowerUp(player.getPowerUp);
+            thisRound.applyDifficulty(player.getDifficulty());
+            thisRound.applyTradeoff(player.getTradeoff());
+            thisRound.applyPowerUp(player.getPowerUp());
         }
     }
 }

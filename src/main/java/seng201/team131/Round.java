@@ -10,6 +10,7 @@ import static seng201.team131.EnumResources.*;
 
 public class Round {
     private Integer cartSpeed;
+    private List<Tower> towerList;
     private Integer cartCount;
     private Float moneyThisRound;
     private List<Cart> carts;
@@ -21,8 +22,9 @@ public class Round {
     private Double chanceETHER;
     private Double chanceLava;
     private Double chanceGoo;
-    private EnumDifficulty difficulty;
-    // private Player player; 
+    private EnumGamechangers difficulty;
+    private EnumGamechangers tradeOff;
+    private EnumGamechangers powerUp;
 
     private Random random; 
 
@@ -36,7 +38,7 @@ public class Round {
 
     }
   
-    public void applyDifficulty() {
+    public void applyDifficulty(EnumGamechangers difficulty) {
 
         //int roundNumber = player.getRound();
         switch (difficulty) {
@@ -103,22 +105,38 @@ public class Round {
                 newCart.setResourceType(GOO);
             }
 
-            // System.out.println(randomValue);
-            // System.out.println(newCart.getResourceType());
             System.out.println(newCart.getAllAttributes());
         }
     }
-    
+
+    public void setTowers(List<Tower> towerList) {
+        this.towerList = towerList;
+    }
+
     public List<Cart> getCarts() {
         return carts;
     }
 
-    public EnumDifficulty getDifficulty(){
+    public EnumGamechangers getDifficulty(){
         return difficulty;
     }
 
-    public void setDifficulty(EnumDifficulty difficulty){
+    public void setDifficulty(EnumGamechangers difficulty){
         this.difficulty = difficulty;
+    }
+    public EnumGamechangers getTradeOff(){
+        return tradeOff;
+    }
+
+    public void setTradeOff(EnumGamechangers tradeOff){
+        this.tradeOff = tradeOff;
+    }
+    public EnumGamechangers getPowerUp(){
+        return powerUp;
+    }
+
+    public void setPowerUp(EnumGamechangers powerUp){
+        this.powerUp = powerUp;
     }
 }
 
