@@ -149,21 +149,11 @@ public class GameChangersScreenController extends Controller {
             ImgDist.setDisable(true);
 
             Random random = new Random();
-            int randomResouce = random.nextInt(3);
-            player.setFavorResource(randomResouce);
+            int randomResource = random.nextInt(3);
+            player.setFavorResource(randomResource);
         }
         
     }
-    
-
-
-
-
-    
-
-        
-    
-
     public void initialize(){
         if (player != null) {
             Random random = new Random();
@@ -179,43 +169,52 @@ public class GameChangersScreenController extends Controller {
             ImgMoney.setOpacity(1);
             ImgDist.setOpacity(1);
             try {
-                int indexDiff = player.getDifficulty().ordinal();
-                if (indexDiff == 0) {
-                    ImgEasy.setOpacity(1);
-                }
-                if (indexDiff == 1) {
-                    ImgMed.setOpacity(1);
-                }
-                if (indexDiff == 2) {
-                    ImgHard.setOpacity(1);
-                }
-            } catch (NullPointerException e) {
-            }
-
-            try {
-                int indexChanger = player.getTradeOff().ordinal();
-                if (indexChanger == 3) {
-                    ImgFast.setOpacity(1);
-                }
-                if (indexChanger == 4) {
-                    ImgSabo.setOpacity(1);
-                }
-                if (indexChanger == 5) {
-                    ImgTheft.setOpacity(1);
+                switch (player.getDifficulty()) {
+                    case EASY:
+                        ImgEasy.setOpacity(1);
+                        break;
+                    case MEDIUM:
+                        ImgMed.setOpacity(1);
+                        break;
+                    case HARD:
+                        ImgHard.setOpacity(1);
+                        break;
+                    default:
+                        break;
                 }
             } catch (NullPointerException e) {
             }
 
             try {
-                int indexPwrup = player.getPowerUp().ordinal();
-                if (indexPwrup == 6) {
-                    ImgSlow.setOpacity(0.5);
+                switch (player.getTradeOff()) {
+                    case FAST:
+                        ImgFast.setOpacity(1);
+                        break;
+                    case SABOTAGE:
+                        ImgSabo.setOpacity(1);
+                        break;
+                    case THEFT:
+                        ImgTheft.setOpacity(1);
+                        break;
+                    default:
+                        break;
                 }
-                if (indexPwrup == 7) {
-                    ImgMoney.setOpacity(0.5);
-                }
-                if (indexPwrup == 8) {
-                    ImgDist.setOpacity(0.5);
+            } catch (NullPointerException e) {
+            }
+
+            try {
+                switch (player.getPowerUp()) {
+                    case SLOW:
+                        ImgSlow.setOpacity(0.5);
+                        break;
+                    case MONEY:
+                        ImgMoney.setOpacity(0.5);
+                        break;
+                    case DISTRIBUTION:
+                        ImgDist.setOpacity(0.5);
+                        break;
+                    default:
+                        break;
                 }
                 ImgSlow.setDisable(true);
                 ImgMoney.setDisable(true);

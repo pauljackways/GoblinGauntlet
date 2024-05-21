@@ -4,7 +4,6 @@ public enum EnumResources {
     ETHER("Ether Crystals"),
     LAVA("Lava"),
     GOO("Goo");
-
     private final String resourceName;
     private Float flowFactor;
 

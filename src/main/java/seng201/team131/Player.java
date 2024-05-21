@@ -27,7 +27,7 @@ public class Player {
         this.userPaneLauncher = userPaneLauncher;
         this.setupScreenLauncher = setupScreenLauncher;
         this.parentScreenLauncher = parentScreenLauncher;
-        this.round = 0;
+        this.round = 1;
         this.currentRound = new Round(this.getRound());
         this.infoPaneLauncher = infoPaneLauncher;
         this.shopScreenLauncher = shopScreenLauncher;

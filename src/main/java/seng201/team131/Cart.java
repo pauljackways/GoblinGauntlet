@@ -4,7 +4,7 @@ import static seng201.team131.EnumResources.*;
 
 
 public class Cart implements Runnable {
-    private Integer capacity;
+    private Float capacity;
     private EnumResources resourceType;
     private Integer favourResource;
     private Integer distanceTravelled = 0;
@@ -12,9 +12,15 @@ public class Cart implements Runnable {
     private Random random = new Random();
     private Float chanceEther;
     private Float chanceLava;
-
-
+    public Cart (Float capacity) {
+        this.favourResource = -1;
+        this.capacity = 10.0f;
+        this.fillLevel = 0.0f;
+    }
     public Cart (Integer favourResource, Float capacity) {
+        this.capacity = capacity;
+        this.favourResource = favourResource;
+        this.fillLevel = 0.0f;
         switch (favourResource) {
             case 0: {
                 chanceEther = 0.6f;
@@ -34,6 +40,7 @@ public class Cart implements Runnable {
             case 3: {
                 chanceEther = 0.33333f;
                 chanceLava = 0.33333f;
+                break;
             }
             default: {
                 chanceEther = 0.33333f;
@@ -57,15 +64,23 @@ public class Cart implements Runnable {
     public Float getFillLevel() {
         return fillLevel;
     }
-
-    public void setFillLevel(Float fillLevel) {
-        this.fillLevel = fillLevel;
+    public Float getCapacity() {
+        return capacity;
     }
-    
-    public String getDescription() {
-        return "Capacity: " + capacity + "\n" +
-               "Resource Type: " + resourceType + "\n" +
-               "Fill Level: " + fillLevel;
+
+    public void fill(Float fill) {
+        this.fillLevel += fill;
+        if (this.fillLevel > this.capacity) {
+            this.fillLevel = this.capacity;
+        }
+    }
+    @Override
+    public String toString() { //For the observableList
+        if (favourResource != -1) {
+            return "[#] " + fillLevel + "/" + capacity + " " + resourceType.getResourceName();
+        } else {
+            return "";
+        }
     }
 
     @Override
