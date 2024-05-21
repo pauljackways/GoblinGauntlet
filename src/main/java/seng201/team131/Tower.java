@@ -1,19 +1,23 @@
 package seng201.team131;
 
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
 
 import static seng201.team131.EnumItems.*;
 import static seng201.team131.EnumResources.*;
 
-public class Tower implements Buyable, Sellable, Selectable {
+public class Tower implements Buyable, Sellable, Selectable, Runnable{
     private String name;
     private Float cost;
     private float health; // Factor
     private int level;
     private String image;
+    private double value; // amount dispensed per resource per reload
+    private Float reload; // reload time in seconds to reload
+    private int carts; // number of carts it can fill per resource per reload
     private float levelUpCost;
-    private Map<EnumResources, Resource> resources = new EnumMap<>(EnumResources.class);
+    private List<EnumResources> resources;
 
     public Tower(String name, float cost, int level, float levelUpCost, String image) {
         this.name = name;
@@ -25,66 +29,38 @@ public class Tower implements Buyable, Sellable, Selectable {
     }
 
     /// starting towers ///
-    public Tower(EnumResources resource, String name, String image, Integer level) {
+    public Tower(List<EnumResources> resource, String name, String image, Integer level) {
         this.name = name;
         this.cost = 100f * level;
         this.level = level;
         this.levelUpCost = 500;
         this.image = image;
         this.health = 1.0f; // Initialize damage to 0
-        this.resources.put(ETHER, new Resource(0f, 0, 0));
-        this.resources.put(LAVA, new Resource(0f, 0, 0));
-        this.resources.put(GOO, new Resource(0f, 0, 0));
-        switch (resource) {
-            case ETHER:
-                this.resources.put(resource, new Resource((float) level, 1, level));
-                break;
-            case LAVA:
-                this.resources.put(resource, new Resource((float) level, 1, level));
-                break;
-            case GOO:
-                this.resources.put(resource, new Resource((float) level, 1, level));
-                break;
-            default:
-                this.resources.put(EnumResources.GOO, new Resource(0f, 0, 0));
-                break;
-        }
-
-
-
+        this.resources.addAll(resources);
     }
-    public void addResource(EnumResources resourceType, Resource resource) {
-        resources.put(resourceType, resource);
+    public List<EnumResources> getResources() {
+        return resources;
     }
 
-    public Resource getResource(EnumResources resourceType) {
-        return resources.get(resourceType);
-    }
-
-    public void setResourceReload(EnumResources resourceType, int reloadTime) {
-        Resource resource = resources.get(resourceType);
-        if (resource != null) {
-            resource.setReload(reloadTime);
-        }
-    }
-    public void updateResource(EnumResources resourceType, Resource newResource) {
-        resources.put(resourceType, newResource);
+    public void setReload(Float reload) {
+        this.reload = reload;
     }
     public String getDescription() {
         String description = "\nLevel: " + getLevel() + "\n\n";
-        for (int i = 0; i<3; i++) {
-            if (this.getResource(EnumResources.values()[i]).getValue() != 0) {
-                description += EnumResources.values()[i].getResourceName() + ": \n" + this.getResource(EnumResources.values()[i]).getValue() +
-                        " Tonnes\n" + this.getResource(EnumResources.values()[i]).getReload() + " second reload";
-                if (i != 2) {
-                    description += ",\n\n";
-                } else {
-                    description += "\n\n";
-                }
+        for (int i = 0; i<this.getResources().size(); i++) {
+            description += EnumResources.values()[i].getResourceName() + ": \n" + this.getResource(EnumResources.values()[i]).getValue() +
+                    " Tonnes\n" + this.getResource(EnumResources.values()[i]).getReload() + " second reload";
+            if (i != 2) {
+                description += ",\n\n";
+            } else {
+                description += "\n\n";
             }
         }
         description+= "Cost: \n$" + getCost();
         return description;
+
+    }
+    public void run() {
 
     }
     public void repair() {
@@ -101,6 +77,7 @@ public class Tower implements Buyable, Sellable, Selectable {
             }
             case 5: {
             }
+            ///////////////// Test this //////////////////////////
             String fileName = getImage().substring(getImage().lastIndexOf("/") + 1);
             String extension = fileName.substring(fileName.lastIndexOf("."));
             int numberIndex = fileName.length() - 6;
@@ -123,6 +100,7 @@ public class Tower implements Buyable, Sellable, Selectable {
             }
         }
     }
+
     public Float getCost() {
         return cost;
     }

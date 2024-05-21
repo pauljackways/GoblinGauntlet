@@ -9,7 +9,6 @@ import java.util.Random;
 import static seng201.team131.EnumResources.*;
 
 public class Round {
-    private Integer cartSpeed;
     private List<Tower> towerList;
     private Integer cartCount;
     private Float moneyThisRound;
@@ -43,37 +42,30 @@ public class Round {
         //int roundNumber = player.getRound();
         switch (difficulty) {
             case EASY:
-                this.cartSpeed = 5;
                 this.cartCount = 5;
                 cartCapacity = 5;
                 speed = 5;
-                cartSpeed = 5;
                 break;
 
             case MEDIUM:
-                this.cartSpeed = 10;
                 this.cartCount = 10;
                 cartCapacity = 10;
                 speed = 10;
-                cartSpeed = 10;
                 break;
 
             case HARD:
-                this.cartSpeed = 15;
                 this.cartCount = 15;
                 cartCapacity = 15;
                 speed = 15;
-                cartSpeed = 15;
                 break;
         }
 
         for (int i = 0; i < this.cartCount; i++) {
-            Cart newCart = new Cart();
+            Cart newCart = new Cart(speed);
             carts.add(newCart);
             newCart.setCapacity(cartCapacity);
             newCart.setSpeed(speed);
             newCart.setFillLevel(0);
-            newCart.setResourceType(GOO);
             double randomValue = random.nextDouble();
 
             if (favourResource == 0) {
@@ -111,6 +103,9 @@ public class Round {
 
     public void setTowers(List<Tower> towerList) {
         this.towerList = towerList;
+    }
+    public List<Tower> getTowers() {
+        return towerList;
     }
 
     public List<Cart> getCarts() {

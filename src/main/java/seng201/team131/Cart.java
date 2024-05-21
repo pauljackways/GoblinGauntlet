@@ -1,17 +1,18 @@
 package seng201.team131;
 
-public class Cart {
+public class Cart implements Runnable {
     private Integer capacity;
     private EnumResources resourceType;
+    private Integer distanceTravelled = 0;
     private Integer speed;
     private Integer fillLevel;
 
     // Constructor
-    public Cart() {
+    public Cart(Integer speed) {
         // Initialize default values
         this.capacity = 0;
         this.resourceType = null;
-        this.speed = 0;
+        this.speed = speed;
         this.fillLevel = 0;
     }
 
@@ -53,5 +54,10 @@ public class Cart {
                "Resource Type: " + resourceType + "\n" +
                "Speed: " + speed + "\n" +
                "Fill Level: " + fillLevel;
+    }
+
+    @Override
+    public void run() {
+        distanceTravelled += speed;
     }
 }

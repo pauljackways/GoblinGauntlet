@@ -38,8 +38,6 @@ public class UserPaneController extends Controller{
     }
     private void startPeriodicUpdate() {
         executorService = Executors.newSingleThreadScheduledExecutor();
-
-        // Schedule the task to run every 1 second with an initial delay of 0 seconds
         executorService.scheduleAtFixedRate(this::updatePlayerInfo, 0, 500, TimeUnit.MILLISECONDS);
     }
     @FXML
@@ -71,17 +69,13 @@ public class UserPaneController extends Controller{
     @FXML
     private void onBack() {
         this.player.launchParentScreen();
-        System.out.println("Back button clicked");
-        // For example, you could load the previous screen
     }
     public UserPaneController() {
         // FXLoad this up ya
     }
-    // Method to update the user image
     public void setUserImage(Image image) {
         ImgUser.setImage(image);
     }
-    // Methods to update the labels
     public void setLblRound(String round) {
         LblRound.setText(round);
     }

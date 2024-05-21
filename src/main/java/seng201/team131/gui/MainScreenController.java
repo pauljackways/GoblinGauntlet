@@ -1,19 +1,23 @@
 package seng201.team131.gui;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
-import seng201.team131.Player;
+import seng201.team131.*;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
-import seng201.team131.Round;
-import seng201.team131.Selectable;
-import seng201.team131.Tower;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainScreenController extends Controller {
     private Player player;
+    private ScheduledExecutorService towerExecutorService;
+    private ScheduledExecutorService cartExecutorService;
+    private ExecutorService executorService = Executors.newFixedThreadPool(numberOfCarts);
     public MainScreenController() {
         //Free Xylophone Music Lessons
     }
@@ -73,6 +77,10 @@ public class MainScreenController extends Controller {
         this.player = player;
         initialize();
     }
+    private void startPeriodicUpdate() {
+        executorService = Executors.newSingleThreadScheduledExecutor();
+        executorService.scheduleAtFixedRate(this::gameTick, 0, 500, TimeUnit.MILLISECONDS);
+    }
     @FXML
     public void initialize() {
         if (player != null) {
@@ -85,8 +93,21 @@ public class MainScreenController extends Controller {
             thisRound = new Round(player.getRound());
             thisRound.setTowers(player.getMainTowerList());
             thisRound.applyDifficulty(player.getDifficulty());
-            thisRound.applyTradeoff(player.getTradeoff());
+            thisRound.applyTradeOff(player.getTradeOff());
             thisRound.applyPowerUp(player.getPowerUp());
+            cartExecutorService = Executors.newScheduledThreadPool(thisRound.getCarts().size());
+            for (Cart cart : thisRound.getCarts()) {
+                cartExecutorService.scheduleAtFixedRate(cart, 0, cart.getSpeed(), TimeUnit.SECONDS);
+            }
+            towerExecutorService = Executors.newScheduledThreadPool(thisRound.getTowers().size());
+            for (Tower tower : thisRound.getTowers()) {
+                cartExecutorService.scheduleAtFixedRate(tower, 0, tower., TimeUnit.SECONDS);
+            }
+
+            gameTick();
         }
+    }
+    public void gameTick() {
+
     }
 }
