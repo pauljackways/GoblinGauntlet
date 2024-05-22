@@ -6,8 +6,13 @@ public class Gamechangers implements Selectable {
     private String description;
     private String resourceMoreCommon;
 
-    public Gamechangers() {
-    }
+    public Gamechangers() {}
+
+    /**
+     * sets the images and description on the sidebar, based on the selected object in the gamechangers screen.
+     * @param type
+     * @param resourceMoreCommon A random number between 0 and 2 used to set a certin resource car to be a little more likely.
+     */
     public Gamechangers(EnumGamechangers type,  Integer resourceMoreCommon) {
         switch(resourceMoreCommon){
             case 0 -> this.resourceMoreCommon = "Ether";
@@ -72,13 +77,10 @@ public class Gamechangers implements Selectable {
             default -> {
                 break;
             }
-        
-            
-
-            
-
         }
+
         this.name = type.getGamechangerName();
+
     }
     public String getName() {
         return this.name;

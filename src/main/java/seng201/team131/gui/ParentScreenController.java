@@ -72,14 +72,6 @@ public class ParentScreenController extends Controller {
             //System.out.println(player.getMainTowerList().get(randomTower).getHealth());
         }
 
-
-
-
-
-
-
-
-
         if (player != null) {
             if(player.getDifficulty() == null || player.getTradeOff() == null) {
                 player.setfParent(false);

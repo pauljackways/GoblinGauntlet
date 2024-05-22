@@ -1,5 +1,9 @@
 package seng201.team131;
 
+
+/**
+ * An enum to switch between differant endings dependant on the amount of debt the player has.
+ */
 public enum EnumEndings {
     WIN("noob"),
     COLLECTOR("cool :)"),

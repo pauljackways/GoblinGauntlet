@@ -1,5 +1,8 @@
 package seng201.team131;
 
+/**
+ * enum consisting of the 3 resources, with some getter and setters.
+ */
 public enum EnumResources {
     ETHER("Ether Crystals"),
     LAVA("Lava"),

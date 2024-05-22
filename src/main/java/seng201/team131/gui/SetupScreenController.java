@@ -81,14 +81,6 @@ public class SetupScreenController extends Controller{
             return;
         }
             
-        
-       
-
-
-
-
-
-
     
         if (selectedPfp != null) {
             switch (selectedPfp) {
@@ -175,15 +167,7 @@ public class SetupScreenController extends Controller{
         Pfp3.setOnMouseClicked(event -> onPfpClick3());
         Pfp4.setOnMouseClicked(event -> onPfpClick4());
         Pfp5.setOnMouseClicked(event -> onPfpClick5());
-    }
-
-
-        
-
-
-
-        
-        
+    }    
 }
 
 

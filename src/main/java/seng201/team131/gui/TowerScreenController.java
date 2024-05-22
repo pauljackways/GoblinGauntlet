@@ -229,9 +229,6 @@ public class TowerScreenController extends Controller {
     }
 
 
-
-
-
     public void onBtnUpgradeTower(){
         if(player.getSelected() != null){
             Tower selectedTower = (Tower) player.getSelected();
@@ -247,20 +244,12 @@ public class TowerScreenController extends Controller {
         
     }
 
-
-
-
-
-
-
-
-
     @FXML
     public void initialize() {
-        System.out.println("Got Here");
+        
         if (player != null) {
             player.launchInfoPane();
-            System.out.println("Player is null, initialization postponed.");
+            
             mainTower1.setOpacity(1);
             mainTower2.setOpacity(1);
             mainTower3.setOpacity(1);
@@ -315,15 +304,6 @@ public class TowerScreenController extends Controller {
                 Image newImage = new Image(reserveTowerList.get(i).getImage());
                 imageViewListReserve.get(i).setImage(newImage);
             }
-
-            //reserveTowerList.get(i).getImagePath()
-
-
-
-
-        /*for (Tower tower : mainTowerList) {
-                System.out.println("Tower Name: " + tower.getName());
-                System.out.println("FilePath = " + tower.getImagePath());}*/
         }
     }
 }
