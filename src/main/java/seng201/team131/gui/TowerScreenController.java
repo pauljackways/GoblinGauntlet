@@ -8,8 +8,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import seng201.team131.EnumItems;
+import seng201.team131.Item;
 import seng201.team131.Player;
 import seng201.team131.Tower;
+import seng201.team131.EnumItems;
 
 public class TowerScreenController extends Controller {
     private Player player;
@@ -231,17 +234,29 @@ public class TowerScreenController extends Controller {
 
     public void onBtnUpgradeTower(){
         if(player.getSelected() != null){
-            Tower selectedTower = (Tower) player.getSelected();
-            selectedTower.levelUp();
-            player.towerLevelUpCost();
+            for (int i = 0; i < player.getItemList().size(); i++) {
+                if(player.getItemList().get(i).getName() == "Gremlins, daily hire")
+                    player.getItemList().remove(i);
+                    Tower selectedTower = (Tower) player.getSelected();
+                    selectedTower.levelUp();
+                    break;
+                }
+            }
         }
-    }
+    
 
 
     public void onBtnRepairTower(){
-        Tower selectedTower = (Tower) player.getSelected();
-        selectedTower.repairTwr();
-        
+        if(player.getSelected() != null){
+            for (int i = 0; i < player.getItemList().size(); i++) {
+                if(player.getItemList().get(i).getName() == "Building supplies (FREE labour)")
+                    player.getItemList().remove(i);
+                    Tower selectedTower = (Tower) player.getSelected();
+                    selectedTower.repairTwr();
+                    System.out.println(player.getItemList());
+                    break;
+            }
+        }
     }
 
     @FXML

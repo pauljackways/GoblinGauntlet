@@ -14,3 +14,16 @@ public enum EnumItems {
         return itemName;
     }
 }
+
+
+
+
+// for (int i = 0; i < player.getItemList().size(); i++) {
+//     if(player.getItemList().get(i).getName() == "Gremlins, daily hire")
+//         player.getItemList().remove(i);
+//         Tower selectedTower = (Tower) player.getSelected();
+//         selectedTower.repairTwr();
+//         System.out.println(player.getItemList());
+//         break;
+//     }
+// }
