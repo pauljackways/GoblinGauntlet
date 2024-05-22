@@ -162,8 +162,8 @@ public class MainScreenController extends Controller {
             towerExecutorService = Executors.newScheduledThreadPool(thisRound.getTowers().size());
             for (Tower tower : thisRound.getTowers()) {
                 final Tower currentTower = tower; // lambda expression to pass tower as parameter
-                towerExecutorService.scheduleAtFixedRate(() -> manageTowers(currentTower), 1000, tower.getReload(), TimeUnit.MILLISECONDS);            }
-            executorService.scheduleAtFixedRate(this::manageCarts, 500, thisRound.getSpeed(), TimeUnit.MILLISECONDS);
+                towerExecutorService.scheduleAtFixedRate(() -> manageTowers(currentTower), 100, tower.getReload(), TimeUnit.MILLISECONDS);            }
+            executorService.scheduleAtFixedRate(this::manageCarts, 100, thisRound.getSpeed(), TimeUnit.MILLISECONDS);
 
         }
     }

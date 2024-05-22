@@ -250,11 +250,6 @@ public class Player {
         Random random = new Random();
         int randomTower = random.nextInt(getMainTowerList().size());
         getMainTowerList().remove(randomTower);
-<<<<<<< HEAD
-
-=======
-        
->>>>>>> d97ac5b47dcfaaff94eda9dc47f0b46b59d75945
     }
 
     public void setRounds(Integer rounds) {

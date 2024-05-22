@@ -10,7 +10,7 @@ public class Round {
     private Float moneyThisRound;
     private Integer roundNumber;
     private Float cartCapacity = 10f;
-    private Integer speed = 1000; // milliseconds to travel 10m
+    private Integer speed = 750; // milliseconds to travel 10m
     private Float moneyPerFillLevel = 10.0f;
     private Random random; 
 
