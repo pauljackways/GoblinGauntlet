@@ -51,8 +51,8 @@ public class Item implements Buyable, Selectable {
     public void levelUp() {
         level++;
     }
-    public EnumItems getType(Item item) {
-        return item.type;
+    public EnumItems getType() {
+        return this.type;
     }
     public int getCount() {
         return count;

@@ -14,8 +14,10 @@ import seng201.team131.Player;
 import seng201.team131.Tower;
 import seng201.team131.EnumItems;
 
+import static seng201.team131.EnumItems.*;
 
-/** 
+
+/**
  * just more logic to set the opacity of the image view. more specific functions explained in doc strings of those functions.
  */
 public class TowerScreenController extends Controller {
@@ -240,10 +242,10 @@ public class TowerScreenController extends Controller {
     /**
      * loops through the items the player has and checks if they have the item they are trying to use, if they do, the item is removed and applied to the selected tower.
      */
-    public void onBtnUpgradeTower(){
-        if(player.getSelected() != null){
+    public void onBtnUpgradeTower() {
+        if (player.getSelected() != null) {
             for (int i = 0; i < player.getItemList().size(); i++) {
-                if(player.getItemList().get(i).getName() == "Gremlins, daily hire")
+                if (player.getItemList().get(i).getType() == UPGRADE) {
                     player.getItemList().remove(i);
                     Tower selectedTower = (Tower) player.getSelected();
                     selectedTower.levelUp();
@@ -251,19 +253,21 @@ public class TowerScreenController extends Controller {
                 }
             }
         }
-    
+    }
+
     /**
      * loops through the items the player has and checks if they have the item they are trying to use, if they do, the item is removed and applied to the selected tower.
      */
     public void onBtnRepairTower(){
         if(player.getSelected() != null){
             for (int i = 0; i < player.getItemList().size(); i++) {
-                if(player.getItemList().get(i).getName() == "Building supplies (FREE labour)")
+                if(player.getItemList().get(i).getType() == REPAIR) {
                     player.getItemList().remove(i);
                     Tower selectedTower = (Tower) player.getSelected();
                     selectedTower.repairTwr();
                     System.out.println(player.getItemList());
                     break;
+                }
             }
         }
     }
@@ -273,10 +277,10 @@ public class TowerScreenController extends Controller {
      */
     @FXML
     public void initialize() {
-        
+
         if (player != null) {
             player.launchInfoPane();
-            
+
             mainTower1.setOpacity(1);
             mainTower2.setOpacity(1);
             mainTower3.setOpacity(1);

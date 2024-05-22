@@ -80,7 +80,7 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
      * @param item A vlaue from the item enum, REPAI or UPGRADE 
      */
     public void useItem(Item item) {
-        switch(item.getType(item)) {
+        switch(item.getType()) {
             case REPAIR -> {
                 this.repair();
                 break;
