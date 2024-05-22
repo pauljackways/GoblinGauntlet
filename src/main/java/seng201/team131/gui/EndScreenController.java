@@ -38,10 +38,15 @@ public class EndScreenController extends Controller{
         player.setFavorResource(3);
         player.launchParentScreen();
         player.nextRound();
+        if(player.getRound() == 6){
+            System.exit(0);
+        }
     }
     public void onBtnEnd() {
 
     }
+    
+
     public void calculateInfo(){
         for (int i=0; i<round.getResultCartList().size(); i++) {
             moneyMade += round.getResultCartList().get(i).getFillLevel() * round.getMoneyPerFillLevel();
