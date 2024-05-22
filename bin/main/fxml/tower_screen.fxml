@@ -71,12 +71,12 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="BtnReserveTower11" mnemonicParsing="false" prefHeight="53.0" prefWidth="88.0" style="-fx-background-color: #f22f2f;" text="Upgrade" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <Button fx:id="BtnUpgradeTower" mnemonicParsing="false" onAction="#onBtnUpgradeTower" prefHeight="53.0" prefWidth="88.0" style="-fx-background-color: #f22f2f;" text="Upgrade" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="BtnReserveTower111" mnemonicParsing="false" prefHeight="53.0" prefWidth="87.0" style="-fx-background-color: #f22f2f;" text="Repair" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+      <Button fx:id="BtnRepairTower" mnemonicParsing="false" onAction="#onBtnRepairTower" prefHeight="53.0" prefWidth="87.0" style="-fx-background-color: #f22f2f;" text="Repair" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
          <font>
             <Font size="14.0" />
          </font>

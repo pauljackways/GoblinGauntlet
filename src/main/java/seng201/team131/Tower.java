@@ -144,6 +144,19 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
         return carts;
     }
 
+    public void levelUp(){
+        if(this.level < 10){
+            this.level ++;
+            this.cost += 250;
+            this.reload = this.reload - (this.reload/5);
+            this.value = value * 1.2f;
+        }
+
+
+
+
+    }
+
     public double getLevelUpCost() {
         return levelUpCost;
     }
