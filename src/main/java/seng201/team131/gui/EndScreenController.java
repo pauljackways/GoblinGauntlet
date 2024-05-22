@@ -197,8 +197,7 @@ public class EndScreenController extends Controller{
 
                 case HARD:
                     if (random.nextInt(2) == 1) {
-                        Tower dummyTower = player.getMainTowerList().get(randomTower);
-                        player.setSelected(dummyTower);
+                        player.setSelected(player.getMainTowerList().get(randomTower));
                         LblDmg.setText("Catastrophic disaster.\nMultiple orcslave fatalities.\nYour tower has imploded\nand is no longer.\n------------>");
                         player.getMainTowerList().remove(randomTower);
                         break;
