@@ -104,10 +104,13 @@ public class MainScreenController extends Controller {
                     observableCartList.remove(observableCartList.size()-1);
                 }
             }
-            if (currentCart > cartList.size() + 20) {
+            if (currentCart > cartList.size() + 18) {
                 towerExecutorService.shutdownNow();
                 executorService.shutdownNow();
                 System.out.println("Done");
+                thisRound.setResultCartList(cartList);
+                player.setCurrentRound(thisRound);
+                player.launchEndScreen(thisRound);
             }
             LstMain.setItems(observableCartList);
         });
