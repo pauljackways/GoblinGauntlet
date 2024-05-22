@@ -18,6 +18,7 @@
   </columnConstraints>
   <rowConstraints>
       <RowConstraints maxHeight="281.0" minHeight="10.0" prefHeight="206.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="281.0" minHeight="10.0" prefHeight="206.0" vgrow="SOMETIMES" />
     <RowConstraints maxHeight="212.0" minHeight="10.0" prefHeight="194.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
@@ -29,15 +30,18 @@
             <Insets top="10.0" />
          </GridPane.margin>
       </ImageView>
-      <Label fx:id="LblOutcome" text="Game outcome" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+      <Label fx:id="LblOutcome" text="Game outcome" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.rowSpan="2" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
          <font>
             <Font size="18.0" />
          </font>
          <GridPane.margin>
-            <Insets bottom="5.0" />
+            <Insets bottom="5.0" top="40.0" />
          </GridPane.margin>
+         <padding>
+            <Insets top="50.0" />
+         </padding>
       </Label>
-      <Label fx:id="LblInfo" text="Label" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label fx:id="LblInfo" text="Label" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="TOP">
          <font>
             <Font size="18.0" />
          </font>
@@ -45,7 +49,7 @@
             <Insets top="25.0" />
          </GridPane.margin>
       </Label>
-      <Button fx:id="BtnExcuse" mnemonicParsing="false" onAction="#onBtnExcuse" text="Give excuse" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
+      <Button fx:id="BtnExcuse" mnemonicParsing="false" onAction="#onBtnExcuse" text="Give excuse" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
          <GridPane.margin>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
          </GridPane.margin>
@@ -55,5 +59,10 @@
             <Insets top="15.0" />
          </GridPane.margin>
       </Label>
+      <Button fx:id="BtnEnd" mnemonicParsing="false" onAction="#onBtnExcuse" text="Give excuse" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets bottom="15.0" />
+         </GridPane.margin>
+      </Button>
    </children>
 </GridPane>

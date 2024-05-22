@@ -277,8 +277,25 @@ public class TowerScreenController extends Controller {
      */
     @FXML
     public void initialize() {
-
+        
+        
+        
         if (player != null) {
+
+            BtnRepairTower.setDisable(true);
+            BtnUpgradeTower.setDisable(true);
+            
+            for (int i = 0; i < player.getItemList().size(); i++) {
+                if(player.getItemList().get(i).getType() == REPAIR) {
+                    BtnRepairTower.setDisable(false);
+                    break;
+                }
+                if(player.getItemList().get(i).getType() == UPGRADE) {
+                    BtnUpgradeTower.setDisable(false);
+                    break;
+                }
+            }
+            
             player.launchInfoPane();
 
             mainTower1.setOpacity(1);
