@@ -6,11 +6,14 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
+import javafx.util.Duration;
 import seng201.team131.*;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
@@ -107,18 +110,31 @@ public class MainScreenController extends Controller {
     }
     public void manageTowers(Tower tower) {
         Platform.runLater(() -> {
+            int twrI = 0;
             int matchCount = tower.getCarts();
             for (int i=0; i<cartList.size(); i++) {
                 if (cartList.get(i).getFillLevel() < cartList.get(i).getCapacity()) {
                     EnumResources cartResource = cartList.get(i).getResourceType();
                     if (tower.getResources().contains(cartResource)) {
                         cartList.get(i).fill((float) (cartResource.getFlowFactor() * tower.getValue()));
+                        for (twrI = 0; twrI< towerList.size(); twrI++) {
+                            if (towerList.get(twrI) == tower) {
+                                Glow glow = new Glow();
+                                glow.setLevel(0.8);
+                                ImgViewList.get(twrI).setEffect(glow);
+                                break;
+                            }
+                        }
                         if (--matchCount == 0) {
                             break;
                         }
                     }
                 }
             }
+            PauseTransition pause = new PauseTransition(Duration.millis(200));
+            int finalTwrI = twrI;
+            pause.setOnFinished(event -> ImgViewList.get(finalTwrI).setEffect(null));
+            pause.play();
         });
     }
     @FXML
@@ -139,8 +155,8 @@ public class MainScreenController extends Controller {
             executorService = Executors.newSingleThreadScheduledExecutor();
             towerExecutorService = Executors.newScheduledThreadPool(thisRound.getTowers().size());
             cartExecutorService = Executors.newScheduledThreadPool(thisRound.getCartCount());
-            for (Tower tower : thisRound.getTowers()) { // lambda expression to pass tower as parameter
-                final Tower currentTower = tower;
+            for (Tower tower : thisRound.getTowers()) {
+                final Tower currentTower = tower; // lambda expression to pass tower as parameter
                 towerExecutorService.scheduleAtFixedRate(() -> manageTowers(currentTower), 1000, tower.getReload(), TimeUnit.MILLISECONDS);            }
             executorService.scheduleAtFixedRate(this::manageCarts, 500, thisRound.getSpeed(), TimeUnit.MILLISECONDS);
 
