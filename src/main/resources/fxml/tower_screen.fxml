@@ -120,5 +120,10 @@
             </Label>
          </children>
       </GridPane>
+      <Label prefHeight="19.0" prefWidth="431.0" text="Upgrades and Repair Items can be purchesed in The village market" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
    </children>
 </GridPane>
