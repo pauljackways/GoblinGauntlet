@@ -22,7 +22,7 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
         this.image = image;
         this.level = level;
         this.levelUpCost = levelUpCost;
-        this.health = 1.0f; // Initialize health to 0
+        this.health = 1.0f; 
     }
   
     /// starting towers ///
@@ -35,7 +35,7 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
         this.levelUpCost = 500;
         this.image = image;
         this.reload = 1000;
-        this.health = 1.0f; // Initialize health to 1.0
+        this.health = 1.0f; 
         this.resources = resources;
     }
     public List<EnumResources> getResources() {

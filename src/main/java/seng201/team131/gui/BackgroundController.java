@@ -34,7 +34,6 @@ public class BackgroundController extends Controller {
         player.launchSetupScreen();
     }
     public void loadColumn(int columnIndex, String fxmlFile, Class<?> controllerClass, Player player) {
-        //ChatGPT - Figure this out!!!!!!!!!!!
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
             Parent pane = loader.load();

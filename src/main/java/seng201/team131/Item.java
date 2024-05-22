@@ -41,7 +41,6 @@ public class Item implements Buyable, Selectable {
         this.level = 1;
     }
 
-    // Getters
     public String getName() {
         return name;
     }
@@ -59,7 +58,6 @@ public class Item implements Buyable, Selectable {
     }
     
 
-    // Setters
     public void setName(String name) {
         this.name = name;
     }
