@@ -273,6 +273,9 @@ public class TowerScreenController extends Controller {
      */
     @FXML
     public void initialize() {
+        BtnRepairTower.setDisable(true);
+        BtnUpgradeTower.setDisable(true);
+        
         
         if (player != null) {
             player.launchInfoPane();
