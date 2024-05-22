@@ -61,6 +61,7 @@ public class Player {
     private List<Tower> mainTowerList = new ArrayList<>();
     private List<Tower> reserveTowerList = new ArrayList<>();
     private String pfp;
+    private Round currentRound;
     private EnumGamechangers difficulty;
     private EnumGamechangers tradeOff;
     private EnumGamechangers powerUp;
@@ -81,7 +82,7 @@ public class Player {
     private final Consumer<Player> endScreenLauncher;
     private final Consumer<Player> mainScreenLauncher;
     private final Runnable clearScreen;
-    private Round currentRound;
+    private List<Cart> resultList;
 
     public void sell(Sellable item) {
         if (item instanceof Tower) {
@@ -164,7 +165,7 @@ public class Player {
         }
         towerScreenLauncher.accept(this);
     }
-    public void launchEndScreen() {
+    public void launchEndScreen(Round thisRound) {
         if (controller != null) {
             controller.clearColumn(1);
             controller.loadColumn(1, "/fxml/end_screen.fxml", EndScreenController.class, this);
@@ -223,8 +224,8 @@ public class Player {
         return selected;
     }
 
-    public void setRound(Integer round) {
-        this.round = round;
+    public void nextRound() {
+        this.round++;
     }
     
     public Integer getRounds() {
@@ -253,11 +254,11 @@ public class Player {
         return reserveTowerList;
     }
 
-    public void setCurrentRounds() {
+    public void setCurrentRound(Round currentRound) {
         this.currentRound = currentRound;
     }
 
-    public Round getCurrentRounds(){
+    public Round getCurrentRound(){
         return currentRound;
     }
 
@@ -306,8 +307,8 @@ public class Player {
     public EnumGamechangers getTradeOffs(){
         return tradeOff;
     }
-
-    public void clearInfoPane() {
+    public void loseLife() {
+        lives--;
     }
 
     public void towerLevelUpCost(){

@@ -5,6 +5,7 @@ import java.util.Random;
 public class Round {
     private List<Tower> towerList;
     private Integer cartCount;
+    private List<Cart> resultCartList;
     private Float moneyThisRound;
     private Integer roundNumber;
     private Float cartCapacity = 10f;
@@ -71,6 +72,12 @@ public class Round {
         }
 
     }
+    public List<Cart> getResultCartList() {
+        return resultCartList;
+    }
+    public void setResultCartList(List<Cart> resultCartList) {
+        this.resultCartList = resultCartList;
+    }
     public Integer getSpeed() {
         return speed;
     }
@@ -79,6 +86,9 @@ public class Round {
     }
     public Integer getCartCount() {
         return cartCount;
+    }
+    public Float getMoneyPerFillLevel() {
+        return moneyPerFillLevel;
     }
     public void setTowers(List<Tower> towerList) {
         this.towerList = towerList;
