@@ -41,35 +41,9 @@ public class ParentScreenController extends Controller {
     }
     @FXML
     public void onBtnMainScreen() {
-        Random random = new Random();
-        int randomTower = random.nextInt(player.getMainTowerList().size());
-
-        switch (player.getDifficulty()) {
-            case EASY:
-                if(player.getRound() != 1){
-                    player.getMainTowerList().get(randomTower).dmgTower();
-                }
-                break;
-
-            case MEDIUM:
-                if(player.getRound() != 1){
-                    player.getMainTowerList().get(randomTower).dmgTower();
-                    player.getMainTowerList().get(randomTower).dmgTower();
-                }
-                break;
-
-            case HARD:
-                player.deleteTower();
-                break;
-
-            default:
-                break;
-        }
-
-        
-        if(player.getRound() != 1){
-            player.getMainTowerList().get(randomTower).dmgTower();
-            //System.out.println(player.getMainTowerList().get(randomTower).getHealth());
+        if (player.getDifficulty() == null) {
+            player.launchGameChangersScreen();
+            player.setfParent(false);
         }
 
         if (player != null) {

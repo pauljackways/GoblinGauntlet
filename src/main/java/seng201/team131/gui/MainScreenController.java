@@ -149,8 +149,7 @@ public class MainScreenController extends Controller {
         if (player != null) {
             player.launchInfoPane();
             ImgViewList.addAll(List.of(ImgTwr1, ImgTwr2, ImgTwr3, ImgTwr4, ImgTwr5));
-            thisRound = new Round(player.getRound());
-            thisRound.setTowers(player.getMainTowerList());
+            thisRound = new Round(player.getRound(), player.getMainTowerList());
             thisRound.applyDifficulty(player.getDifficulty());
             thisRound.applyTradeOff(player.getTradeOff());
             thisRound.applyPowerUp(player.getPowerUp());

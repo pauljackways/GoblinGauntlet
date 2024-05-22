@@ -64,6 +64,7 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
         return description;
 
     }
+
     public void run() {
 
     }
@@ -141,20 +142,20 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
         carts = carts + 1;
     }
 
-    public void levelUp(){
-        if(this.level < 10){
+    public void levelUp() {
+        if (this.level < 10) {
             this.level++;
-            switch(this.level) {
+            switch (this.level) {
                 case 3: {
                 }
                 case 5: {
                 }
                 char[] charArray = this.getImage().toCharArray();
-                charArray[charArray.length-6]++;
+                charArray[charArray.length - 6]++;
                 this.setImage(String.valueOf(charArray));
             }
             this.cost += 250;
-            this.reload = this.reload - (this.reload/5);
+            this.reload = this.reload - (this.reload / 5);
             this.value = value * 1.2f;
         }
     }

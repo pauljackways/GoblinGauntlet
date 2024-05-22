@@ -13,13 +13,15 @@
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team131.gui.EndScreenController">
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
       <RowConstraints maxHeight="281.0" minHeight="10.0" prefHeight="206.0" vgrow="SOMETIMES" />
     <RowConstraints maxHeight="212.0" minHeight="10.0" prefHeight="194.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <ImageView fx:id="ImgEnd" fitHeight="160.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+      <ImageView fx:id="ImgEnd" fitHeight="160.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
          <image>
             <Image url="@../images/debt-1.jpeg" />
          </image>
@@ -27,7 +29,7 @@
             <Insets top="10.0" />
          </GridPane.margin>
       </ImageView>
-      <Label fx:id="LblOutcome" text="Game outcome" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+      <Label fx:id="LblOutcome" text="Game outcome" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
          <font>
             <Font size="18.0" />
          </font>
@@ -35,7 +37,7 @@
             <Insets bottom="5.0" />
          </GridPane.margin>
       </Label>
-      <Label fx:id="LblInfo" text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label fx:id="LblInfo" text="Label" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <font>
             <Font size="18.0" />
          </font>
@@ -43,10 +45,15 @@
             <Insets top="25.0" />
          </GridPane.margin>
       </Label>
-      <Button fx:id="BtnExcuse" mnemonicParsing="false" onAction="#onBtnExcuse" text="Give excuse" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+      <Button fx:id="BtnExcuse" mnemonicParsing="false" onAction="#onBtnExcuse" text="Give excuse" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
          <GridPane.margin>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
          </GridPane.margin>
       </Button>
+      <Label fx:id="LblDmg" textAlignment="RIGHT" textFill="RED" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets top="15.0" />
+         </GridPane.margin>
+      </Label>
    </children>
 </GridPane>

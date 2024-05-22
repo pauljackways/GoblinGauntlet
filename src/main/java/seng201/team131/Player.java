@@ -29,7 +29,6 @@ public class Player {
         this.setupScreenLauncher = setupScreenLauncher;
         this.parentScreenLauncher = parentScreenLauncher;
         this.round = 1;
-        this.currentRound = new Round(this.getRound());
         this.infoPaneLauncher = infoPaneLauncher;
         this.shopScreenLauncher = shopScreenLauncher;
         this.towerScreenLauncher = towerScreenLauncher;
@@ -130,6 +129,9 @@ public class Player {
     }
     public Float getMoney() {
         return this.money;
+    }
+    public void setMoney(Float money) {
+        this.money = money;
     }
     public void setfParent(boolean flag) {
         this.fParent = flag;
@@ -248,7 +250,11 @@ public class Player {
         Random random = new Random();
         int randomTower = random.nextInt(getMainTowerList().size());
         getMainTowerList().remove(randomTower);
+<<<<<<< HEAD
+
+=======
         
+>>>>>>> d97ac5b47dcfaaff94eda9dc47f0b46b59d75945
     }
 
     public void setRounds(Integer rounds) {
