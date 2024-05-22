@@ -235,7 +235,7 @@ public class Player {
     public void deleteTower(){
         Random random = new Random();
         int randomTower = random.nextInt(getMainTowerList().size());
-        getMainTowerList().get(randomTower).remove();
+        getMainTowerList().remove(randomTower);
         
     }
 

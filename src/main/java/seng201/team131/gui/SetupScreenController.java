@@ -5,6 +5,7 @@ import java.util.Random;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -37,6 +38,8 @@ public class SetupScreenController extends Controller{
     private Button BtnPlayStartScreen;
     @FXML
     private TextField TxtFldName;
+    @FXML
+    private Label lblShortName;
 
     public void setPlayer(Player player) {
         this.player = player;
@@ -56,11 +59,36 @@ public class SetupScreenController extends Controller{
     }
     public void onBtnPlayStartScreen() {
         Gamechangers gamechangers = new Gamechangers(EnumGamechangers.EASY, player.getFavourResource());
-        playerName = TxtFldName.getText();
+        playerName = TxtFldName.getText().trim();
         numRounds = (Integer) (int) SldrRounds.getValue();
+        
         if (playerName.isEmpty()) {
             playerName = "Forgor the Nameless";
         }
+
+        else if (playerName.length() == 1 || playerName.length() == 2) {
+            lblShortName.setText("Between 3 and 15 letters please");
+            return;
+        } 
+
+        else if (playerName.length() > 15) {
+            lblShortName.setText("Between 3 and 15 letters please");
+            return;
+        }
+
+        else if (!playerName.matches("[a-zA-Z]*")){
+            lblShortName.setText("Just letters please :)");
+            return;
+        }
+            
+        
+       
+
+
+
+
+
+
     
         if (selectedPfp != null) {
             switch (selectedPfp) {
@@ -133,7 +161,7 @@ public class SetupScreenController extends Controller{
         Pfp5.setOpacity(1);
         selectedPfp = "Pfp5";
     }
-    
+
 
     public void initialize() {
         Pfp1.setOpacity(0.5);
@@ -147,15 +175,15 @@ public class SetupScreenController extends Controller{
         Pfp3.setOnMouseClicked(event -> onPfpClick3());
         Pfp4.setOnMouseClicked(event -> onPfpClick4());
         Pfp5.setOnMouseClicked(event -> onPfpClick5());
-
-
-
-        
-
-
-
-        
-        
     }
+
+
+        
+
+
+
+        
+        
 }
+
 
