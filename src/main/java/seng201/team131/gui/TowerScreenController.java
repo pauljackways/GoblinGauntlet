@@ -8,9 +8,16 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import seng201.team131.EnumItems;
+import seng201.team131.Item;
 import seng201.team131.Player;
 import seng201.team131.Tower;
+import seng201.team131.EnumItems;
 
+
+/** 
+ * just more logic to set the opacity of the image view. more specific functions explained in doc strings of those functions.
+ */
 public class TowerScreenController extends Controller {
     private Player player;
     private boolean needsInitialization = false;
@@ -194,7 +201,9 @@ public class TowerScreenController extends Controller {
             player.setSelected(null);
         }
     }
-
+    /**
+     * Swaps the selected main tower with the selected reserve tower. The towers get swaped between the list, and that subsequently swaps them in the gui.
+     */
     public void OnBtnTowerSwap(){
         List<Tower> mainTowerList = player.getMainTowerList();
         List<Tower> reserveTowerList = player.getReserveTowerList();
@@ -228,22 +237,40 @@ public class TowerScreenController extends Controller {
         player.launchTowerScreen();
     }
 
-
+    /**
+     * loops through the items the player has and checks if they have the item they are trying to use, if they do, the item is removed and applied to the selected tower.
+     */
     public void onBtnUpgradeTower(){
         if(player.getSelected() != null){
-            Tower selectedTower = (Tower) player.getSelected();
-            selectedTower.levelUp();
-            player.towerLevelUpCost();
+            for (int i = 0; i < player.getItemList().size(); i++) {
+                if(player.getItemList().get(i).getName() == "Gremlins, daily hire")
+                    player.getItemList().remove(i);
+                    Tower selectedTower = (Tower) player.getSelected();
+                    selectedTower.levelUp();
+                    break;
+                }
+            }
+        }
+    
+    /**
+     * loops through the items the player has and checks if they have the item they are trying to use, if they do, the item is removed and applied to the selected tower.
+     */
+    public void onBtnRepairTower(){
+        if(player.getSelected() != null){
+            for (int i = 0; i < player.getItemList().size(); i++) {
+                if(player.getItemList().get(i).getName() == "Building supplies (FREE labour)")
+                    player.getItemList().remove(i);
+                    Tower selectedTower = (Tower) player.getSelected();
+                    selectedTower.repairTwr();
+                    System.out.println(player.getItemList());
+                    break;
+            }
         }
     }
 
-
-    public void onBtnRepairTower(){
-        Tower selectedTower = (Tower) player.getSelected();
-        selectedTower.repairTwr();
-        
-    }
-
+    /**
+     * Sets all the default opacitys.
+     */
     @FXML
     public void initialize() {
         
