@@ -57,7 +57,7 @@ public class ParentScreenController extends Controller {
                     player.getMainTowerList().get(randomTower).dmgTower();
                 }
                 break;
-                
+
             case HARD:
                 player.deleteTower();
                 break;
@@ -66,7 +66,7 @@ public class ParentScreenController extends Controller {
                 break;
         }
 
-        }
+        
         if(player.getRound() != 1){
             player.getMainTowerList().get(randomTower).dmgTower();
             //System.out.println(player.getMainTowerList().get(randomTower).getHealth());
