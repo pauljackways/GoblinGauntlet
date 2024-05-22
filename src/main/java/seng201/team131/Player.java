@@ -45,11 +45,10 @@ public class Player {
         this.defaultTowers.addAll(List.of(new Tower(List.of(GOO),"Small Gremlin Grinder", "images/twrSlime1.jpeg", 1), new Tower(List.of(LAVA),"Small Lava well", "images/twrLava1.jpeg", 1), new Tower(List.of(ETHER),"Small Crystal Crucible", "images/twrEther1.jpeg", 1),
                 new Tower(List.of(GOO),"Modest Gremlin Macerator", "images/twrSlime2.jpeg", 3), new Tower(List.of(LAVA),"Modest Magma Spire", "images/twrLava2.jpeg", 3), new Tower(List.of(ETHER),"Modest Crystal Cryochamber", "images/twrEther2.jpeg", 3),
                 new Tower(List.of(GOO),"Giant Gore Goliath", "images/twrSlime3.jpeg", 5), new Tower(List.of(LAVA),"Giant Vesuvian Volcanizer", "images/twrLava3.jpeg", 5), new Tower(List.of(ETHER),"Giant Crystal Cascade", "images/twrEther3.jpeg", 5)));
-        this.mainTowerList.addAll(List.of(new Tower(List.of(GOO),"Small Gremlin Grinder", "images/twrSlime1.jpeg", 1), new Tower(List.of(LAVA),"Small Lava well", "images/twrLava1.jpeg", 1), new Tower(List.of(ETHER),"Small Crystal Crucible", "images/twrEther2.jpeg", 1)));
+        this.mainTowerList.addAll(List.of(new Tower(List.of(GOO),"Small Gremlin Grinder", "images/twrSlime1.jpeg", 1), new Tower(List.of(LAVA),"Small Lava well", "images/twrLava1.jpeg", 1), new Tower(List.of(ETHER),"Small Crystal Crucible", "images/twrEther1.jpeg", 1)));
         this.money = 500f;
-
-        //this.currentRound = new Round(this);
-        
+        Random random = new Random();
+        this.favorResource = random.nextInt(3);
         launchBackground();
     }
     private List<Item> defaultItems = new ArrayList<>();
@@ -57,6 +56,7 @@ public class Player {
 
     private BackgroundController controller;
     private String name;
+    private int favorResource;
     private boolean fParent = false;
     private List<Tower> mainTowerList = new ArrayList<>();
     private List<Tower> reserveTowerList = new ArrayList<>();
@@ -82,9 +82,6 @@ public class Player {
     private final Consumer<Player> mainScreenLauncher;
     private final Runnable clearScreen;
     private Round currentRound;
-    
-    Random random = new Random();
-    int favorResource = random.nextInt(3);
 
     public void sell(Sellable item) {
         if (item instanceof Tower) {
@@ -288,7 +285,6 @@ public class Player {
     }
 
     public Integer getFavourResource() {
-        
         return favorResource;
     }
 

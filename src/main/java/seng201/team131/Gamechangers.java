@@ -19,52 +19,52 @@ public class Gamechangers implements Selectable {
 
         switch(type) {
             case EASY -> {
-                this.description = "You could probaby do Medium";
+                this.description = "OK, Baby...";
                 this.image = "images/baby.jpeg";
                 break;
             }
             case MEDIUM -> {
-                this.description = "You could probaby go to hard, \nhow hard could it be?";
+                this.description = "Respectable.";
                 this.image = "images/medium.jpeg";
 
                 break;
             }
             case HARD -> {
-                this.description = "Are You sure?";
+                this.description = "Good luck :)";
                 this.image = "images/big.jpeg";
 
                 break;
             }
             case FAST -> {
-                this.description = "Speeds up the carts, \nbut you make more money. \nGo on take the Chance";
+                this.description = "The wizards pay you to test\ntheir new rocket train spell";
                 this.image = "images/speed.jpeg";
                 break;
             }
             case SABOTAGE -> {
-                this.description = "Makes carts of a random \nresource fill up slower, \nbut you can make more money.";
+                this.description = "A giant troll has one of\nyour towers out of order";
                 this.image = "images/sabotage.jpeg";
 
                 break;
             }
             case THEFT -> {
-                this.description = "Carts of a random resource fill \nup slower";
+                this.description = "A goblin is gobblin'\n one of your resources!";
                 this.image = "/images/OIG4..jpeg";
 
                 break;
             }
             case SLOW -> {
-                this.description = "Pretty self explanatory really...";
+                this.description = "A gremlin guts spill is \nbogging down your carts";
                 this.image = "images/slow.jpeg";
                 break;
             }
             case MONEY -> {
-                this.description = "20% money boost for \none round";
+                this.description = "A totally not suspicious Elf\nwill pay more for resources today.\nI wonder what he needs them for...";
                 this.image = "images/rich.jpeg";
 
                 break;
             }
             case DISTRIBUTION -> {
-                this.description = "Makes " + this.resourceMoreCommon + " carts more likey";
+                this.description = "Your client needs more " + this.resourceMoreCommon + "\n and less of everything else today";
                 this.image = "images/distribution.jpeg";
 
                 break;

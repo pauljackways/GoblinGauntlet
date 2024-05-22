@@ -25,7 +25,6 @@ public class MainScreenController extends Controller {
     private Player player;
     private List<Cart> cartListSaved = new ArrayList<>();
     private ScheduledExecutorService towerExecutorService;
-    private ScheduledExecutorService cartExecutorService;
     private Integer currentCart = 0;
     private ScheduledExecutorService executorService;
     public MainScreenController() {
@@ -105,6 +104,11 @@ public class MainScreenController extends Controller {
                     observableCartList.remove(observableCartList.size()-1);
                 }
             }
+            if (currentCart > cartList.size() + 20) {
+                towerExecutorService.shutdownNow();
+                executorService.shutdownNow();
+                System.out.println("Done");
+            }
             LstMain.setItems(observableCartList);
         });
     }
@@ -142,19 +146,18 @@ public class MainScreenController extends Controller {
         if (player != null) {
             player.launchInfoPane();
             ImgViewList.addAll(List.of(ImgTwr1, ImgTwr2, ImgTwr3, ImgTwr4, ImgTwr5));
-            towerList = player.getMainTowerList();
-            for (int i=0; i<towerList.size(); i++) {
-                ImgViewList.get(i).setImage(new Image(towerList.get(i).getImage()));
-            }
             thisRound = new Round(player.getRound());
             thisRound.setTowers(player.getMainTowerList());
             thisRound.applyDifficulty(player.getDifficulty());
             thisRound.applyTradeOff(player.getTradeOff());
             thisRound.applyPowerUp(player.getPowerUp());
+            towerList = thisRound.getTowers();
+            for (int i=0; i<towerList.size(); i++) {
+                ImgViewList.get(i).setImage(new Image(towerList.get(i).getImage()));
+            }
             observableCartList = FXCollections.observableArrayList(cartList);
             executorService = Executors.newSingleThreadScheduledExecutor();
             towerExecutorService = Executors.newScheduledThreadPool(thisRound.getTowers().size());
-            cartExecutorService = Executors.newScheduledThreadPool(thisRound.getCartCount());
             for (Tower tower : thisRound.getTowers()) {
                 final Tower currentTower = tower; // lambda expression to pass tower as parameter
                 towerExecutorService.scheduleAtFixedRate(() -> manageTowers(currentTower), 1000, tower.getReload(), TimeUnit.MILLISECONDS);            }

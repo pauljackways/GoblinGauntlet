@@ -28,7 +28,7 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
         this.name = name;
         this.cost = 100f * level;
         this.level = level;
-        this.value = 10f;
+        this.value = 10.0f;
         this.carts = 5;
         this.levelUpCost = 500;
         this.image = image;
@@ -50,7 +50,7 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
         String description = "\nLevel: " + getLevel() + "\n\n";
         for (int i = 0; i<this.getResources().size(); i++) {
             description += EnumResources.values()[i].getResourceName() + ": \n" + this.value*this.getResources().get(i).getFlowFactor() +
-                    " Tonnes\n" + this.getReload() + " second reload";
+                    " Tonnes\n" + this.getReload()/1000 + " second reload\n" + this.getCarts() + " carts per shot";
             if (i != 2) {
                 description += ",\n\n";
             } else {
@@ -155,10 +155,4 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
         this.levelUpCost = levelUpCost;
     }
 
-    public void dispense() {
-    }
-
-    public void levelUp() {
-
-    }
 }

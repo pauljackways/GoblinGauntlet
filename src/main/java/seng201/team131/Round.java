@@ -7,8 +7,8 @@ public class Round {
     private Integer cartCount;
     private Float moneyThisRound;
     private Integer roundNumber;
-    private Float cartCapacity;
-    private Integer speed; // milliseconds to travel 10m
+    private Float cartCapacity = 10f;
+    private Integer speed = 1000; // milliseconds to travel 10m
     private Float moneyPerFillLevel = 10.0f;
     private Random random; 
 
@@ -22,18 +22,17 @@ public class Round {
         switch (difficulty) {
             case EASY:
                 this.cartCount = 5 * roundNumber;
-                cartCapacity = 5.0f;
-                speed = 2400;
+                cartCapacity = cartCapacity + roundNumber;
+                speed += speed/5;
                 break;
             case MEDIUM:
                 this.cartCount = 10 * roundNumber;
-                cartCapacity = 10.0f;
-                speed = 2000;
+                cartCapacity = cartCapacity + roundNumber * 2;
                 break;
             case HARD:
                 this.cartCount = 15 * roundNumber;
-                cartCapacity = 15.0f;
-                speed = 1600;
+                cartCapacity = cartCapacity + roundNumber * 3;
+                speed -= speed/5;
                 break;
             default:
                 break;
@@ -63,8 +62,6 @@ public class Round {
                 case SLOW:
                     this.speed += 400;
                     break;
-
-
                 case MONEY:
                     moneyPerFillLevel = moneyPerFillLevel * 1.2f;
                     break;
