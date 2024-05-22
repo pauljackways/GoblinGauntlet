@@ -8,7 +8,9 @@ import javafx.stage.Stage;
 import seng201.team131.Player;
 
 import java.io.IOException;
-
+/**
+ * Creates a player object with methods to lauchs all of the differant screens
+ */
 public class FXWrapper {
     @FXML
     private Pane pane;

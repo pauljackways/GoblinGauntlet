@@ -5,7 +5,9 @@ import java.util.Random;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import seng201.team131.Player;
-
+/**
+ * Just a bunch of functions that run when buttons are click, these function chnage screens.
+ */
 public class ParentScreenController extends Controller {
     private Player player;
     @FXML

@@ -13,7 +13,9 @@ import seng201.team131.Player;
 import seng201.team131.Round;
 import seng201.team131.Selectable;
 
-
+/**
+ * The logic behind the Game Changers Screen, setting all the image views to the correct opacity based on the one clicked
+ */
 public class GameChangersScreenController extends Controller {
     private Player player;
     private Integer powerUpSelected = null;

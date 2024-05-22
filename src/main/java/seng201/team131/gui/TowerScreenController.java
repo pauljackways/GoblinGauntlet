@@ -14,6 +14,10 @@ import seng201.team131.Player;
 import seng201.team131.Tower;
 import seng201.team131.EnumItems;
 
+
+/** 
+ * just more logic to set the opacity of the image view. more specific functions explained in doc strings of those functions.
+ */
 public class TowerScreenController extends Controller {
     private Player player;
     private boolean needsInitialization = false;
@@ -197,7 +201,9 @@ public class TowerScreenController extends Controller {
             player.setSelected(null);
         }
     }
-
+    /**
+     * Swaps the selected main tower with the selected reserve tower. The towers get swaped between the list, and that subsequently swaps them in the gui.
+     */
     public void OnBtnTowerSwap(){
         List<Tower> mainTowerList = player.getMainTowerList();
         List<Tower> reserveTowerList = player.getReserveTowerList();
@@ -231,7 +237,9 @@ public class TowerScreenController extends Controller {
         player.launchTowerScreen();
     }
 
-
+    /**
+     * loops through the items the player has and checks if they have the item they are trying to use, if they do, the item is removed and applied to the selected tower.
+     */
     public void onBtnUpgradeTower(){
         if(player.getSelected() != null){
             for (int i = 0; i < player.getItemList().size(); i++) {
@@ -244,8 +252,9 @@ public class TowerScreenController extends Controller {
             }
         }
     
-
-
+    /**
+     * loops through the items the player has and checks if they have the item they are trying to use, if they do, the item is removed and applied to the selected tower.
+     */
     public void onBtnRepairTower(){
         if(player.getSelected() != null){
             for (int i = 0; i < player.getItemList().size(); i++) {
@@ -259,6 +268,9 @@ public class TowerScreenController extends Controller {
         }
     }
 
+    /**
+     * Sets all the default opacitys.
+     */
     @FXML
     public void initialize() {
         

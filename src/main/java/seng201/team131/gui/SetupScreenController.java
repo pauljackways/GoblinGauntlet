@@ -57,6 +57,10 @@ public class SetupScreenController extends Controller{
     public SetupScreenController() {
         // Default constructor for FXLoader's sick and twisted desires
     }
+
+    /**
+     * Checks the players name input and passes the file path of the pfp they selected using a switch case
+     */
     public void onBtnPlayStartScreen() {
         Gamechangers gamechangers = new Gamechangers(EnumGamechangers.EASY, player.getFavourResource());
         playerName = TxtFldName.getText().trim();

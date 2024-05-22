@@ -48,6 +48,10 @@ public class UserPaneController extends Controller{
             updatePlayerInfo();
         }
     }
+
+    /**
+     * 
+     */
     private void updatePlayerInfo() {
         Platform.runLater(() -> {
             setLblName(player.getName());
