@@ -46,14 +46,6 @@ public class ParentScreenController extends Controller {
             player.setfParent(false);
         }
 
-
-
-
-
-
-
-
-
         if (player != null) {
             if(player.getDifficulty() == null || player.getTradeOff() == null) {
                 player.setfParent(false);

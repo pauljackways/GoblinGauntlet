@@ -17,6 +17,12 @@ public class Cart implements Runnable {
         this.capacity = 10.0f;
         this.fillLevel = 0.0f;
     }
+
+    /**
+     * Creates carts, with resoruce types randomsly generated based on the value of favourResource.
+     * @param favourResource Between 0 and 2 to denote what resorce should be favored.
+     * @param capacity The capacity of the cart being created.
+     */
     public Cart (Integer favourResource, Float capacity) {
         this.capacity = capacity;
         this.favourResource = favourResource;

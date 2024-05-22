@@ -83,6 +83,10 @@ public class Player {
     private final Runnable clearScreen;
     private List<Cart> resultList;
 
+    /**
+     * Removes the tower from mainTowerList selcted by the user to sell
+     * @param item The Tower selected by the player when the sell button is pressed.
+     */
     public void sell(Sellable item) {
         if (item instanceof Tower) {
             if (mainTowerList.contains(item)) {
@@ -94,6 +98,12 @@ public class Player {
         }
         money += item.getPrice();
     }
+
+    /**
+     * Checks weather the item selcted by the player is a Tower or item and adds it to the corresponding list.
+     * @param item The item selcetd by the layer when the sell button is pressed.
+     * @return
+     */
     public boolean buy(Buyable item) {
         if (item instanceof Tower) {
             if (mainTowerList.size() < 5) {
@@ -233,12 +243,18 @@ public class Player {
     public Integer getRounds() {
         return rounds;
     }
-
+    /**
+     * Removes a random tower from the players mainTowerList.
+     */
     public void deleteTower(){
         Random random = new Random();
         int randomTower = random.nextInt(getMainTowerList().size());
         getMainTowerList().remove(randomTower);
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> d97ac5b47dcfaaff94eda9dc47f0b46b59d75945
     }
 
     public void setRounds(Integer rounds) {

@@ -24,7 +24,7 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
         this.levelUpCost = levelUpCost;
         this.health = 1.0f; // Initialize health to 0
     }
-
+  
     /// starting towers ///
     public Tower(List<EnumResources> resources, String name, String image, Integer level) {
         this.name = name;
@@ -48,6 +48,7 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
     public long getReload() {
         return this.reload;
     }
+
     public String getDescription() {
         String description = "\nLevel: " + getLevel() + "\n\n";
         for (int i = 0; i<this.getResources().size(); i++) {
@@ -74,6 +75,10 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
             this.health += 0.2;
         }
     }
+    /**
+     * A switch case to represnting the items the player can apply to their towers.
+     * @param item A vlaue from the item enum, REPAI or UPGRADE 
+     */
     public void useItem(Item item) {
         switch(item.getType(item)) {
             case REPAIR -> {

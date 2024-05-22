@@ -144,5 +144,13 @@
             <Insets right="10.0" />
          </GridPane.margin>
       </GridPane>
+      <Label fx:id="lblShortName" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+         <padding>
+            <Insets right="110.0" />
+         </padding>
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
    </children>
 </GridPane>

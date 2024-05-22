@@ -17,6 +17,10 @@ public class Item implements Buyable, Selectable {
         this.cost = cost;
         this.level = 1;
     }
+    /**
+     * A switch case for putting the selected item up in the sidebar with a description and image.
+     * @param type
+     */
     public Item(EnumItems type) {
         switch(type) {
             case REPAIR -> {

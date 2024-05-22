@@ -21,7 +21,10 @@ public class Round {
         this.roundNumber = roundNumber;
         this.cartCount = roundNumber;
     }
-  
+    /**
+     * A switch case to set the carts values based on the difficuty selected by the player.
+     * @param difficulty  A value of EASY, MEDIUM, or HARD from the Game Changers enum.
+     */
     public void applyDifficulty(EnumGamechangers difficulty) {
         switch (difficulty) {
             case EASY:
@@ -43,6 +46,10 @@ public class Round {
         }
     }
 
+    /**
+     * A switch case modify the carts or towers based o the value the enumTradeOff
+     * @param tradeOff A value of FAST, SABOTAGE, or THEFT from the game changers enum
+     */
     public void applyTradeOff(EnumGamechangers tradeOff) {
         switch (tradeOff) {
             case FAST:
@@ -60,6 +67,10 @@ public class Round {
         }
     }
 
+    /**
+     * Switch case to mofify the round based on the power up the player buys.
+     * @param powerUp A vaulue of SLOW, or MONEY from the game changer enum.
+     */
     public void applyPowerUp(EnumGamechangers powerUp) {
         if (powerUp != null) {
             switch (powerUp) {
