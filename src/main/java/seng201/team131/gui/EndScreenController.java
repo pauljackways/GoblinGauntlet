@@ -184,12 +184,16 @@ public class EndScreenController extends Controller{
             switch (player.getDifficulty()) {
                 case EASY:
                     if(player.getRound() != 1){
+                        player.setSelected(player.getMainTowerList().get(randomTower));
+                        LblDmg.setText("A gremlin has become\nlodged between the on and\noff switch of your tower\nleaving it in a superposition\nof states that has reduced\n efficiency slightly.\n------------>");
                         player.getMainTowerList().get(randomTower).dmgTower();
                     }
                     break;
 
                 case MEDIUM:
                     if(player.getRound() != 1){
+                        player.setSelected(player.getMainTowerList().get(randomTower));
+                        LblDmg.setText("Mainline stream \nglycopump transcintentiliser\nhas been eaten.\nYour tower is damaged.\n------------>");
                         player.getMainTowerList().get(randomTower).dmgTower();
                         player.getMainTowerList().get(randomTower).dmgTower();
                     }
