@@ -1,6 +1,7 @@
 package seng201.team131;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Tower implements Buyable, Sellable, Selectable, Runnable{
     private String name;
@@ -71,24 +72,6 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
             this.health += 0.2;
         }
     }
-    public void upgrade() {
-        this.level++;
-        switch(this.level) {
-            case 3: {
-            }
-            case 5: {
-            }
-            ///////////////// Test this //////////////////////////
-            String fileName = getImage().substring(getImage().lastIndexOf("/") + 1);
-            String extension = fileName.substring(fileName.lastIndexOf("."));
-            int numberIndex = fileName.length() - 6;
-            int number = Character.getNumericValue(fileName.charAt(numberIndex));
-            number++;
-            String newFileName = fileName.substring(0, numberIndex) + number + extension;
-            String newImagePath = getImage().substring(0, getImage().lastIndexOf("/") + 1) + newFileName;
-            setImage(newImagePath);
-        }
-    }
     public void useItem(Item item) {
         switch(item.getType(item)) {
             case REPAIR -> {
@@ -96,7 +79,7 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
                 break;
             }
             case UPGRADE -> {
-                this.upgrade();
+                this.levelUp();
                 break;
             }
         }
@@ -146,7 +129,16 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
 
     public void levelUp(){
         if(this.level < 10){
-            this.level ++;
+            this.level++;
+            switch(this.level) {
+                case 3: {
+                }
+                case 5: {
+                }
+                char[] charArray = this.getImage().toCharArray();
+                charArray[charArray.length-6]++;
+                this.setImage(String.valueOf(charArray));
+            }
             this.cost += 250;
             this.reload = this.reload - (this.reload/5);
             this.value = value * 1.2f;

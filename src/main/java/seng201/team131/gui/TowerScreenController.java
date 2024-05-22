@@ -235,7 +235,6 @@ public class TowerScreenController extends Controller {
         if(player.getSelected() != null){
             Tower selectedTower = (Tower) player.getSelected();
             selectedTower.levelUp();
-            System.out.println("Got Here");
             player.towerLevelUpCost();
         }
     }
