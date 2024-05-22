@@ -2,6 +2,7 @@ package seng201.team131.gui;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -241,7 +242,9 @@ public class TowerScreenController extends Controller {
 
 
     public void onBtnRepairTower(){
-
+        Tower selectedTower = (Tower) player.getSelected();
+        selectedTower.repairTwr();
+        
     }
 
 

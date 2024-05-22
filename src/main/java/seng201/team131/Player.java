@@ -232,6 +232,13 @@ public class Player {
         return rounds;
     }
 
+    public void deleteTower(){
+        Random random = new Random();
+        int randomTower = random.nextInt(getMainTowerList().size());
+        getMainTowerList().get(randomTower).remove();
+        
+    }
+
     public void setRounds(Integer rounds) {
         this.rounds = rounds;
     }

@@ -1,6 +1,7 @@
 package seng201.team131;
 
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Tower implements Buyable, Sellable, Selectable, Runnable{
@@ -127,6 +128,14 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
         return carts;
     }
 
+    public void reduceRange() {
+        carts = carts - 1;
+    }
+
+    public void increaceRange() {
+        carts = carts + 1;
+    }
+
     public void levelUp(){
         if(this.level < 10){
             this.level++;
@@ -143,11 +152,28 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
             this.reload = this.reload - (this.reload/5);
             this.value = value * 1.2f;
         }
-
-
-
-
     }
+
+    public void repairTwr(){
+        if(this.health < 1){
+            this.health =  this.health + 0.2f;
+            this.value = this.value + 2f;
+            this.reload = this.reload - 200;
+            increaceRange();
+
+        }
+    }
+
+    public void dmgTower(){
+
+        this.health =  this.health - 0.2f;
+        this.value = this.value - 2f;
+        this.reload = this.reload + 200;
+        if(getCarts() != 1){
+            reduceRange();
+        }
+    }
+
 
     public double getLevelUpCost() {
         return levelUpCost;
