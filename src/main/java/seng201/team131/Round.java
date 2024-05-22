@@ -15,6 +15,7 @@ public class Round {
     public Round(Integer roundNumber) {
         random = new Random();
         this.roundNumber = roundNumber;
+        this.cartCount = roundNumber;
     }
   
     public void applyDifficulty(EnumGamechangers difficulty) {
@@ -22,19 +23,17 @@ public class Round {
             case EASY:
                 this.cartCount = 5 * roundNumber;
                 cartCapacity = 5.0f;
-                speed = 1200;
-
+                speed = 2400;
                 break;
-
             case MEDIUM:
                 this.cartCount = 10 * roundNumber;
                 cartCapacity = 10.0f;
-                speed = 1000;
+                speed = 2000;
                 break;
             case HARD:
                 this.cartCount = 15 * roundNumber;
                 cartCapacity = 15.0f;
-                speed = 800;
+                speed = 1600;
                 break;
             default:
                 break;
@@ -44,9 +43,7 @@ public class Round {
     public void applyTradeOff(EnumGamechangers tradeOff) {
         switch (tradeOff) {
             case FAST:
-                for (int i = 0; i < this.cartCount; i++) {
-                    speed *= 800;
-                }
+                speed -= 400;
                 moneyPerFillLevel = moneyPerFillLevel * 1.2f;
                 break;
             case SABOTAGE:
@@ -61,22 +58,21 @@ public class Round {
     }
 
     public void applyPowerUp(EnumGamechangers powerUp) {
-        switch (powerUp) {
-            case SLOW:
-                for (int i = 0; i < this.cartCount; i++) {
-                    this.speed += 1200;
-                }
-                break;
+        if (powerUp != null) {
+            switch (powerUp) {
+                case SLOW:
+                    this.speed += 400;
+                    break;
 
 
-            case MONEY:
-                for (int i = 0; i < this.cartCount; i++) {
+                case MONEY:
                     moneyPerFillLevel = moneyPerFillLevel * 1.2f;
-                }
-                break;
-            default:
-                break;
+                    break;
+                default:
+                    break;
+            }
         }
+
     }
     public Integer getSpeed() {
         return speed;

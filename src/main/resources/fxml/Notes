@@ -32,3 +32,7 @@ buy and sell list selection by index was difficult to implement, especially beca
 difficulty deciding if rounds is a player object or not. Decided it would be best to have round created without knowledge of the player specifically
 
 when trying to implement executorservice, have realised that I would need to make a different service for each resource a tower can deliver if it can deliver more than one. Instead, can set flow rates the same, eliminate Resource class, simplify code. It is much easier to change the flow rates of resources from EnumResources itself than for each tower individually.
+
+Was originally going to use a queue, but it requires a cellfactory and I didn't understand it (without invoking chatgpt)
+
+talk about structure

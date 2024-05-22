@@ -43,7 +43,8 @@ public class ParentScreenController extends Controller {
             if(player.getDifficulty() == null || player.getTradeOff() == null) {
                 player.setfParent(false);
                 this.player.launchGameChangersScreen();
-            }else{this.player.launchMainScreen();}
+            } else {
+                this.player.launchMainScreen();}
         }
     }
 
@@ -65,6 +66,7 @@ public class ParentScreenController extends Controller {
     @FXML
     public void initialize() {
         if (player != null) {
+            player.setFavorResource(3);
             player.setfParent(true);
             player.setSelected(null);
             player.launchUserPane();

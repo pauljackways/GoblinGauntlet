@@ -8,9 +8,9 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
     private float health; // Factor
     private int level;
     private String image;
-    private double value; // amount dispensed per resource per reload
+    private Float value; // amount dispensed per resource per reload
     private Integer reload; // reload time in Milliseconds to reload
-    private int carts; // number of carts it can fill per resource per reload
+    private Integer carts; // number of carts it can fill per resource per reload
     private float levelUpCost;
     private List<EnumResources> resources;
 
@@ -28,6 +28,8 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
         this.name = name;
         this.cost = 100f * level;
         this.level = level;
+        this.value = 10f;
+        this.carts = 5;
         this.levelUpCost = 500;
         this.image = image;
         this.reload = 1000;
@@ -47,7 +49,7 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
     public String getDescription() {
         String description = "\nLevel: " + getLevel() + "\n\n";
         for (int i = 0; i<this.getResources().size(); i++) {
-            description += EnumResources.values()[i].getResourceName() + ": \n" + this.getResources().get(i).getFlowFactor() +
+            description += EnumResources.values()[i].getResourceName() + ": \n" + this.value*this.getResources().get(i).getFlowFactor() +
                     " Tonnes\n" + this.getReload() + " second reload";
             if (i != 2) {
                 description += ",\n\n";
@@ -138,6 +140,9 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
     public void setLevel(int level) {
         this.level = level;
     }
+    public Integer getCarts() {
+        return carts;
+    }
 
     public void levelUp(){
         if(this.level < 10){
@@ -154,6 +159,9 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
 
     public double getLevelUpCost() {
         return levelUpCost;
+    }
+    public Float getValue() {
+        return value;
     }
 
     public void setLevelUpCost(float levelUpCost) {
