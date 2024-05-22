@@ -7,6 +7,7 @@ import seng201.team131.Player;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import seng201.team131.Round;
+import seng201.team131.Tower;
 
 import java.util.Random;
 
@@ -25,6 +26,8 @@ public class EndScreenController extends Controller{
 
     private Label LblOutcome;
     @FXML
+    private Label LblDmg;
+    @FXML
 
     private Label LblInfo;
     @FXML
@@ -40,6 +43,7 @@ public class EndScreenController extends Controller{
         }
         LblInfo.setText("Carts filled: " + (round.getResultCartList().size()-failCount) + "/" + round.getResultCartList().size() + "\n" +
                         "Money earnt: $" + moneyMade);
+        player.setMoney(player.getMoney() + moneyMade);
     }
 
     @Override
@@ -51,6 +55,7 @@ public class EndScreenController extends Controller{
         // I'm ofFXnded
     }
     public void fail() {
+        player.loseLife();
         ImgEnd.setImage(new Image("images/fail.jpeg"));
         LblOutcome.setText("Uh oh... You're in trouble... Quick! come up with an excuse!");
         switch(random.nextInt(6)) {
@@ -61,7 +66,7 @@ public class EndScreenController extends Controller{
                 excuse = "\"It was cloudy! the moon couldn't charge my Ether Crystals!\"";
                 break;
             case 2:
-                excuse = "\"My appologies, Mr. Glazgrong. I will engage in meditation and self-reflection over this.\"";
+                excuse = "\"My appologies, Mrs. Glazgrong.\nI will engage in meditation and self-reflection over this.\"";
                 break;
             case 3:
                 excuse = "\"The plumber didn't show up.\"";
@@ -83,25 +88,54 @@ public class EndScreenController extends Controller{
         calculateInfo();
     }
     public void endGame() {
-        ImgEnd.setImage(new Image("images/debt1.jpeg"));
+        player.setSelected(null);
+        if ()
+        ImgEnd.setImage(new Image("images/prison.jpeg"));
         LblOutcome.setText("Uh oh... You're in trouble... Quick! come up with an excuse!");
         calculateInfo();
     }
     @FXML
     public void initialize() {
         if (player != null) {
+            player.setSelected(null);
+            int randomTower = random.nextInt(player.getMainTowerList().size());
+            switch (player.getDifficulty()) {
+                case EASY:
+                    if(player.getRound() != 1){
+                        player.getMainTowerList().get(randomTower).dmgTower();
+                    }
+                    break;
+
+                case MEDIUM:
+                    if(player.getRound() != 1){
+                        player.getMainTowerList().get(randomTower).dmgTower();
+                        player.getMainTowerList().get(randomTower).dmgTower();
+                    }
+                    break;
+
+                case HARD:
+                    if (random.nextInt(2) == 1) {
+                        Tower dummyTower = player.getMainTowerList().get(randomTower);
+                        player.setSelected(dummyTower);
+                        LblDmg.setText("Catastrophic disaster.\nMultiple orcslave fatalities.\nYour tower has imploded\nand is no longer.\n------------>");
+                        player.getMainTowerList().remove(randomTower);
+                        break;
+                    }
+                default:
+                    break;
+            }
             round = player.getCurrentRound();
             failCount = 0;
             if (player.getRound() != player.getRounds()) {
                 for (int i=0;i<round.getResultCartList().size(); i++) {
                     if (round.getResultCartList().get(i).getFillLevel()<round.getResultCartList().get(i).getCapacity()) {
                         failCount++;
-                        player.loseLife();
-                        fail();
                     }
                 }
                 if (failCount == 0) {
                     success();
+                } else {
+                    fail();
                 }
             } else {
                 endGame();

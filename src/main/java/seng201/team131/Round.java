@@ -1,5 +1,6 @@
 package seng201.team131;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 public class Round {
@@ -13,7 +14,9 @@ public class Round {
     private Float moneyPerFillLevel = 10.0f;
     private Random random; 
 
-    public Round(Integer roundNumber) {
+    public Round(Integer roundNumber, List<Tower> playerTowerList) {
+        List<Tower> towerList = new ArrayList<>(playerTowerList);
+        this.towerList = towerList;
         random = new Random();
         this.roundNumber = roundNumber;
         this.cartCount = roundNumber;
@@ -89,9 +92,6 @@ public class Round {
     }
     public Float getMoneyPerFillLevel() {
         return moneyPerFillLevel;
-    }
-    public void setTowers(List<Tower> towerList) {
-        this.towerList = towerList;
     }
     public List<Tower> getTowers() {
         return towerList;
