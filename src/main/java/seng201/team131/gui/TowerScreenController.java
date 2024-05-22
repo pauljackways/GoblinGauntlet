@@ -38,6 +38,10 @@ public class TowerScreenController extends Controller {
     private ImageView reserveTower5;
     @FXML
     private Button BtnTowerSwap;
+    @FXML
+    private Button BtnUpgradeTower;
+    @FXML
+    private Button BtnRepairTower;
 
     public void SetupScreenController(Player player) {
         this.player = player;
@@ -222,6 +226,29 @@ public class TowerScreenController extends Controller {
         reserveTowerPointer = -1;
         player.launchTowerScreen();
     }
+
+
+
+
+
+    public void onBtnUpgradeTower(){
+        if(player.getSelected() != null){
+            Tower selectedTower = (Tower) player.getSelected();
+            selectedTower.levelUp();
+            System.out.println("Got Here");
+            player.towerLevelUpCost();
+        }
+    }
+
+
+    public void onBtnRepairTower(){
+
+    }
+
+
+
+
+
 
 
 

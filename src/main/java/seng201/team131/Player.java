@@ -306,4 +306,8 @@ public class Player {
 
     public void clearInfoPane() {
     }
+
+    public void towerLevelUpCost(){
+        money = money - 500;
+    }
 }
