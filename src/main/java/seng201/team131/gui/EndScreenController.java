@@ -183,6 +183,7 @@ public class EndScreenController extends Controller{
     @FXML
     public void initialize() {
         if (player != null) {
+            player.setPowerUp(null);
             BtnEnd.setVisible(false);
             player.setSelected(null);
             if (!player.getMainTowerList().isEmpty()) {

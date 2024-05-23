@@ -18,9 +18,7 @@ import seng201.team131.Selectable;
  */
 public class GameChangersScreenController extends Controller {
     private Player player;
-    private Integer powerUpSelected = null;
-    private Integer favourResource;
-
+    private EnumGamechangers powerUpSelected;
     @FXML
     private ImageView ImgEasy;
     @FXML
@@ -109,64 +107,66 @@ public class GameChangersScreenController extends Controller {
 
     @FXML
     public void onImgSlow() {
-        ImgSlow.setOpacity(0.5);
-        ImgMoney.setOpacity(1);
-        ImgDist.setOpacity(1);
-        powerUpSelected = 0;
+        ImgSlow.setOpacity(1);
+        ImgMoney.setOpacity(0.5);
+        ImgDist.setOpacity(0.5);
+        powerUpSelected = SLOW;
         player.setPowerUp(SLOW);
         player.setSelected((Selectable) new Gamechangers(SLOW, player.getFavourResource()));
     }
 
     @FXML
     public void onImgMoney() {
-        ImgSlow.setOpacity(1);
-        ImgMoney.setOpacity(0.5);
-        ImgDist.setOpacity(1);
-        powerUpSelected = 1;
+        ImgSlow.setOpacity(0.5);
+        ImgMoney.setOpacity(1);
+        ImgDist.setOpacity(0.5);
+        powerUpSelected = MONEY;
         player.setPowerUp(MONEY);
         player.setSelected((Selectable) new Gamechangers(MONEY, player.getFavourResource()));
     }
 
     @FXML
     public void onImgDist() {
-        ImgSlow.setOpacity(1);
-        ImgMoney.setOpacity(1);
-        ImgDist.setOpacity(0.5);
-        powerUpSelected = 2;
+        ImgSlow.setOpacity(0.5);
+        ImgMoney.setOpacity(0.5);
+        ImgDist.setOpacity(1);
+        powerUpSelected = DISTRIBUTION;
         player.setPowerUp(DISTRIBUTION);
         player.setSelected((Selectable) new Gamechangers(DISTRIBUTION, player.getFavourResource()));
     }
     @FXML
     public void onBtnBuyPwrUp() {
-        if(powerUpSelected == null){
-            
+        switch(powerUpSelected) {
+            case SLOW -> {
+                ImgSlow.setOpacity(1);
+                break;
+            }
+            case MONEY -> {
+                ImgMoney.setOpacity(1);
+                break;
+            }
+            case DISTRIBUTION -> {
+                ImgDist.setOpacity(1);
+                break;
+            }
+            default -> {
+                break;
+            }
         }
-        else if(powerUpSelected == 0){
+        if (powerUpSelected != null) {
+            player.setMoney(player.getMoney() - 250f);
+            ImgSlow.setDisable(true);
+            ImgMoney.setDisable(true);
+            ImgDist.setDisable(true);
+            BtnBuyPwrUp.setDisable(true);
             ImgSlow.setOpacity(0.5);
-            ImgSlow.setDisable(true);
-            ImgMoney.setDisable(true);
-            ImgDist.setDisable(true);
-            
-            
-        }
-        else if(powerUpSelected == 1){
             ImgMoney.setOpacity(0.5);
-            ImgSlow.setDisable(true);
-            ImgMoney.setDisable(true);
-            ImgDist.setDisable(true);
-            
-        }
-        else if(powerUpSelected == 2){
             ImgDist.setOpacity(0.5);
-            ImgSlow.setDisable(true);
-            ImgMoney.setDisable(true);
-            ImgDist.setDisable(true);
-
-            Random random = new Random();
-            int randomResource = random.nextInt(3);
-            player.setFavorResource(randomResource);
         }
-        
+
+//        Random random = new Random();
+//        int randomResource = random.nextInt(3);
+//        player.setFavorResource(randomResource);
     }
     
 
@@ -181,17 +181,33 @@ public class GameChangersScreenController extends Controller {
     public void initialize(){
         if (player != null) {
             player.launchInfoPane();
+            try {
+                switch (player.getPowerUp()) {
+                    case SLOW:
+                        ImgSlow.setOpacity(0.5);
+                        break;
+                    case MONEY:
+                        ImgMoney.setOpacity(0.5);
+                        break;
+                    case DISTRIBUTION:
+                        ImgDist.setOpacity(0.5);
+                        break;
+                    default:
+                        break;
+                }
 
-
+            } catch (NullPointerException e) {
+            }
             ImgEasy.setOpacity(0.5);
             ImgMed.setOpacity(0.5);
             ImgHard.setOpacity(0.5);
             ImgFast.setOpacity(0.5);
             ImgSabo.setOpacity(0.5);
             ImgTheft.setOpacity(0.5);
-            ImgSlow.setOpacity(1);
-            ImgMoney.setOpacity(1);
-            ImgDist.setOpacity(1);
+            ImgSlow.setOpacity(0.5);
+            ImgMoney.setOpacity(0.5);
+            ImgDist.setOpacity(0.5);
+
             try {
                 switch (player.getDifficulty()) {
                     case EASY:
@@ -225,26 +241,24 @@ public class GameChangersScreenController extends Controller {
                 }
             } catch (NullPointerException e) {
             }
-
             try {
                 switch (player.getPowerUp()) {
                     case SLOW:
-                        ImgSlow.setOpacity(0.5);
+                        ImgSlow.setOpacity(1);
                         break;
                     case MONEY:
-                        ImgMoney.setOpacity(0.5);
+                        ImgMoney.setOpacity(1);
                         break;
                     case DISTRIBUTION:
-                        ImgDist.setOpacity(0.5);
+                        ImgDist.setOpacity(1);
                         break;
                     default:
                         break;
                 }
-                ImgSlow.setDisable(true);
-                ImgMoney.setDisable(true);
-                ImgDist.setDisable(true);
             } catch (NullPointerException e) {
             }
+
+
         }
         
         
