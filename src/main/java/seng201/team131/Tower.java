@@ -19,21 +19,21 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
     /// starting towers ///
     public Tower(List<EnumResources> resources, String name, String image, Integer level) {
         this.name = name;
-        this.cost = 1000f * level;
+        this.cost = 2000f * level;
         this.level = level;
-        this.value = 5.0f;
+        this.value = 3.0f;
         this.carts = 5;
-        this.levelUpCost = this.cost/2;
+        this.levelUpCost = 500;
         this.image = image;
         this.reload = 1000;
-        this.health = 1.0f; // Initialize health to 1.0
+        this.health = 1.0f;
         this.resources = resources;
     }
     public Tower(List<EnumResources> resources, String name, String image, Integer level, Integer carts, Integer reload) {
         this.name = name;
-        this.cost = 1000f * level;
+        this.cost = 2000f * level;
         this.level = level;
-        this.value = 5.0f;
+        this.value = 3.0f;
         this.carts = carts;
         this.levelUpCost = this.cost/2;
         this.image = image;
@@ -54,20 +54,24 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
 
     public String getDescription() {
         String description = "\nLevel: " + getLevel() + "\n\n";
-        for (int i = 0; i<this.getResources().size(); i++) {
-            description += EnumResources.values()[i].getResourceName() + ": \n" + this.value*this.getResources().get(i).getFlowFactor() +
-                    " Tonnes\n" + this.getReload()/1000 + " millisecond reload\n" + this.getCarts() + " carts per shot";
-            if (i != 2) {
+        for (int i = 0; i < this.getResources().size(); i++) {
+            String resourceName = EnumResources.values()[i].getResourceName();
+            double tonnes = this.value * this.getResources().get(i).getFlowFactor();
+            double reloadTime = this.getReload() / 1000.0;
+            int cartsPerShot = this.getCarts();
+
+            description += String.format("%s: \n%.2f Tonnes\n%.2f millisecond reload\n%d carts per shot",
+                    resourceName, tonnes, reloadTime, cartsPerShot);
+
+            if (i != this.getResources().size() - 1) {
                 description += ",\n\n";
             } else {
                 description += "\n\n";
             }
         }
-        description+= "Cost: \n$" + getCost();
+        description += "Cost: \n$" + getCost();
         return description;
-
     }
-
     public void run() {
 
     }

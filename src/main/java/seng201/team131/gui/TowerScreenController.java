@@ -340,11 +340,11 @@ public class TowerScreenController extends Controller {
 
             List<Tower> reserveTowerList = player.getReserveTowerList();
             List<ImageView> imageViewListReserve = new ArrayList<>();
-            imageViewListReserve.add(reserveTower1); // Corrected here
-            imageViewListReserve.add(reserveTower2); // Corrected here
-            imageViewListReserve.add(reserveTower3); // Corrected here
-            imageViewListReserve.add(reserveTower4); // Corrected here
-            imageViewListReserve.add(reserveTower5); // Corrected here
+            imageViewListReserve.add(reserveTower1);
+            imageViewListReserve.add(reserveTower2);
+            imageViewListReserve.add(reserveTower3);
+            imageViewListReserve.add(reserveTower4);
+            imageViewListReserve.add(reserveTower5);
 
 
 
