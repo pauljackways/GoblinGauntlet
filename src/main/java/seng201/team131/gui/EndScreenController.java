@@ -180,34 +180,36 @@ public class EndScreenController extends Controller{
         if (player != null) {
             BtnEnd.setVisible(false);
             player.setSelected(null);
-            int randomTower = random.nextInt(player.getMainTowerList().size());
-            switch (player.getDifficulty()) {
-                case EASY:
-                    if(player.getRound() != 1){
-                        player.setSelected(player.getMainTowerList().get(randomTower));
-                        LblDmg.setText("A gremlin has become\nlodged between the on and\noff switch of your tower\nleaving it in a superposition\nof states that has reduced\n efficiency slightly.\n------------>");
-                        player.getMainTowerList().get(randomTower).dmgTower();
-                    }
-                    break;
-
-                case MEDIUM:
-                    if(player.getRound() != 1){
-                        player.setSelected(player.getMainTowerList().get(randomTower));
-                        LblDmg.setText("Mainline stream \nglycopump transcintentiliser\nhas been eaten.\nYour tower is damaged.\n------------>");
-                        player.getMainTowerList().get(randomTower).dmgTower();
-                        player.getMainTowerList().get(randomTower).dmgTower();
-                    }
-                    break;
-
-                case HARD:
-                    if (random.nextInt(2) == 1) {
-                        player.setSelected(player.getMainTowerList().get(randomTower));
-                        LblDmg.setText("Catastrophic disaster.\nMultiple orcslave fatalities.\nYour tower has imploded\nand is no longer.\n------------>");
-                        player.getMainTowerList().remove(randomTower);
+            if (!player.getMainTowerList().isEmpty()) {
+                int randomTower = random.nextInt(player.getMainTowerList().size());
+                switch (player.getDifficulty()) {
+                    case EASY:
+                        if (player.getRound() != 1) {
+                            player.setSelected(player.getMainTowerList().get(randomTower));
+                            LblDmg.setText("A gremlin has become\nlodged between the on and\noff switch of your tower\nleaving it in a superposition\nof states that has reduced\n efficiency slightly.\n------------>");
+                            player.getMainTowerList().get(randomTower).dmgTower();
+                        }
                         break;
-                    }
-                default:
-                    break;
+
+                    case MEDIUM:
+                        if (player.getRound() != 1) {
+                            player.setSelected(player.getMainTowerList().get(randomTower));
+                            LblDmg.setText("Mainline stream \nglycopump transcintentiliser\nhas been eaten.\nYour tower is damaged.\n------------>");
+                            player.getMainTowerList().get(randomTower).dmgTower();
+                            player.getMainTowerList().get(randomTower).dmgTower();
+                        }
+                        break;
+
+                    case HARD:
+                        if (random.nextInt(2) == 1) {
+                            player.setSelected(player.getMainTowerList().get(randomTower));
+                            LblDmg.setText("Catastrophic disaster.\nMultiple orcslave fatalities.\nYour tower has imploded\nand is no longer.\n------------>");
+                            player.getMainTowerList().remove(randomTower);
+                            break;
+                        }
+                    default:
+                        break;
+                }
             }
             round = player.getCurrentRound();
             failCount = 0;

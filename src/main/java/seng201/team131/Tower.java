@@ -15,26 +15,29 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
     private Integer carts; // number of carts it can fill per resource per reload
     private float levelUpCost;
     private List<EnumResources> resources;
-
-    public Tower(String name, float cost, int level, float levelUpCost, String image) {
-        this.name = name;
-        this.cost = cost;
-        this.image = image;
-        this.level = level;
-        this.levelUpCost = levelUpCost;
-        this.health = 1.0f; // Initialize health to 0
-    }
   
     /// starting towers ///
     public Tower(List<EnumResources> resources, String name, String image, Integer level) {
         this.name = name;
-        this.cost = 100f * level;
+        this.cost = 1000f * level;
         this.level = level;
-        this.value = 10.0f;
+        this.value = 5.0f;
         this.carts = 5;
-        this.levelUpCost = 500;
+        this.levelUpCost = this.cost/2;
         this.image = image;
         this.reload = 1000;
+        this.health = 1.0f; // Initialize health to 1.0
+        this.resources = resources;
+    }
+    public Tower(List<EnumResources> resources, String name, String image, Integer level, Integer carts, Integer reload) {
+        this.name = name;
+        this.cost = 1000f * level;
+        this.level = level;
+        this.value = 5.0f;
+        this.carts = carts;
+        this.levelUpCost = this.cost/2;
+        this.image = image;
+        this.reload = 500 * reload;
         this.health = 1.0f; // Initialize health to 1.0
         this.resources = resources;
     }
@@ -53,7 +56,7 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
         String description = "\nLevel: " + getLevel() + "\n\n";
         for (int i = 0; i<this.getResources().size(); i++) {
             description += EnumResources.values()[i].getResourceName() + ": \n" + this.value*this.getResources().get(i).getFlowFactor() +
-                    " Tonnes\n" + this.getReload()/1000 + " second reload\n" + this.getCarts() + " carts per shot";
+                    " Tonnes\n" + this.getReload()/1000 + " millisecond reload\n" + this.getCarts() + " carts per shot";
             if (i != 2) {
                 description += ",\n\n";
             } else {

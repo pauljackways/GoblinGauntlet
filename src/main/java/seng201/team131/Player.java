@@ -44,7 +44,8 @@ public class Player {
         this.defaultTowers.addAll(List.of(new Tower(List.of(GOO),"Small Gremlin Grinder", "images/twrSlime1.jpeg", 1), new Tower(List.of(LAVA),"Small Lava well", "images/twrLava1.jpeg", 1), new Tower(List.of(ETHER),"Small Crystal Crucible", "images/twrEther1.jpeg", 1),
                 new Tower(List.of(GOO),"Modest Gremlin Macerator", "images/twrSlime2.jpeg", 3), new Tower(List.of(LAVA),"Modest Magma Spire", "images/twrLava2.jpeg", 3), new Tower(List.of(ETHER),"Modest Crystal Cryochamber", "images/twrEther2.jpeg", 3),
                 new Tower(List.of(GOO),"Giant Gore Goliath", "images/twrSlime3.jpeg", 5), new Tower(List.of(LAVA),"Giant Vesuvian Volcanizer", "images/twrLava3.jpeg", 5), new Tower(List.of(ETHER),"Giant Crystal Cascade", "images/twrEther3.jpeg", 5),
-                new Tower(List.of(GOO, ETHER),"Slimy Rock", "images/twrSlimeEther.jpeg", 5), new Tower(List.of(GOO, LAVA),"Giant Vesuvian Volcanizer", "images/twrLava3.jpeg", 5), new Tower(List.of(ETHER, LAVA),"Giant Crystal Cascade", "images/twrEther3.jpeg", 5)));
+                new Tower(List.of(GOO, ETHER),"Crystal Goo Spire", "images/twrSlimeEther.jpeg", 5, 8, 1500), new Tower(List.of(GOO, LAVA),"Fuegoop extractor", "images/twrSlimeLava.jpeg", 5, 8, 1500), new Tower(List.of(ETHER, LAVA),"Vesuvianite Valley Viaduct", "images/twrLavaEther.jpeg", 5, 8, 1500),
+                new Tower(List.of(ETHER, LAVA),"Eden Extraction Plant", "images/twrAll.jpeg", 5, 8, 1500)));
         this.mainTowerList.addAll(List.of(new Tower(List.of(GOO),"Small Gremlin Grinder", "images/twrSlime1.jpeg", 1), new Tower(List.of(LAVA),"Small Lava well", "images/twrLava1.jpeg", 1), new Tower(List.of(ETHER),"Small Crystal Crucible", "images/twrEther1.jpeg", 1)));
         this.money = 500f;
         Random random = new Random();
