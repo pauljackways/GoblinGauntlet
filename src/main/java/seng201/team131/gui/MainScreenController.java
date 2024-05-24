@@ -118,13 +118,15 @@ public class MainScreenController extends Controller {
     public void manageTowers(Tower tower) {
         Platform.runLater(() -> {
             int twrI = 0;
-            int matchCount = tower.getCarts();
-            for (int i=0; i<cartList.size(); i++) {
-                if (cartList.get(i).getFillLevel() < cartList.get(i).getCapacity()) {
-                    EnumResources cartResource = cartList.get(i).getResourceType();
+            int matchCount = tower.getCarts() * tower.getResources().size();
+            for (int i = 0; i < observableCartList.size(); i++) {
+                Cart cart = cartList.get(i);
+                if (cart.getFillLevel() < cart.getCapacity()) {
+                    EnumResources cartResource = cart.getResourceType();
                     if (tower.getResources().contains(cartResource)) {
-                        cartList.get(i).fill((float) (cartResource.getFlowFactor() * tower.getValue()));
-                        for (twrI = 0; twrI< towerList.size(); twrI++) {
+                        System.out.println(tower.getValue());
+                        cart.fill((float) (cartResource.getFlowFactor() * tower.getValue()));
+                        for (twrI = 0; twrI < towerList.size(); twrI++) {
                             if (towerList.get(twrI) == tower) {
                                 Glow glow = new Glow();
                                 glow.setLevel(0.8);
@@ -152,7 +154,10 @@ public class MainScreenController extends Controller {
             thisRound = new Round(player.getRound(), player.getMainTowerList());
             thisRound.applyDifficulty(player.getDifficulty());
             thisRound.applyTradeOff(player.getTradeOff());
-            thisRound.applyPowerUp(player.getPowerUp());
+            if (player.getFPowerUpBought()) {
+                thisRound.applyPowerUp(player.getPowerUp());
+            }
+            player.setFPowerUpBought(false);
             towerList = thisRound.getTowers();
             for (int i=0; i<towerList.size(); i++) {
                 ImgViewList.get(i).setImage(new Image(towerList.get(i).getImage()));

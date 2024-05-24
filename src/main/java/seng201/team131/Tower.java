@@ -19,9 +19,9 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
     /// starting towers ///
     public Tower(List<EnumResources> resources, String name, String image, Integer level) {
         this.name = name;
-        this.cost = 2000f * level;
+        this.cost = 1000f * level;
         this.level = level;
-        this.value = 3.0f;
+        this.value = level * 3.0f;
         this.carts = 5;
         this.levelUpCost = 500;
         this.image = image;
@@ -31,13 +31,13 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
     }
     public Tower(List<EnumResources> resources, String name, String image, Integer level, Integer carts, Integer reload) {
         this.name = name;
-        this.cost = 2000f * level;
+        this.cost = 1000f * level;
         this.level = level;
-        this.value = 3.0f;
+        this.value = level * 3.0f;
         this.carts = carts;
         this.levelUpCost = this.cost/2;
         this.image = image;
-        this.reload = 500 * reload;
+        this.reload = reload;
         this.health = 1.0f; // Initialize health to 1.0
         this.resources = resources;
     }
@@ -161,26 +161,26 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
                 charArray[charArray.length - 6]++;
                 this.setImage(String.valueOf(charArray));
             }
-            this.cost += 250;
-            this.reload = this.reload - (this.reload / 5);
-            this.value = value * 1.2f;
+            this.cost += 1000;
+            this.value += 3.0f;
         }
     }
 
     public void repairTwr(){
         if(this.health < 1){
             this.health =  this.health + 0.2f;
-            this.value = this.value + 2f;
+            this.value = this.value + 1.0f;
             this.reload = this.reload - 200;
             increaceRange();
-
         }
     }
 
     public void dmgTower(){
 
         this.health =  this.health - 0.2f;
-        this.value = this.value - 2f;
+        if (this.value > 1.0f) {
+            this.value = this.value - 1.0f;
+        }
         this.reload = this.reload + 200;
         if(getCarts() != 1){
             reduceRange();

@@ -10,7 +10,6 @@ import java.util.Random;
 import seng201.team131.EnumGamechangers;
 import seng201.team131.Gamechangers;
 import seng201.team131.Player;
-import seng201.team131.Round;
 import seng201.team131.Selectable;
 
 /**
@@ -18,7 +17,6 @@ import seng201.team131.Selectable;
  */
 public class GameChangersScreenController extends Controller {
     private Player player;
-    private EnumGamechangers powerUpSelected;
     @FXML
     private ImageView ImgEasy;
     @FXML
@@ -110,7 +108,6 @@ public class GameChangersScreenController extends Controller {
         ImgSlow.setOpacity(1);
         ImgMoney.setOpacity(0.5);
         ImgDist.setOpacity(0.5);
-        powerUpSelected = SLOW;
         player.setPowerUp(SLOW);
         player.setSelected((Selectable) new Gamechangers(SLOW, player.getFavourResource()));
     }
@@ -120,7 +117,6 @@ public class GameChangersScreenController extends Controller {
         ImgSlow.setOpacity(0.5);
         ImgMoney.setOpacity(1);
         ImgDist.setOpacity(0.5);
-        powerUpSelected = MONEY;
         player.setPowerUp(MONEY);
         player.setSelected((Selectable) new Gamechangers(MONEY, player.getFavourResource()));
     }
@@ -130,13 +126,12 @@ public class GameChangersScreenController extends Controller {
         ImgSlow.setOpacity(0.5);
         ImgMoney.setOpacity(0.5);
         ImgDist.setOpacity(1);
-        powerUpSelected = DISTRIBUTION;
         player.setPowerUp(DISTRIBUTION);
         player.setSelected((Selectable) new Gamechangers(DISTRIBUTION, player.getFavourResource()));
     }
     @FXML
     public void onBtnBuyPwrUp() {
-        switch(powerUpSelected) {
+        switch(player.getPowerUp()) {
             case SLOW -> {
                 ImgSlow.setOpacity(1);
                 break;
@@ -153,7 +148,8 @@ public class GameChangersScreenController extends Controller {
                 break;
             }
         }
-        if (powerUpSelected != null) {
+        if ((player.getPowerUp() != null) && !player.getFPowerUpBought()) {
+            player.setFPowerUpBought(true);
             player.setMoney(player.getMoney() - 250f);
             ImgSlow.setDisable(true);
             ImgMoney.setDisable(true);
@@ -163,10 +159,12 @@ public class GameChangersScreenController extends Controller {
             ImgMoney.setOpacity(0.5);
             ImgDist.setOpacity(0.5);
         }
-
-//        Random random = new Random();
-//        int randomResource = random.nextInt(3);
-//        player.setFavorResource(randomResource);
+        if (player.getFPowerUpBought()) {
+            BtnBuyPwrUp.setDisable(true);
+            ImgSlow.setDisable(true);
+            ImgMoney.setDisable(true);
+            ImgDist.setDisable(true);
+        }
     }
     
 
@@ -181,6 +179,9 @@ public class GameChangersScreenController extends Controller {
     public void initialize(){
         if (player != null) {
             player.launchInfoPane();
+            if (player.getFPowerUpBought()) {
+                onBtnBuyPwrUp();
+            }
             try {
                 switch (player.getPowerUp()) {
                     case SLOW:
@@ -260,8 +261,8 @@ public class GameChangersScreenController extends Controller {
 
 
         }
-        
-        
+
+
     }   
 }
 

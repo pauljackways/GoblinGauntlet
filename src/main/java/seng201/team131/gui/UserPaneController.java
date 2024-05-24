@@ -56,7 +56,8 @@ public class UserPaneController extends Controller{
         Platform.runLater(() -> {
             setLblName(player.getName());
             setLblItems(Integer.toString(player.getItemList().size()));
-            setLblMoney(player.getMoney().toString());
+            String formattedMoney = String.format("%.2f", player.getMoney());
+            setLblMoney(formattedMoney);
             if (player.getMoney() < 0) {
                 LblMoney.setTextFill(Color.RED);
             }

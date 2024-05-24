@@ -29,18 +29,18 @@ public class Cart implements Runnable {
         this.fillLevel = 0.0f;
         switch (favourResource) {
             case 0: {
-                chanceEther = 0.6f;
-                chanceLava = 0.2f;
+                chanceEther = 0.5f;
+                chanceLava = 0.25f;
                 break;
             }
             case 1: {
-                chanceEther = 0.2f;
-                chanceLava = 0.6f;
+                chanceEther = 0.25f;
+                chanceLava = 0.5f;
                 break;
             }
             case 2: {
-                chanceEther = 0.2f;
-                chanceLava = 0.2f;
+                chanceEther = 0.25f;
+                chanceLava = 0.25f;
                 break;
             }
             case 3: {

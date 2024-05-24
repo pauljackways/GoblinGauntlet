@@ -41,20 +41,19 @@ public class Gamechangers implements Selectable {
                 break;
             }
             case FAST -> {
-                this.description = "The wizards pay you to test\ntheir new rocket train spell";
+                this.description = "The wizards pay you $500.00 to test\ntheir new rocket train spell";
                 this.image = "images/speed.jpeg";
                 break;
             }
             case SABOTAGE -> {
-                this.description = "A giant troll has one of\nyour towers out of order";
+                this.description = "A giant troll has one of\nyour towers out of order,\nyou claim $500.00 of insurance\nand your tower is repaired\nwithin a day.";
                 this.image = "images/sabotage.jpeg";
 
                 break;
             }
             case THEFT -> {
-                this.description = "A goblin is gobblin'\n one of your resources!";
+                this.description = "A goblin is gobblin'\na pipeline of resources!\nThat resource pumps less today.\nThe resource is worth more\ntoday due to demand.";
                 this.image = "/images/OIG4..jpeg";
-
                 break;
             }
             case SLOW -> {

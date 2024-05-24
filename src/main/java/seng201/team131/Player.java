@@ -34,6 +34,7 @@ public class Player {
         this.towerScreenLauncher = towerScreenLauncher;
         this.gameChangersScreenLauncher = gameChangersScreenLauncher;
         this.endScreenLauncher = endScreenLauncher;
+        this.fPowerUpBought = false;
         this.mainScreenLauncher = mainScreenLauncher;
         this.clearScreen = clearScreen;
         this.lives = 3;
@@ -44,8 +45,8 @@ public class Player {
         this.defaultTowers.addAll(List.of(new Tower(List.of(GOO),"Small Gremlin Grinder", "images/twrSlime1.jpeg", 1), new Tower(List.of(LAVA),"Small Lava well", "images/twrLava1.jpeg", 1), new Tower(List.of(ETHER),"Small Crystal Crucible", "images/twrEther1.jpeg", 1),
                 new Tower(List.of(GOO),"Modest Gremlin Macerator", "images/twrSlime2.jpeg", 3), new Tower(List.of(LAVA),"Modest Magma Spire", "images/twrLava2.jpeg", 3), new Tower(List.of(ETHER),"Modest Crystal Cryochamber", "images/twrEther2.jpeg", 3),
                 new Tower(List.of(GOO),"Giant Gore Goliath", "images/twrSlime3.jpeg", 5), new Tower(List.of(LAVA),"Giant Vesuvian Volcanizer", "images/twrLava3.jpeg", 5), new Tower(List.of(ETHER),"Giant Crystal Cascade", "images/twrEther3.jpeg", 5),
-                new Tower(List.of(GOO, ETHER),"Crystal Goo Spire", "images/twrSlimeEther.jpeg", 5, 8, 1500), new Tower(List.of(GOO, LAVA),"Fuegoop extractor", "images/twrSlimeLava.jpeg", 5, 8, 1500), new Tower(List.of(ETHER, LAVA),"Vesuvianite Valley Viaduct", "images/twrLavaEther.jpeg", 5, 8, 1500),
-                new Tower(List.of(ETHER, LAVA),"Eden Extraction Plant", "images/twrAll.jpeg", 10, 12, 2000)));
+                new Tower(List.of(GOO, ETHER),"Crystal Goo Spire", "images/twrSlimeEther.jpeg", 5, 8, 1200), new Tower(List.of(GOO, LAVA),"Fuegoop extractor", "images/twrSlimeLava.jpeg", 5, 8, 1200), new Tower(List.of(ETHER, LAVA),"Vesuvianite Valley Viaduct", "images/twrLavaEther.jpeg", 5, 8, 1200),
+                new Tower(List.of(ETHER, LAVA, GOO),"Eden Extraction Plant", "images/twrAll.jpeg", 10, 14, 1500)));
         this.mainTowerList.addAll(List.of(new Tower(List.of(GOO),"Small Gremlin Grinder", "images/twrSlime1.jpeg", 1), new Tower(List.of(LAVA),"Small Lava well", "images/twrLava1.jpeg", 1), new Tower(List.of(ETHER),"Small Crystal Crucible", "images/twrEther1.jpeg", 1)));
         this.money = 500f;
         Random random = new Random();
@@ -68,6 +69,7 @@ public class Player {
     private EnumGamechangers powerUp;
     private Integer lives;
     private Float money;
+    private boolean fPowerUpBought;
     private Integer rounds;
     private Integer round;
     private Selectable selected;
@@ -299,6 +301,12 @@ public class Player {
     public void setPowerUp(EnumGamechangers powerUp){
         this.powerUp = powerUp;
     }
+    public boolean getFPowerUpBought(){
+        return fPowerUpBought;
+    }
+    public void setFPowerUpBought(boolean flag) {
+        this.fPowerUpBought = flag;
+    }
 
     public List<Tower> getDefaultTowers() {
         return defaultTowers;
@@ -324,9 +332,5 @@ public class Player {
     }
     public void loseLife() {
         lives--;
-    }
-
-    public void towerLevelUpCost(){
-        money = money - 500;
     }
 }

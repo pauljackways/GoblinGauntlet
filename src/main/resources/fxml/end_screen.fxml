@@ -41,9 +41,9 @@
             <Insets top="50.0" />
          </padding>
       </Label>
-      <Label fx:id="LblInfo" text="Label" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="TOP">
+      <Label fx:id="LblInfo" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="TOP">
          <font>
-            <Font size="18.0" />
+            <Font size="14.0" />
          </font>
          <GridPane.margin>
             <Insets top="25.0" />
@@ -59,7 +59,7 @@
             <Insets top="15.0" />
          </GridPane.margin>
       </Label>
-      <Button fx:id="BtnEnd" mnemonicParsing="false" onAction="#onBtnExcuse" text="Give excuse" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+      <Button fx:id="BtnEnd" mnemonicParsing="false" onAction="#onBtnEnd" text="Accept your fate" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets bottom="15.0" />
          </GridPane.margin>

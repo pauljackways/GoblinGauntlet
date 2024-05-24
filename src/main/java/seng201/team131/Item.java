@@ -24,8 +24,8 @@ public class Item implements Buyable, Selectable {
     public Item(EnumItems type) {
         switch(type) {
             case REPAIR -> {
-                this.cost = 1000f;
-                this.description = "Hire some gremlins to\n repair one of your towers.\n\nRepairs 20% back to working order.";
+                this.cost = 500f;
+                this.description = "Hire some gremlins to\n repair one of your towers.\n\nRepairs 1x easy damage\n0.5x medium damage.";
                 this.image = "images/repair.jpeg";
                 break;
             }

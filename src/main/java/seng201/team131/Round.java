@@ -6,6 +6,7 @@ import java.util.Random;
 public class Round {
     private List<Tower> towerList;
     private Integer cartCount;
+    private Integer theftResource;
     private List<Cart> resultCartList;
     private Float moneyThisRound;
     private Integer roundNumber;
@@ -29,17 +30,17 @@ public class Round {
         switch (difficulty) {
             case EASY:
                 this.cartCount = 5 * roundNumber;
-                cartCapacity = cartCapacity + roundNumber * 5;
+                cartCapacity = cartCapacity + roundNumber;
                 speed += speed/5;
                 break;
             case MEDIUM:
                 this.cartCount = 10 * roundNumber;
-                cartCapacity = cartCapacity + roundNumber * 6;
+                cartCapacity = cartCapacity + roundNumber + 3;
                 speed += speed/5;
                 break;
             case HARD:
                 this.cartCount = 20 * roundNumber;
-                cartCapacity = cartCapacity + roundNumber * 8;
+                cartCapacity = cartCapacity + roundNumber + 5;
                 speed -= speed/5;
                 break;
             default:
@@ -62,7 +63,8 @@ public class Round {
                 towerList.remove(randomTower);
 
             case THEFT:
-                //ADD flow rate change
+                theftResource = random.nextInt(EnumResources.values().length);
+                EnumResources.values()[theftResource].setFlowFactor(0.5f);
             default:
                 break;
         }
@@ -102,6 +104,10 @@ public class Round {
     public Integer getCartCount() {
         return cartCount;
     }
+    public Integer getTheftResource() {
+        return theftResource;
+    }
+
     public Float getMoneyPerFillLevel() {
         return moneyPerFillLevel;
     }
