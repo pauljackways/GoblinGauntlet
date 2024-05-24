@@ -22,4 +22,4 @@ Build and Run Jar
 
 Open a command line interface inside the project directory and run ./gradlew jar to create a packaged Jar. The Jar file is located at build/libs/seng201_team131-Final.jar
 Navigate to the build/libs/ directory (you can do this with cd build/libs)
-Run the command java -jar seng201_team0-1.0-SNAPSHOT.jar to open the application.
+Run the command java -jar seng201_team131-Final.jar to open the application.
