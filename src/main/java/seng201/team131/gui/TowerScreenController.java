@@ -6,8 +6,12 @@ import java.util.Random;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import seng201.team131.EnumItems;
 import seng201.team131.Item;
 import seng201.team131.Player;
@@ -15,10 +19,8 @@ import seng201.team131.Tower;
 import seng201.team131.EnumItems;
 
 import static seng201.team131.EnumItems.*;
-
-
 /**
- * just more logic to set the opacity of the image view. more specific functions explained in doc strings of those functions.
+ * Screen for the user to swap towers between the main list and the reserve list. Also informs the player of damaged towers and allows the user to repair/upgrade towers if they have the relevant items
  */
 public class TowerScreenController extends Controller {
     private Player player;
@@ -52,6 +54,9 @@ public class TowerScreenController extends Controller {
     private Button BtnUpgradeTower;
     @FXML
     private Button BtnRepairTower;
+    private List<ImageView> imageViewList = new ArrayList<>();
+    private List<ImageView> imageViewListReserve = new ArrayList<>();
+
 
     public void SetupScreenController(Player player) {
         this.player = player;
@@ -63,6 +68,9 @@ public class TowerScreenController extends Controller {
         initialize();
     }
 
+    /**
+     * Displays one of the 5 towers in the main tower list
+     */
     public void onMainClick1() {
         mainTower1.setOpacity(0.5);
         mainTower2.setOpacity(1);
@@ -134,6 +142,9 @@ public class TowerScreenController extends Controller {
         }
     }
 
+    /**
+     * Displays one of the 5 towers in the reserve list
+     */
     public void onReserveClick1() {
         reserveTower1.setOpacity(0.5);
         reserveTower2.setOpacity(1);
@@ -204,7 +215,7 @@ public class TowerScreenController extends Controller {
         }
     }
     /**
-     * Swaps the selected main tower with the selected reserve tower. The towers get swaped between the list, and that subsequently swaps them in the gui.
+     * Swaps the selected main tower with the selected reserve tower. The towers get swapped between the list, and that subsequently swaps them in the gui.
      */
     public void OnBtnTowerSwap(){
         List<Tower> mainTowerList = player.getMainTowerList();
@@ -270,6 +281,8 @@ public class TowerScreenController extends Controller {
                 }
             }
         }
+        player.launchTowerScreen();
+
     }
 
     /**
@@ -277,14 +290,10 @@ public class TowerScreenController extends Controller {
      */
     @FXML
     public void initialize() {
-        
-        
-        
         if (player != null) {
-
             BtnRepairTower.setDisable(true);
             BtnUpgradeTower.setDisable(true);
-            
+
             for (int i = 0; i < player.getItemList().size(); i++) {
                 if(player.getItemList().get(i).getType() == REPAIR) {
                     BtnRepairTower.setDisable(false);
@@ -336,10 +345,15 @@ public class TowerScreenController extends Controller {
             for (int i = 0; i < mainTowerList.size(); i++) {
                 Image newImage = new Image(mainTowerList.get(i).getImage());
                 imageViewList.get(i).setImage(newImage);
+                System.out.println(mainTowerList.get(i).getHealth());
+                if (mainTowerList.get(i).getHealth() < 1.0) {
+                    DropShadow redGlow = new DropShadow(5, Color.RED);
+                    redGlow.setSpread(0.1);
+                    imageViewList.get(i).setEffect(redGlow);
+                }
             }
 
             List<Tower> reserveTowerList = player.getReserveTowerList();
-            List<ImageView> imageViewListReserve = new ArrayList<>();
             imageViewListReserve.add(reserveTower1);
             imageViewListReserve.add(reserveTower2);
             imageViewListReserve.add(reserveTower3);
@@ -351,6 +365,11 @@ public class TowerScreenController extends Controller {
             for (int i = 0; i < reserveTowerList.size(); i++) {
                 Image newImage = new Image(reserveTowerList.get(i).getImage());
                 imageViewListReserve.get(i).setImage(newImage);
+                if (reserveTowerList.get(i).getHealth() < 1.0) {
+                    DropShadow redGlow = new DropShadow(5, Color.RED);
+                    redGlow.setSpread(0.1);
+                    imageViewListReserve.get(i).setEffect(redGlow);
+                }
             }
         }
     }

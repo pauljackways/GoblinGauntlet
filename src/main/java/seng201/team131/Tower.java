@@ -3,7 +3,9 @@ package seng201.team131;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
-
+/**
+ * Tower for constructing classes and upgrading/repairing them
+ */
 public class Tower implements Buyable, Sellable, Selectable, Runnable{
     private String name;
     private Float cost;
@@ -15,8 +17,10 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
     private Integer carts; // number of carts it can fill per resource per reload
     private float levelUpCost;
     private List<EnumResources> resources;
-  
-    /// starting towers ///
+
+    /**
+     * Constructor for basic towers
+     */
     public Tower(List<EnumResources> resources, String name, String image, Integer level) {
         this.name = name;
         this.cost = 1000f * level;
@@ -29,6 +33,9 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
         this.health = 1.0f;
         this.resources = resources;
     }
+    /**
+     * Constructor with more fields for creation of customised towers
+     */
     public Tower(List<EnumResources> resources, String name, String image, Integer level, Integer carts, Integer reload) {
         this.name = name;
         this.cost = 1000f * level;
@@ -75,6 +82,9 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
     public void run() {
 
     }
+    /**
+     * Increases the health constant
+     */
     public void repair() {
         if (this.health >= 0.8) {
             health = 1.0f;
@@ -149,6 +159,9 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
         carts = carts + 1;
     }
 
+    /**
+     * Levels up the tower upon use of upgrade item
+     */
     public void levelUp() {
         if (this.level < 10) {
             this.level++;
@@ -165,7 +178,9 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
             this.value += 3.0f;
         }
     }
-
+    /**
+     * Another repair function for unknown reasons
+     */
     public void repairTwr(){
         if(this.health < 1){
             this.health =  this.health + 0.2f;
@@ -175,6 +190,9 @@ public class Tower implements Buyable, Sellable, Selectable, Runnable{
         }
     }
 
+    /**
+     * Damages health constant of tower
+     */
     public void dmgTower(){
 
         this.health =  this.health - 0.2f;

@@ -10,7 +10,9 @@ import java.lang.reflect.InvocationTargetException;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-
+/**
+ * Class for controlling the underlying structural FXML for which other FXML pages are laid upon
+ */
 public class BackgroundController extends Controller {
 
     @FXML
@@ -26,6 +28,9 @@ public class BackgroundController extends Controller {
     
     public BackgroundController() {
     }
+    /**
+     * Controller for the underlying structure of the application. Allows for multiple FXML files to be laid on top of it such that dynamic updates may occue without having to duplicated FXML code.
+     */
     public BackgroundController(Player player) {
         this.player = player;
     }
@@ -33,6 +38,9 @@ public class BackgroundController extends Controller {
         this.player.setBackgroundController(this);
         player.launchSetupScreen();
     }
+    /**
+     * Updates a particular column of the structure with another FXML document. This section was helped significantly by chatGPT, as our understanding of how JavaFX works under the hood was lacking. Have added setPlayer as a required method to ensure that player can be added. Due to JavaFX calling initialize first, if(player != null) has to be added to every controller that is applied to backgroundController. That way player is null errors cannot occur.
+     */
     public void loadColumn(int columnIndex, String fxmlFile, Class<?> controllerClass, Player player) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
@@ -42,7 +50,6 @@ public class BackgroundController extends Controller {
             if (setPlayerMethod != null) {
                 setPlayerMethod.invoke(controller, player);
             }
-
             switch (columnIndex) {
                 case 0:
                     PaneLeft.getChildren().setAll(pane);
@@ -61,7 +68,9 @@ public class BackgroundController extends Controller {
         }
     }
 
-
+    /**
+     * Clears the column of its attached FXML file. This was aided by chatGPT as mentioned in the Javadoc for loadColumn.
+     */
     public void clearColumn(int columnIndex) {
         switch (columnIndex) {
             case 0:

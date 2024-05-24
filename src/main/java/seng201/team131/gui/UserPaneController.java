@@ -11,7 +11,9 @@ import seng201.team131.Player;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-
+/**
+ * Executor polled screen that updates the player information, applied to the first column of backgroundController
+ */
 public class UserPaneController extends Controller{
     private Player player;
     @FXML
@@ -36,10 +38,16 @@ public class UserPaneController extends Controller{
         this.player = player;
         initialize();
     }
+    /**
+     * An executor that effectively polls all relevant fields for updates to player information
+     */
     private void startPeriodicUpdate() {
         executorService = Executors.newSingleThreadScheduledExecutor();
         executorService.scheduleAtFixedRate(this::updatePlayerInfo, 0, 500, TimeUnit.MILLISECONDS);
     }
+    /**
+     * Starts executor for polling player information
+     */
     @FXML
     public void initialize() {
         if (player != null) {
@@ -50,7 +58,7 @@ public class UserPaneController extends Controller{
     }
 
     /**
-     * 
+     * Gets player information and displays it in the pane
      */
     private void updatePlayerInfo() {
         Platform.runLater(() -> {

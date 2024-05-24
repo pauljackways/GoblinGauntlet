@@ -2,7 +2,9 @@ package seng201.team131;
 import java.util.Random;
 import static seng201.team131.EnumResources.*;
 
-
+/**
+ * Class to manage carts as created by MainScreenController
+ */
 public class Cart implements Runnable {
     private Float capacity;
     private EnumResources resourceType;
@@ -78,12 +80,18 @@ public class Cart implements Runnable {
         return capacity;
     }
 
+    /**
+     * Function called by the towers to fill the carts during th game
+     */
     public void fill(Float fill) {
         this.fillLevel += fill;
         if (this.fillLevel > this.capacity) {
             this.fillLevel = this.capacity;
         }
     }
+    /**
+     * Required to display the cart information to the ListView during the main game
+     */
     @Override
     public String toString() { //For the observableList
         if (favourResource != -1) {
@@ -95,6 +103,5 @@ public class Cart implements Runnable {
 
     @Override
     public void run() {
-        distanceTravelled += 10;
     }
 }

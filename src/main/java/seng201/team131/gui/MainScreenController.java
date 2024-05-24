@@ -20,7 +20,9 @@ import javafx.scene.image.ImageView;
 import seng201.team131.Round;
 import seng201.team131.Selectable;
 import seng201.team131.Tower;
-
+/**
+ * Class that initializes and runs the main game based on setup parameters being applied to a round object instantiated in initialize function
+ */
 public class MainScreenController extends Controller {
     private Player player;
     private List<Cart> cartListSaved = new ArrayList<>();
@@ -51,6 +53,9 @@ public class MainScreenController extends Controller {
     private Round thisRound;
     private ObservableList<Cart> observableCartList;
 
+    /**
+     * Clicking the towers during the game requests infoPane to display the relevant tower stats
+     */
     public void onImgTwr1() {
         if (player != null) {
             player.setSelected((Selectable) towerList.get(0));
@@ -90,6 +95,9 @@ public class MainScreenController extends Controller {
         this.player = player;
         initialize();
     }
+    /**
+     * The function run by a single-thread executor service that creates a new cart upon each tick, with carts being blank when the number of carts required is reached. Displays based on the exact size of the ListView that carts are displayed on
+     */
     public void manageCarts() {
         Platform.runLater(() -> {
             currentCart++;
@@ -115,11 +123,14 @@ public class MainScreenController extends Controller {
             LstMain.setItems(observableCartList);
         });
     }
+    /**
+     * Function called by tower executor, of which there is a thread for each tower. Each tower searches the list for carts that match the type of any of the types the cart fires, filling carts up to the stated range of the tower. Note that this range is closest to the top of the screen during play.
+     */
     public void manageTowers(Tower tower) {
         Platform.runLater(() -> {
             int twrI = 0;
             int matchCount = tower.getCarts() * tower.getResources().size();
-            for (int i = 0; i < observableCartList.size(); i++) {
+            for (int i = 0; i < Math.min(cartList.size(), 18); i++) {
                 Cart cart = cartList.get(i);
                 if (cart.getFillLevel() < cart.getCapacity()) {
                     EnumResources cartResource = cart.getResourceType();
@@ -146,6 +157,9 @@ public class MainScreenController extends Controller {
             pause.play();
         });
     }
+    /**
+     * Setup for the two executors, one for the carts being added to the game based on the speed defined by difficulty, and one for the towers based on stated tower reload rate.
+     */
     @FXML
     public void initialize() {
         if (player != null) {

@@ -68,17 +68,14 @@ public class Item implements Buyable, Selectable {
     public void setImage(String image) {
         this.image = image;
     }
-    @Override
     public String getImage() {
         return this.image;
     }
 
-    @Override
     public Float getCost() {
         return cost;
     }
 
-    @Override
     public String getDescription() {
         return "\n" + description + "\n\nCost: $" + getCost().toString();
     }

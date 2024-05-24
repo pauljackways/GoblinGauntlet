@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import seng201.team131.Player;
 /**
- * Just a bunch of functions that run when buttons are click, these function chnage screens.
+ * Intermediate screen that acts as the player menu
  */
 public class ParentScreenController extends Controller {
     private Player player;
@@ -34,6 +34,9 @@ public class ParentScreenController extends Controller {
         // default - for FXLoader
     }
 
+    /**
+     * Button to reach the tower management screen
+     */
     @FXML
     public void onBtnTowerScreen() {
         if (player != null) {
@@ -41,6 +44,9 @@ public class ParentScreenController extends Controller {
             this.player.launchTowerScreen();
         }
     }
+    /**
+     * Button to begin the game, reverts player to the game changers (Citadel of Sorcerers) screen if required options are not selected
+     */
     @FXML
     public void onBtnMainScreen() {
         if (player.getDifficulty() == null) {
@@ -57,7 +63,9 @@ public class ParentScreenController extends Controller {
                 this.player.launchMainScreen();}
         }
     }
-
+    /**
+     * Button to reach the game changers screen (difficulty, tradeoffs, powerups)
+     */
     @FXML
     public void onBtnGameChangersScreen() {
         if (player != null) {
@@ -65,7 +73,9 @@ public class ParentScreenController extends Controller {
             this.player.launchGameChangersScreen();
         }
     }
-
+    /**
+     * Button to reach the shop screen
+     */
     @FXML
     public void onBtnShopScreen() {
         if (player != null) {
@@ -73,6 +83,9 @@ public class ParentScreenController extends Controller {
             this.player.launchShopScreen();
         }
     }
+    /**
+     * Handles the transitions in and out of the parent screen. namely, the back button, which is not displayed when in this screen
+     */
     @FXML
     public void initialize() {
         if (player != null) {

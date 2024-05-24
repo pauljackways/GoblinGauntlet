@@ -1,7 +1,7 @@
 package seng201.team131;
 
 /** 
- * An enum to to represnt all the game changers, is used in 3 switch cases, one for difficulty, one for the trade off and one for the powerups.
+ * An enum to represent all the game changers, is used in 3 switch cases, one for difficulty, one for the tradeoff and one for the powerups.
  */
 public enum EnumGamechangers {
     EASY("Easy"),

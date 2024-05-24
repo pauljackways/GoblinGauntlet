@@ -10,6 +10,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * An executor-polled class for getting and displaying information from a Selectable object passed to setSelected. Applied to the third column of BackgroundController
+ */
 public class InfoPaneController extends Controller {
 
     @FXML
@@ -32,10 +35,16 @@ public class InfoPaneController extends Controller {
         this.player = player;
         initialize();
     }
+    /**
+     * An executor that effectively polls all relevant fields for the given item of type Selectable
+     */
     private void startPeriodicUpdate() {
         executorService2 = Executors.newSingleThreadScheduledExecutor();
         executorService2.scheduleAtFixedRate(this::updateInfo, 0, 500, TimeUnit.MILLISECONDS);
     }
+    /**
+     * Starts executor for polling player information
+     */
     @FXML
     public void initialize() {
         if (player != null) {
@@ -43,6 +52,9 @@ public class InfoPaneController extends Controller {
             updateInfo();
         }
     }
+    /**
+     * Gets player information and displays it in the pane
+     */
     private void updateInfo() {
         Platform.runLater(() -> {
             if (player.getSelected() != null) {

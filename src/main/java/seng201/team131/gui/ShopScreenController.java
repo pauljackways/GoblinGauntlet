@@ -12,6 +12,9 @@ import seng201.team131.Sellable;
 
 import java.util.ArrayList;
 import java.util.List;
+/**
+ * Screen for buying and selling Buyable and Sellable items in the marketplace. All items in this screen should also be Selectable.
+ */
 /*Owen */
 public class ShopScreenController extends Controller {
 
@@ -43,6 +46,9 @@ public class ShopScreenController extends Controller {
         initialize();
     }
 
+    /**
+     * Initializes the items in the relevant buy and sell lists, all items in these lists must be explicitly of type Sellable or Buyable according to the list they are entered in
+     */
     @FXML
     public void initialize() {
         if (player != null) {
@@ -102,7 +108,9 @@ public class ShopScreenController extends Controller {
             BtnBuySell.setDisable(true);
         }
     }
-
+    /**
+     * Buys and sells items accordingly. launches shop screen upon completion in order to re-initialize the lists and put newly acquired buy items into sellable list
+     */
     @FXML
     private void onBtnBuySell() {
         if (LstSelected) {
@@ -112,11 +120,13 @@ public class ShopScreenController extends Controller {
         }
         player.launchShopScreen();
     }
-
+    /**
+     * Updates the buy list with Buyable items
+     */
     private void updateBuyList() {
         LstBuy.getItems().clear();
-        buyableList.addAll(player.getDefaultTowers());
         buyableList.addAll(player.getDefaultItems());
+        buyableList.addAll(player.getDefaultTowers());
         for (Buyable item : buyableList) {
             LstBuy.getItems().add("Level " + item.getLevel() + " " + item.getName());
         }
@@ -137,7 +147,9 @@ public class ShopScreenController extends Controller {
 
         LstBuy.refresh();
     }
-
+    /**
+     * Updates the sell list with Sellable items
+     */
     private void updateSellList() {
         LstSell.getItems().clear();
         sellableList.addAll(player.getReserveTowerList());

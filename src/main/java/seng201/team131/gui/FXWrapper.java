@@ -9,7 +9,7 @@ import seng201.team131.Player;
 
 import java.io.IOException;
 /**
- * Creates a player object with methods to lauchs all of the differant screens
+ * Creates a player object with methods to lauches all of the different screens
  */
 public class FXWrapper {
     @FXML
@@ -31,7 +31,9 @@ public class FXWrapper {
                 this::clearPane
         );
     }
-
+    /**
+     * Loads the background screen as the main screen of the application. This screen provides a backdrop for which all other screens can be laid upon.
+     */
     public void launchBackground(Player player) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/background.fxml"));

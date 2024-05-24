@@ -14,6 +14,9 @@ import seng201.team131.EnumGamechangers;
 import seng201.team131.Gamechangers;
 import seng201.team131.Player;
 
+/**
+ * Controls the screen that the user uses to choose their basal game and user information.
+ */
 public class SetupScreenController extends Controller{
     private Player player;
     private String selectedPfp = "Pfp1";
@@ -50,10 +53,10 @@ public class SetupScreenController extends Controller{
 
 
     private Controller backgroundController;
-    public SetupScreenController(Player player, Controller controller) {
-        this.player = player;
-        this.backgroundController = controller;
-    }
+//    public SetupScreenController(Player player, Controller controller) {
+//        this.player = player;
+//        this.backgroundController = controller;
+//    }
     public SetupScreenController() {
         // Default constructor for FXLoader's sick and twisted desires
     }
@@ -115,8 +118,10 @@ public class SetupScreenController extends Controller{
         int randomResouce = random.nextInt(3);
         player.setFavorResource(randomResouce);
     }
-    
 
+    /**
+     * The user can select one of 5 profile pictures
+     */
     public void onPfpClick1() { 
         Pfp1.setOpacity(1);
         Pfp2.setOpacity(0.5);
@@ -158,7 +163,9 @@ public class SetupScreenController extends Controller{
         selectedPfp = "Pfp5";
     }
 
-
+    /**
+     * Sets up images for profile picture selection
+     */
     public void initialize() {
         Pfp1.setOpacity(0.5);
         Pfp2.setOpacity(0.5);

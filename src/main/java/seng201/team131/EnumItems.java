@@ -1,7 +1,7 @@
 package seng201.team131;
 
 /**
- * Enum with the two items used in the game changers screen, repair tower and upgradte tower.
+ * Enum with the two items used in the game changers screen, repair tower and upgrade tower.
  */
 public enum EnumItems {
     REPAIR("Gremlins, daily hire"),

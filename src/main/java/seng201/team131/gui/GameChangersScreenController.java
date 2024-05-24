@@ -13,7 +13,7 @@ import seng201.team131.Player;
 import seng201.team131.Selectable;
 
 /**
- * The logic behind the Game Changers Screen, setting all the image views to the correct opacity based on the one clicked
+ * The logic behind the Game Changers Screen, setting all the image views to the correct opacity based on the one clicked. Sets round parameters in the player class for use in the next round instance
  */
 public class GameChangersScreenController extends Controller {
     private Player player;
@@ -48,7 +48,9 @@ public class GameChangersScreenController extends Controller {
         this.player = player;
         initialize();
     }
-
+    /**
+     * On player choosing easy difficulty
+     */
     @FXML
     public void onImgEasy() {
         ImgEasy.setOpacity(1);
@@ -57,7 +59,9 @@ public class GameChangersScreenController extends Controller {
         player.setDifficulty(EASY);
         player.setSelected((Selectable) new Gamechangers(EASY, player.getFavourResource()));
     }
-
+    /**
+     * On player choosing medium difficulty
+     */
     @FXML
     public void onImgMed() {
         ImgEasy.setOpacity(0.5);
@@ -67,6 +71,9 @@ public class GameChangersScreenController extends Controller {
         player.setSelected((Selectable) new Gamechangers(MEDIUM, player.getFavourResource()));
     }
 
+    /**
+     * On player choosing hard difficulty
+     */
     @FXML
     public void onImgHard() {
         ImgEasy.setOpacity(0.5);
@@ -76,6 +83,9 @@ public class GameChangersScreenController extends Controller {
         player.setSelected((Selectable) new Gamechangers(HARD, player.getFavourResource()));
     }
 
+    /**
+     * On player choosing speed tradeoff
+     */
     @FXML
     public void onImgFast() {
         ImgFast.setOpacity(1);
@@ -84,7 +94,9 @@ public class GameChangersScreenController extends Controller {
         player.setTradeOffs(FAST);
         player.setSelected((Selectable) new Gamechangers(FAST, player.getFavourResource()));
     }
-
+    /**
+     * On player choosing sabotage tradeoff
+     */
     @FXML
     public void onImgSabo() {
         ImgFast.setOpacity(0.5);
@@ -94,6 +106,9 @@ public class GameChangersScreenController extends Controller {
         player.setSelected((Selectable) new Gamechangers(SABOTAGE, player.getFavourResource()));
     }
 
+    /**
+     * On player choosing theft tradeoff
+     */
     @FXML
     public void onImgTheft() {
         ImgFast.setOpacity(0.5);
@@ -103,6 +118,9 @@ public class GameChangersScreenController extends Controller {
         player.setSelected((Selectable) new Gamechangers(THEFT, player.getFavourResource()));
     }
 
+    /**
+     * On player choosing slow powerup
+     */
     @FXML
     public void onImgSlow() {
         ImgSlow.setOpacity(1);
@@ -112,6 +130,9 @@ public class GameChangersScreenController extends Controller {
         player.setSelected((Selectable) new Gamechangers(SLOW, player.getFavourResource()));
     }
 
+    /**
+     * On player choosing money powerup
+     */
     @FXML
     public void onImgMoney() {
         ImgSlow.setOpacity(0.5);
@@ -120,7 +141,9 @@ public class GameChangersScreenController extends Controller {
         player.setPowerUp(MONEY);
         player.setSelected((Selectable) new Gamechangers(MONEY, player.getFavourResource()));
     }
-
+    /**
+     * On player choosing resource distribution powerup
+     */
     @FXML
     public void onImgDist() {
         ImgSlow.setOpacity(0.5);
@@ -129,6 +152,9 @@ public class GameChangersScreenController extends Controller {
         player.setPowerUp(DISTRIBUTION);
         player.setSelected((Selectable) new Gamechangers(DISTRIBUTION, player.getFavourResource()));
     }
+    /**
+     * On player purchasing powerup
+     */
     @FXML
     public void onBtnBuyPwrUp() {
         switch(player.getPowerUp()) {
@@ -166,16 +192,18 @@ public class GameChangersScreenController extends Controller {
             ImgDist.setDisable(true);
         }
     }
-    
 
 
 
 
-    
 
-        
-    
 
+
+
+
+    /**
+     * On player choosing slow powerupSets all buttons to their current state according to player. Will always be the same as the previous round upon starting a new round.
+     */
     public void initialize(){
         if (player != null) {
             player.launchInfoPane();

@@ -13,7 +13,9 @@ import seng201.team131.Tower;
 import java.util.Random;
 
 import static seng201.team131.EnumGamechangers.*;
-
+/**
+ * Screen controller that determines the results of the round and game and displays them to the user
+ */
 public class EndScreenController extends Controller{
     private Player player;
     private Float moneyMade = 0.0f;
@@ -37,16 +39,24 @@ public class EndScreenController extends Controller{
     private Label LblInfo;
     @FXML
     private ImageView ImgEnd;
+    /**
+     * The button to continue to the next round
+     */
     public void onBtnExcuse() {
         player.setFavorResource(random.nextInt(EnumResources.values().length));
         player.launchParentScreen();
         player.nextRound();
     }
+    /**
+     * The button that closes the game upon completion
+     */
     public void onBtnEnd() {
         System.exit(0);
     }
-    
 
+    /**
+     * Calculates round statistics not otherwise found in the UserPane
+     */
     public void calculateInfo(){
         if (player.getTradeOff() == FAST || player.getTradeOff() == SABOTAGE) {
             for (int i=0; i<round.getResultCartList().size(); i++) {
@@ -75,9 +85,13 @@ public class EndScreenController extends Controller{
         this.player = player;
         initialize();
     }
+
     public EndScreenController() {
         // I'm ofFXnded
     }
+    /**
+     * Called when the user has failed a round due to carts being missed, or debt remaining after round payout
+     */
     public void fail() {
         ImgEnd.setImage(new Image("images/fail.jpeg"));
         if (player.getMoney() < 0 && failCount > 0) {
@@ -158,25 +172,31 @@ public class EndScreenController extends Controller{
             endGame();
         }
     }
+    /**
+     * Called after a round when all carts were filled and there is no debt remaining after round payout
+     */
     public void success() {
         ImgEnd.setImage(new Image("images/success.jpeg"));
         LblOutcome.setText("A successful delivery. Safe for another day...");
         BtnExcuse.setText("\"Pleasure doing business\"");
     }
+    /**
+     * Determines which ending the player has reached, given the current round and the number of excuses the player has remaining.
+     */
     public void endGame() {
         LblDmg.setVisible(false);
         player.setSelected(null);
         BtnExcuse.setVisible(false);
         BtnEnd.setVisible(true);
-        if (failCount > 0 && player.getMoney() < 0) {
+        if (failCount > 0 && player.getMoney() < 0 && player.getLives() <= 0) {
             LblOutcome.setText("The debt collector and the wizard\nhave become very close\nhaving to deal with your incompetence.\nTo celebrate their developing romance\nthey are having a candlelit date\nwhere the main course is your corpse.\n<3");
             ImgEnd.setImage(new Image("images/eat.jpeg"));
 
-        } else if (failCount > 0) {
+        } else if (failCount > 0 && player.getLives() <= 0) {
             LblOutcome.setText("You can't seem to be able to completely fill a train of resources\nnow a train full of resources is going\nto completely kill you...");
             ImgEnd.setImage(new Image("images/debt-5.jpeg"));
 
-        } else if (player.getMoney() < 0) {
+        } else if (player.getMoney() < 0 && player.getLives() <= 0)  {
             LblOutcome.setText("You owe Morphlin the Wizard a lot money on all those towers\nso Morphlin has turned you into a tower\nand will sell you at a market rate.\nWill you ever get turned back?\ndoubt it...");
             ImgEnd.setImage(new Image("images/wizard.jpeg"));
 
@@ -187,6 +207,9 @@ public class EndScreenController extends Controller{
         }
         calculateInfo();
     }
+    /**
+     * Determines what informative information and round endings to display after a round
+     */
     @FXML
     public void initialize() {
         if (player != null) {

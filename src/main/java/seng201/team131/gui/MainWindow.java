@@ -36,12 +36,6 @@ public class MainWindow extends Application {
      * errors out and does not run
      * @param args command line arguments
      */
-
-    /**
-     * Launches the FXML application, this must be called from another class (in this cass App.java) otherwise JavaFX
-     * errors out and does not run
-     * @param args command line arguments
-     */
     public static void launchWrapper(String [] args) {
         launch(args);
     }

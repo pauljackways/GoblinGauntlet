@@ -146,6 +146,9 @@ public class Player {
     public void setBackgroundController(BackgroundController controller) {
         this.controller = controller;
     }
+    /**
+     * Functions that launch the screens to backgroundController by first clearing the relevant columns of the Hbox of backgroundController's FXML
+     */
     public void launchSetupScreen() {
         if (controller != null) {
             controller.clearColumn(1);
